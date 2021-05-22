@@ -104,3 +104,6 @@ typings/
 
 # Config File
 config/
+
+#bundle js
+/public/dist/bundle.js

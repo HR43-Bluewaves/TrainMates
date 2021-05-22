@@ -9,6 +9,5 @@ ReactDOM.render(
   <Provider store={store}>
     <AppRouter />
   </Provider>,
-  // <Landing />,
   document.getElementById('root'),
 );
