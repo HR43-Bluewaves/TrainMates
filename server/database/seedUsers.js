@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-const { Client, Pool } = require('pg');
 const pool = require('./index');
 
 const tableName = 'users';

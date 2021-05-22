@@ -103,7 +103,7 @@ typings/
 .tern-port
 
 # Config File
-config/
+config/config.js
 
 #bundle js
 /public/dist/bundle.js

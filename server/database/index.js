@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 const { Pool } = require('pg');
 const config = require('../../config/config');
