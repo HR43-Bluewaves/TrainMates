@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.json({extended: false}))
 app.use(cors());
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, '../public/client/dist')));
+app.use(express.static(path.join(__dirname, '../public/dist')));
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
