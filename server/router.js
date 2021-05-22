@@ -1,4 +1,4 @@
-const router = require('express').Router;
+const router = require('express').Router();
 const db = require('./queries');
 
 router
@@ -11,6 +11,6 @@ router
 
 router
   .route('/trainers')
-  .get(db.getAllTeachers);
+  .get(db.getAllTrainers);
 
 module.exports = router;
