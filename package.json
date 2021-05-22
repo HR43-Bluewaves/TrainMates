@@ -2,7 +2,7 @@
   "name": "trainmates",
   "version": "1.0.0",
   "description": "Train mates",
-  "main": "babel.config.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "react-dev": "webpack --watch",
@@ -30,7 +30,6 @@
     "babel": "^6.23.0",
     "babel-loader": "^8.2.2",
     "bootstrap": "^5.0.1",
-    "compression-webpack-plugin": "^8.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "lodash": "^4.17.21",
@@ -45,8 +44,7 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
-    "web-vitals": "^1.1.2",
-    "webpack-cli": "^4.7.0"
+    "web-vitals": "^1.1.2"
   },
   "devDependencies": {
     "compression-webpack-plugin": "^7.1.2",
