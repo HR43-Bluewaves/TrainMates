@@ -26,6 +26,7 @@ const insertData = `
    'Evanston', 'IL', 60201 ,'https://img.particlenews.com/image.php?type=thumbnail_580x000&url=3bRbfV_0XEGgX2j00',
    'regina', 'regina');
 `;
+
 pool.query(creatTable)
   .then(() => console.log(`Table '${tableName}' successfully created!`))
   .then(() => {
