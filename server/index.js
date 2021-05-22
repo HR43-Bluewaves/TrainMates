@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const qs = require('querystring');
+const router = require('./router');
 // const compression = require('compression');
 const path = require('path');
 
@@ -15,6 +16,7 @@ app.use(express.json({ extended: false }));
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public/dist')));
+app.use('/api', router);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
