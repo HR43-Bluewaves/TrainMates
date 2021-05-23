@@ -47,7 +47,7 @@ const trainers = [
     city: 'Los Angeles',
     state: 'CA',
     zip: '90210',
-    photo_url: 'https://images.squarespace-cdn.com/content/v1/56f0daad2eeb8185c4081072/1612054331700-DGU19S5YUCJCESFCP4QO/ke17ZwdGBToddI8pDm48kMXRibDYMhUiookWqwUxEZ97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0luUmcNM2NMBIHLdYyXL-Jww_XBra4mrrAHD6FMA3bNKOBm5vyMDUBjVQdcIrt03OQ/julian+rt+bomber.jpg',
+    photo_url: 'https://images.squarespace-cdn.com/content/v1/56f0daad2eeb8185c4081072/1612054990074-X47TKNRZX249YPZN0NOD/ke17ZwdGBToddI8pDm48kMXRibDYMhUiookWqwUxEZ97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0luUmcNM2NMBIHLdYyXL-Jww_XBra4mrrAHD6FMA3bNKOBm5vyMDUBjVQdcIrt03OQ/julian+rt+black+shirt.jpg?format=1500w',
     user_name: 'julian',
     password: 'password',
   },
