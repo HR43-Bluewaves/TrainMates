@@ -3,12 +3,9 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-<<<<<<< HEAD
-// const qs = require('querystring');
-// const compression = require('compression');
-=======
 const qs = require('querystring');
->>>>>>> 0e1912ead99f3ce965148f13dc9047bd323233db
+// const compression = require('compression');
+// const qs = require('querystring');
 const path = require('path');
 const router = require('./router');
 // const compression = require('compression');
