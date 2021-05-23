@@ -3,7 +3,7 @@
 }
 /* ---------------------------------------------page-1 ---------------------------------------------------------------------------- */
 .landing .page-1 {
-  background: url('./main-page.jpeg');
+  background: url('./images/main-page.jpeg');
   /* background-attachment: fixed; */
   background-position: 30% 75%;
   width: 100vw;
@@ -13,7 +13,7 @@
   justify-content: center;
 }
 .landing .logo_word {
-  background: url('./logo_letter_black.png');
+  background: url('./images/logo_letter_black.png');
   background-position: center;
   background-size: cover;
   height: 8vh;
@@ -29,7 +29,7 @@
 .landing .logo_pic {
   height: 50vh;
   width: 50vh;
-  background: url('./logo-pic.png');
+  background: url('./images/logo-pic.png');
   background-position: center;
   background-size: cover;
   align-self: center;
@@ -96,22 +96,22 @@
 .landing .page-3 .action-shot-pics span {
   width: 80%;
   height: 50%;
-  background: url('./action-shot1.jpeg');
+  background: url('./images/action-shot1.jpeg');
   background-size: cover;
   margin-right: 1vh;
 }
 .landing .page-3 .action-shot-pics .item-2 {
-  background: url('./action-shot2.jpeg');
+  background: url('./images/action-shot2.jpeg');
   background-size: cover;
   align-self: flex-end;
 }
 
 .landing .page-3 .action-shot-pics .item-3 {
-  background: url('./action-shot3.jpeg');
+  background: url('./images/action-shot3.jpeg');
   background-size: cover;
 }
 .landing .page-3 .action-shot-pics .item-4 {
-  background: url('./action-shot4.jpeg');
+  background: url('./images/action-shot4.jpeg');
   background-size: cover;
   align-self: flex-end;
 }
@@ -123,7 +123,7 @@
   align-content: center;
 }
 .page-4 .sign-up-logo {
-  background: url('./logo-pic-white.png');
+  background: url('./images/logo-pic-white.png');
   height: 70vh;
   width: 70vh;
   background-position: center;
