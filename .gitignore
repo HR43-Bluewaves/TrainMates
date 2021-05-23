@@ -108,4 +108,4 @@ config/config.js
 #bundle js
 /public/dist/bundle.js
 
-*.DS_Store
+**/.DS_Store
