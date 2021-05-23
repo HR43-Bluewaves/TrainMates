@@ -8,19 +8,24 @@ const Home = () => {
   const handleTrainers = () => {
     history.push('/trainers');
   };
+
+  const handleClasses = () => {
+    history.push('/classes');
+  };
+
   return (
     <div className={styles.div}>
       <h1>This is the home page</h1>
-      <div className="userHomePage">
+      <div className="user-home-page">
         <Nav className="navbar">
           <input type="text" placeholder="Search..." />
-          <Button className="homeButton" type="submit">
+          <Button className="" type="submit">
             Home
           </Button>
-          <Button className="trainers-button" type="submit" onClick={handleTrainers}>
+          <Button className="" type="submit" onClick={handleTrainers}>
             Trainers
           </Button>
-          <Button className="classes" type="submit">
+          <Button className="" type="submit" onClick={handleClasses}>
             Classes
           </Button>
         </Nav>

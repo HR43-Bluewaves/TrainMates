@@ -4,6 +4,7 @@ import LandingTest from '../components/Landing copy';
 // import Landing from '../components/Landing';
 import Home from '../components/Home';
 import Trainers from '../components/Trainers';
+import Classes from '../components/Classes';
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -13,6 +14,7 @@ const AppRouter = () => (
         {/* <Route path="/" component={Landing} exact /> */}
         <Route path="/home" component={Home} />
         <Route path="/trainers" component={Trainers} />
+        <Route path="/classes" component={Classes} />
       </Switch>
     </div>
   </BrowserRouter>
