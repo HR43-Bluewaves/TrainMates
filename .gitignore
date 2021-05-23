@@ -107,3 +107,6 @@ config/config.js
 
 #bundle js
 /public/dist/bundle.js
+
+#ds store
+*.DS_STORE
