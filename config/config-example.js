@@ -1,6 +1,6 @@
 module.exports = {
   user: 'postgres',
   host: 'localhost',
-  database: 'Blueocean',
+  database: 'blueocean',
   password: 'yourpassword',
 };
