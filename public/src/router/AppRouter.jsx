@@ -5,9 +5,12 @@ import LandingTest from '../components/Landing copy';
 import Home from '../components/user-dashboard/Home';
 import Trainers from '../components/trainers/Trainers';
 import Classes from '../components/classes/Classes';
+import Trainee from '../components/trainees/Trainee';
 import Chat from '../components/Chat';
 import Cart from '../components/Cart';
 import Notifications from '../components/Notifications';
+// Trainer dashboard
+import TrainerHome from '../components/trainer-dashboard/TrainerHome';
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -18,9 +21,11 @@ const AppRouter = () => (
         <Route path="/home" component={Home} />
         <Route path="/trainers" component={Trainers} />
         <Route path="/classes" component={Classes} />
+        <Route path="/trainees" component={Trainee} />
         <Route path="/chat" component={Chat} />
         <Route path="/cart" component={Cart} />
         <Route path="/notifications" component={Notifications} />
+        <Route path="/trainerdashboard" component={TrainerHome} />
       </Switch>
     </div>
   </BrowserRouter>
