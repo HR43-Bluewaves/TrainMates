@@ -7,13 +7,16 @@ const Landing = () => {
   const handleLogin = () => {
     history.push('/home');
   };
+  const handleTrainerLogin = () => {
+    history.push('/trainerdashboard');
+  };
   return (
     <div className="landing">
       <div className="page-1">
-        <Nav class="navbar navbar-light fixed-top">
+        <Nav className="navbar navbar-light fixed-top">
           <span className="logo_word" />
           <div className="login">
-            <Button type="submit" className="trainer_signup">
+            <Button type="submit" className="trainer_signup" onClick={handleTrainerLogin}>
               Become A Trainer
             </Button>
             <Button className="signup" type="submit">

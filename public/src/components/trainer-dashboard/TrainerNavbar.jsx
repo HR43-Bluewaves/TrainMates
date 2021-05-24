@@ -11,11 +11,11 @@ const NavBar = () => {
   const history = useHistory();
 
   const handleHome = () => {
-    history.push('/home');
+    history.push('/trainerdashboard');
   };
 
-  const handleTrainers = () => {
-    history.push('/trainers');
+  const handleTrainees = () => {
+    history.push('/trainees');
   };
 
   const handleClasses = () => {
@@ -45,8 +45,8 @@ const NavBar = () => {
         <Button className="" type="submit" onClick={handleHome}>
           Home
         </Button>
-        <Button className="" type="submit" onClick={handleTrainers}>
-          Trainers
+        <Button className="" type="submit" onClick={handleTrainees}>
+          Trainees
         </Button>
         <Button className="" type="submit" onClick={handleClasses}>
           Classes
