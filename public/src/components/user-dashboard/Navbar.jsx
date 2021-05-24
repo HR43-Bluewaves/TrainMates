@@ -10,6 +10,10 @@ import styles from '../test.module.css';
 const NavBar = () => {
   const history = useHistory();
 
+  const handleHome = () => {
+    history.push('/home');
+  };
+
   const handleTrainers = () => {
     history.push('/trainers');
   };
@@ -38,7 +42,7 @@ const NavBar = () => {
     <div className={styles.div}>
       <Nav className="navbar">
         <h1>TRAIN ME MATE</h1>
-        <Button className="" type="submit">
+        <Button className="" type="submit" onClick={handleHome}>
           Home
         </Button>
         <Button className="" type="submit" onClick={handleTrainers}>
