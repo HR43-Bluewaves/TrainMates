@@ -1,18 +1,14 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button, Nav } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
 import styles from './test.module.css';
 import TrainersList from './TrainersList';
+import Navbar from './Navbar';
 
 const Trainers = () => {
   const [trainers, setTrainers] = useState([]);
   const [searchValue, setSearchValue] = useState('');
-  const history = useHistory();
-  const handleHome = () => {
-    history.push('/home');
-  };
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/trainers')
@@ -30,17 +26,17 @@ const Trainers = () => {
 
   return (
     <div className={styles.div}>
-      <Nav className="navbar">
-        <h1>TRAIN ME MATE</h1>
-        <input type="text" placeholder="Search..." onChange={handleChange} />
-        <Button type="submit" onClick={handleHome}>
-          Home
-        </Button>
-      </Nav>
+      <h1>This is the trainers page</h1>
+      <Navbar />
+      <input type="text" placeholder="Search..." onChange={handleChange} />
       <div className="trainers">
         {trainers.map((trainer, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <TrainersList trainer={trainer} key={index} searchValue={searchValue} />
+          <TrainersList
+            trainer={trainer}
+            key={index}
+            searchValue={searchValue}
+          />
         ))}
       </div>
     </div>
