@@ -2,9 +2,10 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styles from './test.module.css';
+// import { connect } from 'react-redux';
+import styles from '../test.module.css';
 import TrainersList from './TrainersList';
-import Navbar from './Navbar';
+import Navbar from '../user-dashboard/Navbar';
 
 const Trainers = () => {
   const [trainers, setTrainers] = useState([]);
@@ -13,7 +14,6 @@ const Trainers = () => {
   useEffect(() => {
     axios.get('http://localhost:3000/api/trainers')
       .then((res) => {
-        console.log(res.data);
         setTrainers(res.data);
       })
       .catch((err) => console.error(err));
