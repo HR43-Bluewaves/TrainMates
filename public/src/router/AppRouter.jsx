@@ -4,7 +4,7 @@ import LandingTest from '../components/Landing copy';
 // import Landing from '../components/Landing';
 import Home from '../components/Home';
 import Trainers from '../components/Trainers';
-import Classes from '../components/Classes';
+import Classes from '../components/classes/Classes';
 import Chat from '../components/Chat';
 import Cart from '../components/Cart';
 import Notifications from '../components/Notifications';
