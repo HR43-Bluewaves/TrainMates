@@ -6,9 +6,9 @@ const config = require('../../config/config');
 // Local host version
 // Before running this script, make sure you have a database created called Blueocean
 const pool = new Pool({
-  user: 'naderdamouni',
+  user: config.user,
   host: 'localhost',
-  database: 'blueocean',
+  database: config.database,
   password: config.password,
   port: 5432, // This is the default port
 });

@@ -1,34 +1,32 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { Button, Nav } from 'react-bootstrap';
+/* eslint-disable no-console */
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from './test.module.css';
+import NavBar from './Navbar';
 
 const Home = () => {
-  const history = useHistory();
-  const handleTrainers = () => {
-    history.push('/trainers');
-  };
+  const [classes, setClasses] = useState([]);
 
-  const handleClasses = () => {
-    history.push('/classes');
-  };
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/classes')
+      .then((res) => {
+        setClasses(res.data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div className={styles.div}>
       <h1>This is the home page</h1>
       <div className="user-home-page">
-        <Nav className="navbar">
-          <input type="text" placeholder="Search..." />
-          <Button className="" type="submit">
-            Home
-          </Button>
-          <Button className="" type="submit" onClick={handleTrainers}>
-            Trainers
-          </Button>
-          <Button className="" type="submit" onClick={handleClasses}>
-            Classes
-          </Button>
-        </Nav>
+        <NavBar />
+        <div className="upcomingClasses">
+          {classes.map((course) => (
+            <div key={course.id}>
+              {course.class_name}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
