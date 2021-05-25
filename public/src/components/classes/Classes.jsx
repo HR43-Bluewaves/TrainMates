@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import ClassList from './ClassList';
 import NavBar from '../user-dashboard/Navbar';
+import './class.css';
 
 const Classes = () => {
   const [searchValue, setSearchValue] = useState('');
