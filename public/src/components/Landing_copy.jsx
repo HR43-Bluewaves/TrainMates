@@ -8,9 +8,9 @@ const Landing = () => {
   const handleLogin = () => {
     history.push('/home');
   };
-  // const handleTrainerLogin = () => {
-  //   history.push('/trainerdashboard');
-  // };
+  const handleTrainerLogin = () => {
+    history.push('/trainerdashboard');
+  };
   return (
     <div className="landing">
       <div className={style.page_1}>
@@ -18,7 +18,7 @@ const Landing = () => {
           <span className={style.logo_word} />
           <div className={style.login}>
             <div className={style.button_wrapper}>
-              <button type="submit" className={style.trainer_signup} >
+              <button type="submit" className={style.trainer_signup} onClick={handleTrainerLogin}>
                 Become A Trainer
               </button>
             </div>
