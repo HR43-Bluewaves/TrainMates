@@ -5,6 +5,7 @@ import LandingTest from '../components/Landing_copy';
 // import Landing from '../components/Landing';
 import Home from '../components/user-dashboard/Home';
 import Trainers from '../components/trainers/Trainers';
+/* eslint-disable import/no-named-as-default */
 import Classes from '../components/classes/Classes';
 import Trainee from '../components/trainees/Trainee';
 import Chat from '../components/Chat';
