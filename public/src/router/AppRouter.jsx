@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import LandingTest from '../components/Landing copy';
+import LandingTest from '../components/Landing_copy';
 // import Landing from '../components/Landing';
 <<<<<<< HEAD
 import Home from '../components/Home';
