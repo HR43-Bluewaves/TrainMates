@@ -10,6 +10,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const classes = useSelector((state) => state.classesReducer.classes);
   const trainers = useSelector((state) => state.trainersReducer.trainers);
+  const user = useSelector((state) => state.userReducer.user)
 
   useEffect(() => {
     axios.get('/api/classes')
@@ -23,6 +24,15 @@ const Home = () => {
     axios.get('/api/trainers')
       .then(({ data }) => {
         dispatch({ type: 'trainers', trainers: data });
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    axios.get('/api/user')
+      .then(({ data }) => {
+        console.log(data)
+        dispatch({ type: 'user', user: data });
       })
       .catch((err) => console.error(err));
   }, []);

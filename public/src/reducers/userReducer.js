@@ -1,10 +1,10 @@
-const initialState = { user: 'Dennis', isTeacher: false };
+const initialState = { user: [] };
 
 const userReducer = (state = initialState, action) => {
-  if (action.type === 'isTeacher') {
+  if (action.type === 'user') {
     return {
       ...initialState,
-      isTeacher: action.teacher,
+      user: action.user,
     };
   }
   return state;
