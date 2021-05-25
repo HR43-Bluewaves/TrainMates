@@ -3,7 +3,8 @@ const db = require('./queries');
 
 router
   .route('/user')
-  .get(db.getUser);
+  .get(db.getUser)
+  .post(db.addUser);
 
 router
   .route('/classes')
@@ -12,5 +13,9 @@ router
 router
   .route('/trainers')
   .get(db.getAllTrainers);
+
+router
+  .route('/trainer')
+  .get(db.getTrainer);
 
 module.exports = router;
