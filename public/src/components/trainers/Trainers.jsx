@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -19,10 +20,10 @@ const Trainers = () => {
       <Navbar />
       <input type="text" placeholder="Search..." onChange={handleChange} />
       <div className="trainers">
-        {trainers.map((trainer) => (
+        {trainers.map((trainer, index) => (
           <TrainersList
             trainer={trainer}
-            key={trainer.id}
+            key={index}
             searchValue={searchValue}
           />
         ))}

@@ -18,10 +18,11 @@ const Classes = () => {
       <NavBar />
       <input className="search" type="text" placeholder="Search..." onChange={handleChange} />
       <div className="class-list">
-        {classes.map((course) => (
+        {classes.map((course, index) => (
           <ClassList
             course={course}
-            key={course.id}
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
             searchValue={searchValue}
           />
         ))}
