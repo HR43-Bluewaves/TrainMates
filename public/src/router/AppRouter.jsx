@@ -14,6 +14,7 @@ import Cart from '../components/Cart';
 import Notifications from '../components/Notifications';
 // Trainer dashboard
 import TrainerHome from '../components/trainer-dashboard/TrainerHome';
+import userInformation from '../components/userInformation/UserInformation';
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -29,6 +30,7 @@ const AppRouter = () => (
         <Route path="/cart" component={Cart} />
         <Route path="/notifications" component={Notifications} />
         <Route path="/trainerdashboard" component={TrainerHome} />
+        <Route path="/user" component={userInformation} />
       </Switch>
     </div>
   </BrowserRouter>
