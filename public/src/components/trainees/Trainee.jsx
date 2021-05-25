@@ -25,11 +25,11 @@ const Trainee = () => {
   };
 
   return (
-    <div className={styles.div}>
+    <div className="trainees">
       <h1>This is the trainees page</h1>
       <Navbar />
       <input type="text" placeholder="Search..." onChange={handleChange} />
-      <div className="trainees">
+      <div className="trainees-list">
         {trainees.map((trainee, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <TraineeList

@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ClassList from './ClassList';
 import NavBar from '../user-dashboard/Navbar';
+import './class.css';
 
 // eslint-disable-next-line react/prop-types
 const Classes = () => {
