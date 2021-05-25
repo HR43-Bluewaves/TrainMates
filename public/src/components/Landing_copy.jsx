@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import style from '../../dist/landing_test.module.css';
+import Login from './forms/Login';
 
 const Landing = () => {
   const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState('');
   const handleLogin = () => {
-    history.push('/home');
+    setModalType('choose');
+    setShowModal(true);
   };
   const handleTrainerLogin = () => {
     history.push('/trainerdashboard');
   };
+  const handleSignUp = () => {
+    setModalType('signup');
+    setShowModal(true);
+  };
   return (
     <div className="landing">
+      <Login showModal={showModal} modalType={modalType} />
       <div className={style.page_1}>
         <Nav class="navbar navbar-light fixed-top">
           <span className={style.logo_word} />
@@ -80,7 +89,7 @@ const Landing = () => {
       </div>
       <div className={style.page_4}>
         <div className={style.sign_up_logo} />
-        <button className={style.sign_up_bottom} id="sign_up_bottom" type="submit">SIGN UP</button>
+        <button className={style.sign_up_bottom} id="sign_up_bottom" type="submit" onClick={handleSignUp}>SIGN UP</button>
       </div>
     </div>
   );

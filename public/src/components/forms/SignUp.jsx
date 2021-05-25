@@ -15,39 +15,45 @@ const validationSchema = yup.object({
     .string('Enter your username')
     .min(4, 'Enter valid username')
     .required('Username is required'),
-  // email: yup
-  //   .string('Enter your email')
-  //   .email('Enter a valid email')
-  //   .required('Email is required'),
+  email: yup
+    .string('Enter your email')
+    .email('Enter a valid email')
+    .required('Email is required'),
   password: yup
     .string('Enter your password')
     .min(6, 'Password should be of minimum 8 characters length')
     .required('Password is required'),
+  first: yup
+    .string('Enter your first name')
+    .required('First name is required'),
+  last: yup
+    .string('Enter your last name')
+    .required('Last name is required'),
 });
 
-const UserLogin = ({ userType }) => {
+const SignUp = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const formik = useFormik({
     initialValues: {
       username: '',
       password: '',
+      first: '',
+      last: '',
+      email: '',
     },
     validationSchema,
-    onSubmit: ({ username, password }) => {
-      axios.get(`/api/${userType}`, {
-        params: {
-          username,
-          password,
-        },
-      }).then(({ data }) => {
-        if (data.length) {
-          data[0].type = userType;
-          dispatch({ type: 'user', user: data[0] });
-          history.push('/home');
-        } else {
-          // something telling username/password is invalid
-        }
+    onSubmit: (values) => {
+      console.log(values);
+      axios.post('/api/user', {
+        username: values.username,
+        password: values.password,
+        email: values.email,
+        first: values.first,
+        last: values.last,
+      }).then((res) => {
+        console.log(res);
+        history.push('/');
       });
     },
   });
@@ -55,6 +61,39 @@ const UserLogin = ({ userType }) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
+        <TextField
+          fullWidth
+          id="first"
+          name="first"
+          label="First Name"
+          type="first"
+          value={formik.values.first}
+          onChange={formik.handleChange}
+          error={formik.touched.first && Boolean(formik.errors.first)}
+          helperText={formik.touched.first && formik.errors.first}
+        />
+        <TextField
+          fullWidth
+          id="last"
+          name="last"
+          label="Last Name"
+          type="last"
+          value={formik.values.last}
+          onChange={formik.handleChange}
+          error={formik.touched.last && Boolean(formik.errors.last)}
+          helperText={formik.touched.last && formik.errors.last}
+        />
+        <TextField
+          fullWidth
+          id="email"
+          name="email"
+          label="Email"
+          type="email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
+        />
         <TextField
           fullWidth
           id="username"
@@ -84,4 +123,4 @@ const UserLogin = ({ userType }) => {
   );
 };
 
-export default UserLogin;
+export default SignUp;
