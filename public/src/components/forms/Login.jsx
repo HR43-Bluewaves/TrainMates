@@ -3,16 +3,20 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import UserLogin from './UserLogin';
 import LoginChoice from './LoginChoice';
+import SignUp from './SignUp';
 
-const Login = ({ showModal }) => {
+const Login = ({ showModal, modalType }) => {
   const [show, setShow] = useState(showModal);
   const [loginType, setLoginType] = useState('');
-  const [type, setType] = useState('choose');
+  const [type, setType] = useState(modalType);
 
   useEffect(() => {
-    console.log(showModal);
     setShow(showModal);
   }, [showModal]);
+
+  useEffect(() => {
+    setType(modalType);
+  }, [modalType]);
 
   const handleClose = () => {
     setShow(false);
@@ -26,7 +30,10 @@ const Login = ({ showModal }) => {
     if (type === 'login') {
       return <UserLogin close={handleClose} userType={loginType} />;
     }
-    return <div>Sign Up</div>;
+    if (type === 'signup') {
+      return <SignUp />;
+    }
+    return <div />;
   };
 
   return (
