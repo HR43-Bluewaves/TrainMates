@@ -5,7 +5,6 @@ const userReducer = (state = initialState, action) => {
   if (action.type === 'user') {
 
     return {
-      ...initialState,
       user: action.user,
     };
   }
