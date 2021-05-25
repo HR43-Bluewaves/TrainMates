@@ -12,31 +12,35 @@ const UserInformation = () => {
 
   const [searchValue, setSearchValue] = useState('');
   const user = useSelector((state) => state.userReducer.user);
-
+  console.log(user, 'THIS IS USER')
   const handleChange = (event) => {
     setSearchValue(event.target.value);
   };
 
-  return (
-    <Container fluid className="userInformationPage" >
-      <NavBar />
-      <input className="search" type="text" placeholder="Search..." onChange={handleChange} />
-      <div className="userContainer">
-      <Row className="user">
-        <Col className="photoContainer">
-          <img className="userPhoto" src={user[0].photo_url}/>
-        </Col>
-        <Col className="userInformation">
-          <h3>{user[0].first_name} {user[0].last_name}</h3>
-          <p>{user[0].city} {user[0].state}, {user[0].zip}</p>
-          <p>{user[0].email}</p>
-        </Col>
-      </Row>
-      </div>
-      <h1 className="classHeader">Classes</h1>
-      <UserClasses/>
-    </Container>
-  );
+  if (user) {
+    return (
+      <Container fluid className="userInformationPage" >
+        <NavBar />
+        <input className="search" type="text" placeholder="Search..." onChange={handleChange} />
+        <div className="userContainer">
+        <Row className="user">
+          <Col className="photoContainer">
+            <img className="userPhoto" src={user.photo_url}/>
+          </Col>
+          <Col className="userInformation">
+            <h3>{user.first_name} {user.last_name}</h3>
+            <p>{user.city} {user.state}, {user.zip}</p>
+            <p>{user.email}</p>
+          </Col>
+        </Row>
+        </div>
+        <h1 className="classHeader">Classes</h1>
+        <UserClasses/>
+      </Container>
+    );
+  }
+  return <div></div>
+
 };
 
 export default UserInformation;
