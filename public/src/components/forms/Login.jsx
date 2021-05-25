@@ -1,27 +1,36 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import UserLogin from './userLogin';
+import UserLogin from './UserLogin';
+import LoginChoice from './LoginChoice';
 
-const Login = () => {
-  const [show, setShow] = useState(false);
-  const [loginType, setLoginType] = useState('user');
-  const [type, setType] = useState('login');
+const Login = ({ showModal }) => {
+  const [show, setShow] = useState(showModal);
+  const [loginType, setLoginType] = useState('');
+  const [type, setType] = useState('choose');
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  useEffect(() => {
+    console.log(showModal);
+    setShow(showModal);
+  }, [showModal]);
+
+  const handleClose = () => {
+    setShow(false);
+    setType('choose');
+    setLoginType('');
+  };
   const handleType = () => {
+    if (type === 'choose') {
+      return <LoginChoice setType={setType} setLoginType={setLoginType} />;
+    }
     if (type === 'login') {
-      return loginType === 'user' ? <UserLogin close={handleClose} />
-        : <div>Trainer</div>;
+      return <UserLogin close={handleClose} userType={loginType} />;
     }
     return <div>Sign Up</div>;
   };
 
   return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
-        Launch static backdrop modal
-      </Button>
       <Modal
         show={show}
         onHide={handleClose}

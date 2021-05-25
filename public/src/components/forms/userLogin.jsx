@@ -1,7 +1,11 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -17,20 +21,35 @@ const validationSchema = yup.object({
   //   .required('Email is required'),
   password: yup
     .string('Enter your password')
-    .min(8, 'Password should be of minimum 8 characters length')
+    .min(6, 'Password should be of minimum 8 characters length')
     .required('Password is required'),
 });
 
-const UserLogin = ({ close }) => {
+const UserLogin = ({ userType }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  console.log(history);
   const formik = useFormik({
     initialValues: {
       username: '',
       password: '',
     },
     validationSchema,
-    onSubmit: (values) => {
-      close();
-      console.log(JSON.stringify(values, null, 2));
+    onSubmit: ({ username, password }) => {
+      axios.get('/api/user', {
+        params: {
+          username,
+          password,
+        },
+      }).then(({ data }) => {
+        if (data.length) {
+          data[0].type = userType;
+          dispatch({ type: 'user', user: data[0] });
+          history.push('/home');
+        } else {
+          // something telling username/password is invalid
+        }
+      });
     },
   });
 

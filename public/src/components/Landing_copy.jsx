@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import style from '../../dist/landing_test.module.css';
+import Login from './forms/Login';
 
 const Landing = () => {
   const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
   const handleLogin = () => {
-    history.push('/home');
+    setShowModal(true);
   };
   const handleTrainerLogin = () => {
     history.push('/trainerdashboard');
   };
   return (
     <div className="landing">
+      <Login showModal={showModal} />
       <div className={style.page_1}>
         <Nav class="navbar navbar-light fixed-top">
           <span className={style.logo_word} />

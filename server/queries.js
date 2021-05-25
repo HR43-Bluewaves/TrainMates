@@ -2,7 +2,9 @@ const db = require('./database/index');
 
 const queries = {
   getUser: (req, res) => {
-    db.query('SELECT * FROM users WHERE user_id = 1')
+    const { username, password } = req.query;
+    console.log(req.query);
+    db.query(`SELECT * FROM users WHERE user_name = '${username}' AND '${password}' = password`)
       .then((result) => {
         res.status(200).send(result.rows);
       })
