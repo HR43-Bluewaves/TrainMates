@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styles from '../test.module.css';
+// import styles from '../test.module.css';
 import TraineeList from './TraineeList';
 import Navbar from '../trainer-dashboard/TrainerNavbar';
 
