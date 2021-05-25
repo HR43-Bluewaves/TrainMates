@@ -108,9 +108,7 @@ config/config.js
 #bundle js
 /public/dist/bundle.js
 
-<<<<<<< HEAD
 /.DS_Store
 =======
 #ds store
 **/.DS_Store
->>>>>>> a17b353c88fe8bc47013c8ece6aeb4c6d0d2496c

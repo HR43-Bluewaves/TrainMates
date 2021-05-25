@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import LandingTest from '../components/Landing copy';
+import LandingTest from '../components/Landing_copy';
 // import Landing from '../components/Landing';
 import Home from '../components/user-dashboard/Home';
 import Trainers from '../components/trainers/Trainers';
