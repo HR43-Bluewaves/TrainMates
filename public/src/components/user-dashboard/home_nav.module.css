@@ -1,0 +1,59 @@
+.home {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+}
+.row {
+  display: flex;
+  height: 60vh;
+}
+.upcoming_class {
+  height: 100%;
+  padding: 5vh;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.promotion {
+  height: 100%;
+  padding: 5vh;
+}
+.recommend {
+  height: 30vh;
+  padding: 5vh;
+}
+.class_container,
+.promition_container,
+.recommend_container {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav_bar {
+  width: 100vw;
+}
+.logo_word {
+  background: url('../../../dist/images/logo_letter_black.png');
+  background-position: center;
+  background-size: cover;
+  height: 8vh;
+  width: 10%;
+}
+.button_container,
+.icon_container {
+  display: flex;
+}
+.button_container button,
+.icon {
+  margin-right: 2vh;
+}
+.button {
+  background-color: transparent;
+  border: 0;
+  color: black;
+  height: 100%;
+}
