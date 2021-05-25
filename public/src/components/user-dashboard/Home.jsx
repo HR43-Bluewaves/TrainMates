@@ -10,6 +10,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const classes = useSelector((state) => state.classesReducer.classes);
   const trainers = useSelector((state) => state.trainersReducer.trainers);
+  const user = useSelector((state) => state.userReducer.user);
 
   useEffect(() => {
     axios.get('/api/classes')
