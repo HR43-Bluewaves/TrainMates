@@ -1,0 +1,37 @@
+/* .trainerPhoto {
+  width: 20vh;
+  height: 8%;
+}
+.card-img-top {
+  width: 60%;
+}
+
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+
+.card-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: -0.75rem;
+} */
+
+.trainers-class-photos {
+  float: right;
+}
+
+.trainers-list {
+  float: left;
+  display: grid;
+  grid-template-columns: 100vh;
+}
