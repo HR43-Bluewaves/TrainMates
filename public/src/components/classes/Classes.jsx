@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import ClassList from './ClassList';
-<<<<<<< HEAD
-import NavBar from '../Navbar';
-=======
 import NavBar from '../user-dashboard/Navbar';
-import './class.css';
->>>>>>> aac946841a371bfbd5cafe2662d659bf705c8994
+// eslint-disable-next-line no-unused-vars
+import style from './class.css';
 
 const Classes = () => {
   const [searchValue, setSearchValue] = useState('');

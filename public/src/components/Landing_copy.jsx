@@ -18,7 +18,7 @@ const Landing = () => {
           <span className={style.logo_word} />
           <div className={style.login}>
             <div className={style.button_wrapper}>
-              <button type="submit" className={style.trainer_signup} >
+              <button type="submit" className={style.trainer_signup}>
                 Become A Trainer
               </button>
             </div>
