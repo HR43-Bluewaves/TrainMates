@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './user-dashboard/Navbar';
+import NavBar from './Navbar';
 
 const Cart = () => (
 

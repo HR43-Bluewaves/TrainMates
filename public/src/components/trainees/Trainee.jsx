@@ -2,19 +2,19 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styles from './test.module.css';
-import TrainersList from './TrainersList';
-import Navbar from './Navbar';
+import styles from '../test.module.css';
+import TraineeList from './TraineeList';
+import Navbar from '../trainer-dashboard/TrainerNavbar';
 
-const Trainers = () => {
-  const [trainers, setTrainers] = useState([]);
+const Trainee = () => {
+  const [trainees, setTrainees] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/trainers')
+    axios.get('http://localhost:3000/api/user')
       .then((res) => {
         console.log(res.data);
-        setTrainers(res.data);
+        setTrainees(res.data);
       })
       .catch((err) => console.error(err));
   }, []);
@@ -26,14 +26,14 @@ const Trainers = () => {
 
   return (
     <div className={styles.div}>
-      <h1>This is the trainers page</h1>
+      <h1>This is the trainees page</h1>
       <Navbar />
       <input type="text" placeholder="Search..." onChange={handleChange} />
-      <div className="trainers">
-        {trainers.map((trainer, index) => (
+      <div className="trainees">
+        {trainees.map((trainee, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <TrainersList
-            trainer={trainer}
+          <TraineeList
+            trainee={trainee}
             key={index}
             searchValue={searchValue}
           />
@@ -43,4 +43,4 @@ const Trainers = () => {
   );
 };
 
-export default Trainers;
+export default Trainee;

@@ -1,13 +1,19 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ClassList from './ClassList';
+<<<<<<< HEAD
 import NavBar from '../Navbar';
+=======
+import NavBar from '../user-dashboard/Navbar';
+>>>>>>> c4e77ab5ee7e9240b96d037bdbe047a55c42e976
 
+// eslint-disable-next-line react/prop-types
 const Classes = () => {
-  const [classes, setClasses] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [classes, setClasses] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/classes')
@@ -24,7 +30,7 @@ const Classes = () => {
   return (
     <div className="classes">
       <h1>This is the classes page</h1>
-      <NavBar onChange={handleChange} />
+      <NavBar />
       <input className="search" type="text" placeholder="Search..." onChange={handleChange} />
       <div className="class-list">
         {classes.map((course, index) => (

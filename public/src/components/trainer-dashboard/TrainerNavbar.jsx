@@ -5,13 +5,17 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import PersonIcon from '@material-ui/icons/Person';
-import styles from './test.module.css';
+import styles from '../test.module.css';
 
 const NavBar = () => {
   const history = useHistory();
 
-  const handleTrainers = () => {
-    history.push('/trainers');
+  const handleHome = () => {
+    history.push('/trainerdashboard');
+  };
+
+  const handleTrainees = () => {
+    history.push('/trainees');
   };
 
   const handleClasses = () => {
@@ -38,11 +42,11 @@ const NavBar = () => {
     <div className={styles.div}>
       <Nav className="navbar">
         <h1>TRAIN ME MATE</h1>
-        <Button className="" type="submit">
+        <Button className="" type="submit" onClick={handleHome}>
           Home
         </Button>
-        <Button className="" type="submit" onClick={handleTrainers}>
-          Trainers
+        <Button className="" type="submit" onClick={handleTrainees}>
+          Trainees
         </Button>
         <Button className="" type="submit" onClick={handleClasses}>
           Classes
