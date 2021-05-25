@@ -1,8 +1,13 @@
+/* eslint-disable no-console */
 .navbar {
   background: #ff8c10b0;
+  padding: 0;
+  justify-content: space-between;
+  align-items: center;
+  height: 8vh;
 }
 /* ---------------------------------------------page-1 ---------------------------------------------------------------------------- */
-.landing .page-1 {
+.page_1 {
   background: url('./images/main-page.jpeg');
   /* background-attachment: fixed; */
   background-position: 30% 75%;
@@ -12,21 +17,54 @@
   flex-direction: row;
   justify-content: center;
 }
-.landing .logo_word {
+.logo_word {
   background: url('./images/logo_letter_black.png');
   background-position: center;
   background-size: cover;
   height: 8vh;
   width: 10%;
 }
-.landing .trainer_signup,
-.landing .signup,
-.landing .login-button {
+.button_wrapper {
+  height: 100%;
+  border-bottom: 2px solid transparent;
+  padding:0;
+  margin:0;
+  margin-right: 2vw;
+}
+.trainer_signup,
+.signup,
+.login_button {
   background-color: transparent;
   border: 0;
   color: black;
+  height: 100%;
+
 }
-.landing .logo_pic {
+.login {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding:0
+}
+.button_wrapper:hover {
+  border-bottom: 2px solid white;
+  cursor: pointer;
+}
+.trainer_signup:hover,
+.signup:hover,
+.login_button:hover {
+  background-color: transparent;
+  color: black;
+  cursor: pointer;
+}
+.signup a {
+  color: black;
+}
+.signup a:hover {
+  text-decoration: none;
+}
+.logo_pic {
   height: 50vh;
   width: 50vh;
   background: url('./images/logo-pic.png');
@@ -37,9 +75,9 @@
   margin-bottom: 25vh;
 }
 /* -----------------------------------------------------------page 2------------------------------------------------------------ */
-.landing .page-2,
-.landing .page-3,
-.landing .page-4 {
+.page_2,
+.page_3,
+.page_4 {
   background: black;
   width: 100vw;
   height: 100vh;
@@ -47,8 +85,8 @@
   justify-content: space-between;
   align-items: center;
 }
-.landing .page-2 .story-left,
-.landing .page-2 .story-right {
+.story_left,
+.story_right {
   border-right: 1px solid #ff8a10;
   display: flex;
   justify-content: center;
@@ -57,23 +95,21 @@
   color: white;
   padding: 4vw;
 }
-.landing .page-2 .story-right {
+.story_right {
   border-right: 0;
   text-align: center;
 }
-
-.landing .page-2 .story-left h1 {
+.story_left h1 {
   font-size: 7rem;
   color: white;
 }
-
 /* ----------------------------------------------------------page 3------------------------------------------------------------ */
-.landing .page-3 h1 {
+.page_3 h1 {
   font-size: 5rem;
   color: white;
   margin-bottom: 1vh;
 }
-.landing .page-3 .action-shot-title {
+.action_shot_title {
   display: flex;
   justify-content: center;
   align-items: space-between;
@@ -81,11 +117,13 @@
   text-align: center;
   padding: 0 10vh;
 }
-.landing .action-shot-tile-wrapper {
+.action_shot_tile_wrapper {
   border-bottom: 1px solid #ff8a10;
+  display: flex;
+  flex-direction: column;
 }
 
-.landing .page-3 .action-shot-pics {
+.action_shot_pics {
   display: flex;
   height: 80vh;
   display: flex;
@@ -93,36 +131,36 @@
   align-items: flex-start;
   padding: 0 5vh;
 }
-.landing .page-3 .action-shot-pics span {
+.action_shot_pics span {
   width: 80%;
   height: 50%;
   background: url('./images/action-shot1.jpeg');
   background-size: cover;
   margin-right: 1vh;
 }
-.landing .page-3 .action-shot-pics .item-2 {
+.action_shot_pics .item_2 {
   background: url('./images/action-shot2.jpeg');
   background-size: cover;
   align-self: flex-end;
 }
 
-.landing .page-3 .action-shot-pics .item-3 {
+.action_shot_pics .item_3 {
   background: url('./images/action-shot3.jpeg');
   background-size: cover;
 }
-.landing .page-3 .action-shot-pics .item-4 {
+.action_shot_pics .item_4 {
   background: url('./images/action-shot4.jpeg');
   background-size: cover;
   align-self: flex-end;
 }
 /* ----------------------------------------------------------page 4------------------------------------------------------------ */
-.landing .page-4 {
+.page_4 {
   align-items: center;
   flex-direction: column;
   justify-content: center;
   align-content: center;
 }
-.page-4 .sign-up-logo {
+.sign_up_logo {
   background: url('./images/logo-pic-white.png');
   height: 70vh;
   width: 70vh;
@@ -131,12 +169,14 @@
   margin-bottom: -5vh;
 }
 
-.page-4 .sign-up-bottom {
+.sign_up_bottom {
   border: 0.3rem solid #ff8a10;
   border-radius: 20vh;
   background-color: transparent;
   width: 30vh;
   height: 8vh;
+  color: white;
+  cursor: pointer;
 }
 
 .trainerPhoto {
