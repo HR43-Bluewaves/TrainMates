@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, Nav } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
+import style from '../../dist/landing_test.module.css';
 
 const Landing = () => {
   const history = useHistory();
@@ -9,31 +10,37 @@ const Landing = () => {
   };
   return (
     <div className="landing">
-      <div className="page-1">
+      <div className={style.page_1}>
         <Nav class="navbar navbar-light fixed-top">
-          <span className="logo_word" />
-          <div className="login">
-            <Button type="submit" className="trainer_signup">
-              Become A Trainer
-            </Button>
-            <Button className="signup" type="submit">
-              Sign up
-            </Button>
-            <Button className="login-button" type="submit" onClick={handleLogin}>
-              Login to mates
-            </Button>
+          <span className={style.logo_word} />
+          <div className={style.login}>
+            <div className={style.button_wrapper}>
+              <button type="submit" className={style.trainer_signup}>
+                Become A Trainer
+              </button>
+            </div>
+            <div className={style.button_wrapper}>
+              <button type="submit" className={style.signup}>
+                <a href="#sign_up_bottom">Sign up</a>
+              </button>
+            </div>
+            <div className={style.button_wrapper}>
+              <button className={style.login_button} type="submit" onClick={handleLogin}>
+                Login to mates
+              </button>
+            </div>
           </div>
         </Nav>
-        <div className="logo_pic" />
+        <div className={style.logo_pic} />
       </div>
-      <div className="page-2">
+      <div className={style.page_2}>
         <div className="container">
           <div className="row">
-            <div className="col story-left">
+            <div className={`col ${style.story_left}`}>
               <h1>OUR</h1>
               <h1>STORY</h1>
             </div>
-            <div className="col story-right">
+            <div className={`col ${style.story_right}`}>
               <p>
                 Lorem ipsum dolor sit amet,
                 consectetur adipiscing elit,
@@ -50,27 +57,27 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className="page-3">
+      <div className={style.page_3}>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-4 action-shot-title">
-              <div className="action-shot-tile-wrapper">
+            <div className={`col-4 ${style.action_shot_title}`}>
+              <div className={style.action_shot_tile_wrapper}>
                 <h1>ACTION</h1>
                 <h1>SHOTS</h1>
               </div>
             </div>
-            <div className="col-8 row action-shot-pics">
-              <span className="col item-1" />
-              <span className="col item-2" />
-              <span className="col item-3" />
-              <span className="col item-4" />
+            <div className={`col-8 row ${style.action_shot_pics}`}>
+              <span className="col item_1" />
+              <span className={`col ${style.item_2}`} />
+              <span className={`col ${style.item_3}`} />
+              <span className={`col ${style.item_4}`} />
             </div>
           </div>
         </div>
       </div>
-      <div className="page-4">
-        <div className="sign-up-logo" />
-        <Button className="sign-up-bottom" type="submit">SIGN UP</Button>
+      <div className={style.page_4}>
+        <div className={style.sign_up_logo} />
+        <button className={style.sign_up_bottom} id="sign_up_bottom" type="submit">SIGN UP</button>
       </div>
     </div>
   );

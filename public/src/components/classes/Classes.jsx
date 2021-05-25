@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ClassList from './ClassList';
-import NavBar from './Navbar';
+import NavBar from '../Navbar';
 
 const Classes = () => {
   const [classes, setClasses] = useState([]);
