@@ -1,23 +1,11 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-console */
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import ClassList from './ClassList';
 import NavBar from '../user-dashboard/Navbar';
 
-// eslint-disable-next-line react/prop-types
 const Classes = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [classes, setClasses] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/api/classes')
-      .then((res) => {
-        setClasses(res.data);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  const classes = useSelector((state) => state.classesReducer.classes);
 
   const handleChange = (event) => {
     setSearchValue(event.target.value);
@@ -29,10 +17,10 @@ const Classes = () => {
       <NavBar />
       <input className="search" type="text" placeholder="Search..." onChange={handleChange} />
       <div className="class-list">
-        {classes.map((course, index) => (
+        {classes.map((course) => (
           <ClassList
             course={course}
-            key={index}
+            key={course.id}
             searchValue={searchValue}
           />
         ))}
