@@ -7,7 +7,6 @@ import motion from 'framer-motion';
 import styles from './home_nav.module.css';
 import NavBar from './Navbar';
 
-
 const Home = () => {
   const dispatch = useDispatch();
   const classes = useSelector((state) => state.classesReducer.classes);

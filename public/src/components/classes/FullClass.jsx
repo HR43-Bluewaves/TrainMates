@@ -41,20 +41,13 @@ const FullClass = () => {
     <Container>
       <NavBar />
       <Row>
-<<<<<<< HEAD
-        <h1>{dummy.class_name}</h1>
-=======
         {' '}
         <h1>{session.class_name}</h1>
->>>>>>> d92210561ecce92b9b8f35f6a54cfa3c8134c4ec
       </Row>
       <Row>
         <Col><h2>Instructor</h2></Col>
         <Col>
-<<<<<<< HEAD
-=======
           {' '}
->>>>>>> d92210561ecce92b9b8f35f6a54cfa3c8134c4ec
           <h2>Desired time</h2>
           <form className={classes.container} noValidate>
             <TextField

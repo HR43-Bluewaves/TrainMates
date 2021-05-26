@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
+import { motion } from 'framer-motion';
 import style from '../../dist/landing_test.module.css';
 import Login from './forms/Login';
 
@@ -22,7 +23,11 @@ const Landing = () => {
   return (
     <div className="landing">
       <Login modalClose={modalClose} modalType={modalType} />
-      <div className={style.page_1}>
+      <motion.div
+        className={style.page_1}
+        initial={{ y: -250 }}
+        animate={{ y: -10 }}
+      >
         <Nav class="navbar navbar-light fixed-top">
           <span className={style.logo_word} />
           <div className={style.login}>
@@ -43,15 +48,23 @@ const Landing = () => {
             </div>
           </div>
         </Nav>
-        <div className={style.logo_pic} />
-      </div>
+        <motion.div
+          className={style.logo_pic}
+          initial={{ y: -250 }}
+          animate={{ y: -10 }}
+        />
+      </motion.div>
       <div className={style.page_2}>
         <div className="container">
           <div className="row">
-            <div className={`col ${style.story_left}`}>
+            <motion.div
+              className={`col ${style.story_left}`}
+              initial={{ x: '0vw' }}
+              animate={{ x: 0 }}
+            >
               <h1>OUR</h1>
               <h1>STORY</h1>
-            </div>
+            </motion.div>
             <div className={`col ${style.story_right}`}>
               <p>
                 Lorem ipsum dolor sit amet,
