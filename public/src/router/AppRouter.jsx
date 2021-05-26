@@ -34,7 +34,7 @@ const AppRouter = () => (
         <Route path="/notifications" component={Notifications} />
         <Route path="/trainerdashboard" component={TrainerHome} />
         <Route path="/user" component={userInformation} />
-        <Route path="/test" component={FullClass} />
+        <Route path="/class-info" component={FullClass} />
       </Switch>
     </div>
   </BrowserRouter>

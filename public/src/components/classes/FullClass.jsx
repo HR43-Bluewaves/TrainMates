@@ -3,10 +3,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import { useSelector } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import NavBar from '../user-dashboard/Navbar';
+
 // static data Jenny cho
 // This is placeholder for now but we will need to also do a put request to create session
 // Will need access to redux user ID to add to the class
@@ -32,17 +34,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const FullClass = () => {
+  const session = useSelector((state) => state.sessionReducer.session);
   const [time, setTime] = useState('');
   const classes = useStyles();
   return (
     <Container>
       <NavBar />
       <Row>
+<<<<<<< HEAD
         <h1>{dummy.class_name}</h1>
+=======
+        {' '}
+        <h1>{session.class_name}</h1>
+>>>>>>> d92210561ecce92b9b8f35f6a54cfa3c8134c4ec
       </Row>
       <Row>
         <Col><h2>Instructor</h2></Col>
         <Col>
+<<<<<<< HEAD
+=======
+          {' '}
+>>>>>>> d92210561ecce92b9b8f35f6a54cfa3c8134c4ec
           <h2>Desired time</h2>
           <form className={classes.container} noValidate>
             <TextField
