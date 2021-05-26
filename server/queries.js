@@ -12,7 +12,6 @@ const queries = {
       });
   },
   addUser: (req, res) => {
-    console.log(req.body);
     const {
       username, password, email, first, last,
     } = req.body;
@@ -35,7 +34,6 @@ const queries = {
         res.status(400).send(err);
       });
   },
-
   getAllTrainers: (req, res) => {
     db.query('SELECT * FROM trainers')
       .then((result) => {
@@ -45,7 +43,6 @@ const queries = {
         res.status(400).send(err);
       });
   },
-
   getAllClasses: (req, res) => {
     db.query('SELECT * FROM classes')
       .then((result) => {
