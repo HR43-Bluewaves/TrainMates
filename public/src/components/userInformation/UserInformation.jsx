@@ -1,12 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import NavBar from '../user-dashboard/Navbar';
 import './userInformation.css';
+import './../user-dashboard/home_nav.module.css';
 import UserClasses from './userClasses';
+import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
+import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
+import ChatIcon from '@material-ui/icons/Chat';
+import EditIcon from '@material-ui/icons/Edit';
 
 const UserInformation = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -30,11 +35,11 @@ const UserInformation = () => {
                 {user.first_name} {user.last_name}
               </h3>
               <p>
-              <RoomOutlinedIcon className="userIcons"/>
+              <RoomOutlinedIcon/>
                 {user.city} {user.state}, {user.zip}
               </p>
               <p>
-                <EmailOutlinedIcon className="userIcons"/>
+                <EmailOutlinedIcon/>
                 {user.email}
               </p>
             </Row>
@@ -45,9 +50,6 @@ const UserInformation = () => {
             <UserClasses />
           </Row>
         </Col>
-        <h1 className="classHeader">Classes</h1>
-        <Row>
-        <UserClasses />
         </Row>
       </Container>
     );
