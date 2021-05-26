@@ -125,9 +125,15 @@
   padding-left: 0px;
   padding-right: 0px;
   background-color: #424642;
+  height: 100vh;
 }
 
 .detailButton {
   margin-left: 11vh;
   margin-top: 4vh;
+}
+
+.mat-icon{
+  position: relative;
+top: 7px;
 }

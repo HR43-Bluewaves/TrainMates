@@ -4,6 +4,7 @@
   padding-left: 0px;
   padding-right: 0px;
   background-color: #424642;
+  height: 100vh;
 }
 .trainer {
   box-shadow: 10px 10px 10px -4px #C06014;
@@ -16,6 +17,9 @@
   overflow: hidden;
   display: table;
   margin-top: 30px;
+}
+.MuiAutocomplete-root {
+  border: solid
 }
 
 .trainerCard {
@@ -75,8 +79,8 @@
 
 .trainer-list{
   display: grid;
-  grid-template-columns: 50vh 50vh 50vh 10vh;
-  margin-left: 12vh;
+  grid-template-columns: 40vh 40vh 40vh 10vh;
+  margin-left: 11vh;
 }
 
 .learnMoreButton {

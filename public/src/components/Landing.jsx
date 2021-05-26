@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap';
 const Landing = () => {
   const history = useHistory();
   const handleLogin = () => {
-    history.push('/home');
+    history.push('/trainers');
   };
   return (
     <div className="login">

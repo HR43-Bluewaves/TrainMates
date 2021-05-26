@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 
 const ClassList = ({ course, searchValue }) => (
   <div>
-    {(course.class_name.toLowerCase().includes(searchValue) || !searchValue) ? (
+    {(course.class_name.includes(searchValue) || !searchValue) ? (
       <Row className="classScroll">
         <Col className="classCard">
           <Row className="classPhotoContainer">
