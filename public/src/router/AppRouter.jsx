@@ -15,6 +15,8 @@ import Notifications from '../components/Notifications';
 // Trainer dashboard
 import TrainerHome from '../components/trainer-dashboard/TrainerHome';
 import userInformation from '../components/userInformation/UserInformation';
+// Test
+import FullClass from '../components/classes/FullClass';
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -31,6 +33,7 @@ const AppRouter = () => (
         <Route path="/notifications" component={Notifications} />
         <Route path="/trainerdashboard" component={TrainerHome} />
         <Route path="/user" component={userInformation} />
+        <Route path="/test" component={FullClass} />
       </Switch>
     </div>
   </BrowserRouter>
