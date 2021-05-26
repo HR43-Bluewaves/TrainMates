@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -16,6 +17,11 @@ const Classes = () => {
   //   const randomIndex = Math.floor(Math.random() * classes.length);
   //   return classes[randomIndex];
   // };
+
+  const filteredClasses = classes.filter((course) => {
+    return course.class_name.toLowerCase().includes(searchValue.toLowerCase());
+  });
+
   const handleChange = (event, value) => {
     setSearchValue(value);
   };
@@ -40,7 +46,7 @@ const Classes = () => {
       />
       <h1>Classes</h1>
       <div className="class-list">
-        {classes.map((course, index) => (
+        {filteredClasses.map((course, index) => (
           <ClassList
             course={course}
             // eslint-disable-next-line react/no-array-index-key
