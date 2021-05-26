@@ -9,9 +9,9 @@ const userClasses = () => {
 
   return (
 
-    <Row className="classScroll">
-      {classes.map((course) => (
-        <Col className="classCard">
+    <Col className="classCardContainer">
+      {classes.map((course, index) => (
+        <Col key={index} className="classCardInformation">
           <Row className="classPhotoContainer">
             <img className="classPhoto" src={course.photo_url} alt="class" />
           </Row>
@@ -20,12 +20,12 @@ const userClasses = () => {
               <p className="className">{course.class_name}</p>
             </div>
             <div className="textContainer">
-              <p className="text">{course.description}</p>
+              <p className="classText">{course.description}</p>
             </div>
           </Row>
         </Col>
       ))}
-    </Row>
+    </Col>
   );
 };
 
