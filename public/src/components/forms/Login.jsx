@@ -1,57 +1,91 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import { Modal } from 'react-bootstrap';
+// import { Modal } from 'react-bootstrap';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import UserLogin from './userLogin';
 import LoginChoice from './LoginChoice';
 import SignUp from './SignUp';
 
-const Login = ({ showModal, modalType }) => {
-  const [show, setShow] = useState(showModal);
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
+
+const Login = ({ modalClose, modalType }) => {
+  const [show, setShow] = useState(false);
   const [loginType, setLoginType] = useState('');
   const [type, setType] = useState(modalType);
-
-  useEffect(() => {
-    setShow(showModal);
-  }, [showModal]);
 
   useEffect(() => {
     setType(modalType);
   }, [modalType]);
 
+  useEffect(() => {
+    if (modalType.length) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  }, [modalType]);
+
+  useEffect(() => {
+    return () => {
+      setShow(false);
+    };
+  }, []);
+
   const handleClose = () => {
-    setShow(false);
-    setType('choose');
+    modalClose();
     setLoginType('');
   };
   const handleType = () => {
-    if (type === 'choose') {
-      return <LoginChoice setType={setType} setLoginType={setLoginType} />;
-    }
     if (type === 'login') {
       return <UserLogin close={handleClose} userType={loginType} />;
     }
     if (type === 'signup') {
       return <SignUp />;
     }
+    if (type === 'trainer') {
+      return <SignUp />;
+    }
     return <div />;
   };
 
   return (
-    <div>
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {handleType()}
-        </Modal.Body>
-      </Modal>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Dialog
+          open={show}
+          onClose={handleClose}
+          aria-labelledby="form-dialog-title"
+          style={{ backgroundColor: 'transparent' }}
+          overlayStyle={{ backgroundColor: 'transparent' }}
+        >
+          <DialogTitle id="form-dialog-title">Login</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Choose login type
+            </DialogContentText>
+            {type === 'login' && <LoginChoice loginType={loginType} setLoginType={setLoginType} />}
+            {handleType()}
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    </ThemeProvider>
   );
 };
 

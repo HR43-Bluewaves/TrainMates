@@ -6,22 +6,22 @@ import Login from './forms/Login';
 
 const Landing = () => {
   const history = useHistory();
-  const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('');
   const handleLogin = () => {
-    setModalType('choose');
-    setShowModal(true);
+    setModalType('login');
   };
   const handleTrainerLogin = () => {
     history.push('/trainerdashboard');
   };
   const handleSignUp = () => {
     setModalType('signup');
-    setShowModal(true);
+  };
+  const modalClose = () => {
+    setModalType('');
   };
   return (
     <div className="landing">
-      <Login showModal={showModal} modalType={modalType} />
+      <Login modalClose={modalClose} modalType={modalType} />
       <div className={style.page_1}>
         <Nav class="navbar navbar-light fixed-top">
           <span className={style.logo_word} />
