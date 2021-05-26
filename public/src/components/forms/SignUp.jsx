@@ -9,6 +9,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import regeneratorRuntime from 'regenerator-runtime';
 
 const validationSchema = yup.object({
   username: yup
@@ -44,16 +45,21 @@ const SignUp = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log(values);
       axios.post('/api/user', {
         username: values.username,
         password: values.password,
         email: values.email,
         first: values.first,
         last: values.last,
-      }).then((res) => {
-        console.log(res);
-        history.push('/');
+      }).then(async () => {
+        const { data } = await axios.get('/api/user', {
+          params: {
+            username: values.username,
+            password: values.password,
+          },
+        });
+        dispatch({ type: 'user', user: data[0] });
+        history.push('/home');
       });
     },
   });

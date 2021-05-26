@@ -3,10 +3,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import { useSelector } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import NavBar from '../user-dashboard/Navbar';
+
 // static data Jenny cho
 // This is placeholder for now but we will need to also do a put request to create session
 // Will need access to redux user ID to add to the class
@@ -32,15 +34,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const FullClass = () => {
+  const session = useSelector((state) => state.sessionReducer.session);
   const [time, setTime] = useState('');
   const classes = useStyles();
   return (
     <Container>
       <NavBar />
-      <Row> <h1>{dummy.class_name}</h1></Row>
+      <Row>
+        {' '}
+        <h1>{session.class_name}</h1>
+      </Row>
       <Row>
         <Col><h2>Instructor</h2></Col>
-        <Col> <h2>Desired time</h2>
+        <Col>
+          {' '}
+          <h2>Desired time</h2>
           <form className={classes.container} noValidate>
             <TextField
               id="datetime-local"
@@ -60,7 +68,7 @@ const FullClass = () => {
       </Row>
       <Row>
         <Col>
-        Teacher bio
+          Teacher bio
         </Col>
       </Row>
       <Row>
@@ -80,7 +88,7 @@ const FullClass = () => {
       <Row>
         <Col><h2>Actual description</h2></Col>
         <Col>
-          <Button disabled={(time === '') || !(new Date(time) >= new Date())} onClick={()=>alert(time)}>
+          <Button disabled={(time === '') || !(new Date(time) >= new Date())} onClick={() => alert(time)}>
             Book this class
           </Button>
         </Col>
