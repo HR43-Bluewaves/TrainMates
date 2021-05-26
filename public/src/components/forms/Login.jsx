@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import { Modal, Button } from 'react-bootstrap';
-import UserLogin from './UserLogin';
+import { Modal } from 'react-bootstrap';
+import UserLogin from './userLogin';
 import LoginChoice from './LoginChoice';
 import SignUp from './SignUp';
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, Nav } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import PersonIcon from '@material-ui/icons/Person';
-import styles from '../test.module.css';
+import styles from './home_nav.module.css';
 
 const NavBar = () => {
   const history = useHistory();
@@ -39,23 +39,27 @@ const NavBar = () => {
   };
 
   return (
-    <div className={styles.div}>
-      <Nav className="navbar">
-        <h1>TRAIN ME MATE</h1>
-        <Button className="" type="submit" onClick={handleHome}>
-          Home
-        </Button>
-        <Button className="" type="submit" onClick={handleTrainers}>
-          Trainers
-        </Button>
-        <Button className="" type="submit" onClick={handleClasses}>
-          Classes
-        </Button>
-        <ShoppingCartIcon onClick={handleCart} />
-        <EmailIcon onClick={handleChat} />
-        <NotificationsIcon onClick={handleNotifications} />
-        <PersonIcon onClick={handleUser} />
-      </Nav>
+    <div>
+      <Navbar sticky="top" className="nav_bar">
+        <div className={styles.logo_word} />
+        <div className={styles.button_container}>
+          <button className={styles.button} type="submit" onClick={handleHome}>
+            Home
+          </button>
+          <button className={styles.button} type="submit" onClick={handleTrainers}>
+            Trainers
+          </button>
+          <button className={styles.button} type="submit" onClick={handleClasses}>
+            Classes
+          </button>
+        </div>
+        <div className={styles.icon_container}>
+          <ShoppingCartIcon onClick={handleCart} className={styles.icon} />
+          <EmailIcon onClick={handleChat} className={styles.icon} />
+          <NotificationsIcon onClick={handleNotifications} className={styles.icon} />
+          <PersonIcon onClick={handleUser} className={styles.icon} />
+        </div>
+      </Navbar>
     </div>
   );
 };
