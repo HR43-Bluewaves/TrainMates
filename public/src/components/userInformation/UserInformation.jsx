@@ -39,15 +39,15 @@ const UserInformation = () => {
               </p>
             </Row>
           </Col>
-        </Col >
+        </Col>
         <Col className="classScrollInformation" med={8}>
           <Row className="scrollContainer">
             <UserClasses />
           </Row>
-        </div>
+        </Col>
         <h1 className="classHeader">Classes</h1>
         <UserClasses />
-      </Container>
+      </ Container >
     );
   }
   return null;
