@@ -1,14 +1,32 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Button } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const ClassList = ({ course, searchValue }) => (
   <div>
     {(course.class_name.toLowerCase().includes(searchValue) || !searchValue) ? (
-      <div className="classList">
-        <span>{course.class_name}</span>
-        <p>{course.description}</p>
-        <img className="class-photo" src={course.photo_url} alt="classPhoto" />
-      </div>
+      <Row className="classScroll">
+        <Col className="classCard">
+          <Row className="classPhotoContainer">
+            <img className="classPhoto" src={course.photo_url} alt="classes" />
+          </Row>
+          <Row className="classInformation">
+            <div className="classNameContainer">
+              <p className="className">{course.class_name}</p>
+            </div>
+          </Row>
+          <Row className="textContainer">
+            <div className="text">
+              <p>{course.description}</p>
+            </div>
+            <Button className="detailButton">
+              Details
+            </Button>
+          </Row>
+        </Col>
+      </Row>
     ) : null}
   </div>
 );

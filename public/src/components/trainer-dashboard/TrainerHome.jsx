@@ -21,8 +21,9 @@ const TrainerHome = () => {
       <div className="user-home-page">
         <NavBar />
         <div className="upcomingClasses">
-          {classes.map((course) => (
-            <div key={course.id}>
+          {classes.map((course, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <div key={index}>
               {course.class_name}
             </div>
           ))}
