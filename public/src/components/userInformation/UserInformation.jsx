@@ -6,7 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import NavBar from '../user-dashboard/Navbar';
 import './userInformation.css';
-// import UserClasses from './userClasses';
+import './../user-dashboard/home_nav.module.css';
+import UserClasses from './userClasses';
 
 const UserInformation = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -19,28 +20,31 @@ const UserInformation = () => {
     return (
       <Container fluid className="userInformationPage">
         <NavBar />
-        <input className="search" type="text" placeholder="Search..." onChange={handleChange} />
-        <div className="userContainer">
-          <Row className="user">
-            <Col className="photoContainer">
+        <Row>
+        <Col className="userContainer" sm={4} >
+          <Col className="userInformationContainer">
+            <Row className="photoContainer">
               <img className="userPhoto" src={user.photo_url} alt="photos" />
-            </Col>
-            <Col className="userInformation">
+            </Row>
+            <Row className="userInformation">
               <h3>
                 {user.first_name}
                 {user.last_name}
               </h3>
               <p>
-                {user.city}
-                {user.state}
+                {user.city} {user.state}
                 {user.zip}
               </p>
               <p>{user.email}</p>
-            </Col>
+            </Row>
+          </Col>
+        </Col >
+        <Col className="classScrollInformation" med={8}>
+          <Row className="scrollContainer">
+            <UserClasses />
           </Row>
-        </div>
-        <h1 className="classHeader">Classes</h1>
-        {/* <UserClasses /> */}
+        </Col>
+        </Row>
       </Container>
     );
   }
