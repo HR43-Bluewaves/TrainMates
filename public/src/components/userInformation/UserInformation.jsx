@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -44,14 +44,11 @@ const UserInformation = () => {
           <Row className="scrollContainer">
             <UserClasses />
           </Row>
-<<<<<<< HEAD
         </Col>
-        </Row>
-=======
-        </div>
         <h1 className="classHeader">Classes</h1>
+        <Row>
         <UserClasses />
->>>>>>> f0453bbb9dfe420a08151a5ee1f173151a4a50bb
+        </Row>
       </Container>
     );
   }
