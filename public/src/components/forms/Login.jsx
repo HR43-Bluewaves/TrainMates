@@ -10,7 +10,6 @@ const Login = ({ modalClose, modalType }) => {
   const [show, setShow] = useState(false);
   const [loginType, setLoginType] = useState('');
   const [type, setType] = useState(modalType);
-  console.log(modalType);
 
   useEffect(() => {
     setType(modalType);

@@ -17,7 +17,6 @@ const Landing = () => {
     setModalType('signup');
   };
   const modalClose = () => {
-    console.log('closed');
     setModalType('');
   };
   return (
