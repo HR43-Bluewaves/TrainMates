@@ -13,7 +13,7 @@ const userClasses = () => {
       {classes.map((course) => (
         <Col className="classCard">
           <Row className="classPhotoContainer">
-            <img className="classPhoto" alt="classPhoto" src={course.photo_url} />
+            <img className="classPhoto" src={course.photo_url} alt="class" />
           </Row>
           <Row className="classInformation">
             <div className="classNameContainer">
@@ -26,7 +26,6 @@ const userClasses = () => {
         </Col>
       ))}
     </Row>
-
   );
 };
 

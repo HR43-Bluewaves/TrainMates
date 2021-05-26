@@ -1,14 +1,11 @@
-/* Body */
-.userInformationPage {
+.trainers {
   max-width: '100%';
   max-height: '100%';
   padding-left: 0px;
   padding-right: 0px;
   background-color: #424642;
 }
-
-/* User Information */
-.user {
+.trainer {
   box-shadow: 10px 10px 10px -4px #C06014;
   background-color: #536162;
   overflow: visible;
@@ -16,45 +13,12 @@
   display: flex;
   justify-content: center;
   width: 600px;
-  display: table;
   overflow: hidden;
+  display: table;
   margin-top: 30px;
 }
 
-.userContainer {
-  display:flex;
-  justify-content: center;
-}
-
-.userInformation {
-  text-align: center;
-  vertical-align: middle;
-  display: table-cell;
-  color: white;
-}
-
-.photoContainer {
-  height: 200px;
-  width: 300px;
-  padding-left: 0px;
-}
-
-.userPhoto {
-  width: 100%;
-  height: 100%;
-  border-right-color: #C06014;
-  border-right-width: 2px;
-}
-
-
-.classHeader {
-  color: white;
-  text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.classCard {
+.trainerCard {
   flex-direction: column;
   background-color: #f3f4ed;
   overflow: hidden;
@@ -62,35 +26,38 @@
   border: 1px solid #C06014;
   margin-left: 10px;
   margin-right: 10px;
-  width: 300px;
+  width: 250px;
+  margin-top: 30px;
 }
-
-.classPhoto {
+.trainerPhoto {
   height: 100%;
   width: 100%;
-  object-fit:initial;
+  object-fit: contain;
 }
 
-.classPhotoContainer {
-  height: 200px;
-  width: 320px;
+.photoContainer {
+  max-width: 250px;
+  height: 250px;
 }
 
-.classNameContainer {
+.trainerNameContainer {
   text-align: center;
   display: table;
   background-color: #C06014;
-  width: 100%;
+  width: 106%;
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
-.className {
+.trainerName {
   display:table-cell;
   color: white;
 }
 
-.classScroll {
+.trainers-class-photos {
+  float: right;
+}
+.trainerScroll {
   flex-direction: row;
   padding-bottom: 30px;
   padding-left: 20px;
@@ -98,9 +65,20 @@
   display: inline-flex;
 }
 
-.textContainer {
+.trainerDetails {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
+  text-align: center;
+}
+
+.trainer-list{
+  display: grid;
+  grid-template-columns: 50vh 50vh 50vh 10vh;
+  margin-left: 12vh;
+}
+
+.learnMoreButton {
+  display: center;
 }
