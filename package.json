@@ -27,10 +27,15 @@
     "@babel/types": "^7.14.2",
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
-    "@material-ui/styles": "^4.11.4",
-    "add": "^2.0.6",
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@material-ui/pickers": "^3.3.10",
+    "@material-ui/styles": "^4.11.4",
+    "add": "^2.0.6",
+<<<<<<< HEAD
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "@material-ui/pickers": "^3.3.10",
+=======
+>>>>>>> 3c2570e603f58db50fe0582188ed7b8b61740f76
     "axios": "^0.21.1",
     "babel": "^6.23.0",
     "babel-loader": "^8.2.2",

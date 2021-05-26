@@ -10,7 +10,7 @@ const ClassList = ({ course, searchValue }) => {
   const history = useHistory();
   return (
     <div>
-      {(course.class_name.toLowerCase().includes(searchValue) || !searchValue) ? (
+      {(course.class_name.includes(searchValue) || !searchValue) ? (
         <Row className="classScroll">
           <Col className="classCard">
             <Row className="classPhotoContainer">
