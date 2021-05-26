@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
@@ -5,22 +6,32 @@ import UserLogin from './userLogin';
 import LoginChoice from './LoginChoice';
 import SignUp from './SignUp';
 
-const Login = ({ showModal, modalType }) => {
-  const [show, setShow] = useState(showModal);
+const Login = ({ modalClose, modalType }) => {
+  const [show, setShow] = useState(false);
   const [loginType, setLoginType] = useState('');
   const [type, setType] = useState(modalType);
-
-  useEffect(() => {
-    setShow(showModal);
-  }, [showModal]);
+  console.log(modalType);
 
   useEffect(() => {
     setType(modalType);
   }, [modalType]);
 
+  useEffect(() => {
+    if (modalType.length) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  }, [modalType]);
+
+  useEffect(() => {
+    return () => {
+      setShow(false);
+    };
+  }, []);
+
   const handleClose = () => {
-    setShow(false);
-    setType('choose');
+    modalClose();
     setLoginType('');
   };
   const handleType = () => {
