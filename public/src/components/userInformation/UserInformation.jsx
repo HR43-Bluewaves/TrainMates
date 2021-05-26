@@ -8,6 +8,10 @@ import NavBar from '../user-dashboard/Navbar';
 import './userInformation.css';
 import './../user-dashboard/home_nav.module.css';
 import UserClasses from './userClasses';
+import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
+import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
+import ChatIcon from '@material-ui/icons/Chat';
+import EditIcon from '@material-ui/icons/Edit';
 
 const UserInformation = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -28,14 +32,16 @@ const UserInformation = () => {
             </Row>
             <Row className="userInformation">
               <h3>
-                {user.first_name}
-                {user.last_name}
+                {user.first_name} {user.last_name}
               </h3>
               <p>
-                {user.city} {user.state}
-                {user.zip}
+              <RoomOutlinedIcon className="userIcons"/>
+                {user.city} {user.state}, {user.zip}
               </p>
-              <p>{user.email}</p>
+              <p>
+                <EmailOutlinedIcon className="userIcons"/>
+                {user.email}
+              </p>
             </Row>
           </Col>
         </Col >
