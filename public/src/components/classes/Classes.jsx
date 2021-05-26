@@ -15,6 +15,10 @@ const Classes = () => {
   const [searchValue, setSearchValue] = useState('');
   const classes = useSelector((state) => state.classesReducer.classes);
 
+  // const randomClass = () => {
+  //   const randomIndex = Math.floor(Math.random() * classes.length);
+  //   return classes[randomIndex];
+  // };
   const handleChange = (event) => {
     setSearchValue(event.target.value);
   };
