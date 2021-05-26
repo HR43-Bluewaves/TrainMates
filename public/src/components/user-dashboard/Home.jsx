@@ -22,7 +22,6 @@ const Home = () => {
   useEffect(() => {
     axios.get('/api/classes')
       .then(({ data }) => {
-        console.log(data);
         dispatch({ type: 'classes', classes: data });
       })
       .catch((err) => console.error(err));
@@ -31,12 +30,10 @@ const Home = () => {
   useEffect(() => {
     axios.get('/api/trainers')
       .then(({ data }) => {
-        console.log(data);
         dispatch({ type: 'trainers', trainers: data });
       })
       .catch((err) => console.error(err));
   }, []);
-
 
   return (
     <div className={styles.home}>

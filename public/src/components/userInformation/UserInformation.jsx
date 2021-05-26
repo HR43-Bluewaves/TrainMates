@@ -44,14 +44,9 @@ const UserInformation = () => {
           <Row className="scrollContainer">
             <UserClasses />
           </Row>
-<<<<<<< HEAD
-        </Col>
-        </Row>
-=======
         </div>
         <h1 className="classHeader">Classes</h1>
         <UserClasses />
->>>>>>> f0453bbb9dfe420a08151a5ee1f173151a4a50bb
       </Container>
     );
   }

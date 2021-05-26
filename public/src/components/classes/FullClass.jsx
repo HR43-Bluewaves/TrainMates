@@ -37,10 +37,13 @@ const FullClass = () => {
   return (
     <Container>
       <NavBar />
-      <Row> <h1>{dummy.class_name}</h1></Row>
+      <Row>
+        <h1>{dummy.class_name}</h1>
+      </Row>
       <Row>
         <Col><h2>Instructor</h2></Col>
-        <Col> <h2>Desired time</h2>
+        <Col>
+          <h2>Desired time</h2>
           <form className={classes.container} noValidate>
             <TextField
               id="datetime-local"
@@ -60,7 +63,7 @@ const FullClass = () => {
       </Row>
       <Row>
         <Col>
-        Teacher bio
+          Teacher bio
         </Col>
       </Row>
       <Row>
@@ -80,7 +83,7 @@ const FullClass = () => {
       <Row>
         <Col><h2>Actual description</h2></Col>
         <Col>
-          <Button disabled={(time === '') || !(new Date(time) >= new Date())} onClick={()=>alert(time)}>
+          <Button disabled={(time === '') || !(new Date(time) >= new Date())} onClick={() => alert(time)}>
             Book this class
           </Button>
         </Col>
