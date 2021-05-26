@@ -8,7 +8,7 @@ const Landing = () => {
   const history = useHistory();
   const [modalType, setModalType] = useState('');
   const handleLogin = () => {
-    setModalType('choose');
+    setModalType('login');
   };
   const handleTrainerLogin = () => {
     history.push('/trainerdashboard');
