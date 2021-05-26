@@ -7,10 +7,13 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-// eslint-disable-next-line arrow-body-style
 const TrainerList = ({ trainer, searchValue }) => {
   // eslint-disable-next-line no-console
+  const history = useHistory();
+  const dispatch = useDispatch();
   return (
     <div>
       <div>
@@ -37,7 +40,13 @@ const TrainerList = ({ trainer, searchValue }) => {
                   {` ${trainer.gender}\n`} */}
                   <strong>Location:</strong>
                   {` ${trainer.city}, ${trainer.state}`}
-                  <Button variant="primary">
+                  <Button
+                    className="learnMoreButton"
+                    onClick={() => {
+                      dispatch({ type: 'profile', profile: trainer });
+                      history.push('/trainer-profile');
+                    }}
+                  >
                     Learn More
                   </Button>
                 </div>

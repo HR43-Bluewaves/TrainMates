@@ -22,6 +22,10 @@
   border: solid
 }
 
+.trainerClasses {
+  float: right;
+}
+
 .trainerCard {
   flex-direction: column;
   background-color: #f3f4ed;
@@ -39,9 +43,21 @@
   object-fit: contain;
 }
 
+.trainerClassScroll {
+  flex-direction: row;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  width: 40vh;
+  padding-right: 20px;
+}
+
 .photoContainer {
   max-width: 250px;
   height: 250px;
+}
+
+.trainerClassCardContainer {
+  float: right;
 }
 
 .trainerNameContainer {
