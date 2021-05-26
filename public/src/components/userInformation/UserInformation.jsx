@@ -47,7 +47,7 @@ const UserInformation = () => {
         </Col>
         <h1 className="classHeader">Classes</h1>
         <UserClasses />
-      </ Container >
+      </Container>
     );
   }
   return null;

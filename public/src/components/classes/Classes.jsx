@@ -70,11 +70,6 @@ const Classes = () => {
               {...params}
               label="Search..."
               variant="outlined"
-              // InputProps={{
-              //   endAdornment: (
-              //     <SearchIcon />
-              //   ),
-              // }}
             />
           )}
         />
