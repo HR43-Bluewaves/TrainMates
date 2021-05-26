@@ -1,22 +1,133 @@
-.class-list {
+/* Body */
+.userInformationPage {
+  max-width: '100%';
+  max-height: '100%';
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #424642;
+}
+
+/* User Information */
+.user {
+  box-shadow: 10px 10px 10px -4px #C06014;
+  background-color: #536162;
+  overflow: visible;
+  border-radius: 30px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  color: black;
+  width: 600px;
+  display: table;
+  overflow: hidden;
+  margin-top: 30px;
 }
 
-/* .card {
-  margin: 1rem;
-  box-shadow: 0 2px 7px 3px #949ca5;
-  color: black;
+.userContainer {
+  display:flex;
+  justify-content: center;
 }
 
-.card .card-image-link {
-  padding: 1rem;
+.userInformation {
   text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  color: white;
 }
 
-.card img {
-  max-width: 250px;
-  height: 250px;
-} */
+.photoContainer {
+  height: 200px;
+  width: 300px;
+  padding-left: 0px;
+}
+
+.userPhoto {
+  width: 100%;
+  height: 100%;
+  border-right-color: #C06014;
+  border-right-width: 2px;
+}
+
+
+.classHeader {
+  color: white;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.classCard {
+  flex-direction: column;
+  background-color: #f3f4ed;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid #C06014;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 30px;
+  height: 43vh;
+}
+
+.classPhoto {
+  height: 100%;
+  width: 100%;
+  object-fit:initial;
+}
+
+.classPhotoContainer {
+  height: 200px;
+  width: 320px;
+}
+
+.classNameContainer {
+  text-align: center;
+  display: table;
+  background-color: #C06014;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.className {
+  display:table-cell;
+  color: white;
+}
+
+.classScroll {
+  flex-direction: row;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: inline-flex;
+}
+
+.textContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  height: 8vh;
+  overflow: hidden;
+}
+
+.class-list {
+  display: grid;
+  grid-template-columns: 45vh 45vh 45vh 0vh;
+}
+
+.classes {
+  max-width: '100%';
+  max-height: '100%';
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #424642;
+}
+
+.detailButton {
+  margin-left: 11vh;
+  margin-top: 4vh;
+}

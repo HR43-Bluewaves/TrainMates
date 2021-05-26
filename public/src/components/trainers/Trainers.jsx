@@ -8,14 +8,13 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import PersonIcon from '@material-ui/icons/Person';
-import style from './trainer.css';
+import './trainer.css';
 import TrainersList from './TrainersList';
 
 const Trainers = () => {
   const history = useHistory();
   const [searchValue, setSearchValue] = useState('');
   const trainers = useSelector((state) => state.trainersReducer.trainers);
-  const classes = useSelector((state) => state.classesReducer.classes);
 
   const handleChange = (event) => {
     setSearchValue(event.target.value);
@@ -50,8 +49,7 @@ const Trainers = () => {
   };
 
   return (
-    <div className={style.div}>
-      <h1>This is the trainers page</h1>
+    <div className="trainers">
       <Nav className="navbar">
         <h1>TRAIN ME MATE</h1>
         <input type="text" placeholder="Search..." onChange={handleChange} />
@@ -69,14 +67,13 @@ const Trainers = () => {
         <NotificationsIcon onClick={handleNotifications} />
         <PersonIcon onClick={handleUser} />
       </Nav>
-      <div className="trainers">
+      <div className="trainer-list">
         {console.log(trainers)}
         {trainers.map((trainer, index) => (
           <TrainersList
             trainer={trainer}
             key={index}
             searchValue={searchValue}
-            classes={classes[index]}
           />
         ))}
       </div>
