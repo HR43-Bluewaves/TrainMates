@@ -50,10 +50,12 @@
 .button_container button,
 .icon {
   margin-right: 2vh;
+  cursor: pointer;
 }
 .button {
   background-color: transparent;
   border: 0;
   color: black;
   height: 100%;
+  cursor: pointer;
 }
