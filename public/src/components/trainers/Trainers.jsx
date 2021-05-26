@@ -15,6 +15,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import './trainer.css';
 import TrainersList from './TrainersList';
+import Navbar from '../user-dashboard/Navbar';
 
 const Trainers = () => {
   const history = useHistory();
@@ -56,31 +57,16 @@ const Trainers = () => {
 
   return (
     <div className="trainers">
-      <Nav className="navbar">
-        <h1>TRAIN ME MATE</h1>
-        <Autocomplete
-          id="trainerSearchBar"
-          options={trainers}
-          getOptionLabel={(option) => option.first_name}
-          style={{ width: 300 }}
-          onInputChange={handleChange}
-          inputValue={searchValue}
-          renderInput={(params) => <TextField {...params} label="Search..." variant="outlined" />}
-        />
-        <Button className="" type="submit" onClick={handleHome}>
-          Home
-        </Button>
-        <Button className="" type="submit" onClick={handleTrainers}>
-          Trainers
-        </Button>
-        <Button className="" type="submit" onClick={handleClasses}>
-          Classes
-        </Button>
-        <ShoppingCartIcon onClick={handleCart} />
-        <EmailIcon onClick={handleChat} />
-        <NotificationsIcon onClick={handleNotifications} />
-        <PersonIcon onClick={handleUser} />
-      </Nav>
+      <Navbar />
+      <Autocomplete
+        id="trainerSearchBar"
+        options={trainers}
+        getOptionLabel={(option) => option.first_name}
+        style={{ width: 300 }}
+        onInputChange={handleChange}
+        inputValue={searchValue}
+        renderInput={(params) => <TextField {...params} label="Search..." variant="outlined" />}
+      />
       <div className="trainer-list">
         {console.log(trainers)}
         {trainers.map((trainer, index) => (
