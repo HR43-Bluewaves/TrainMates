@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import NavBar from '../user-dashboard/Navbar';
 import './userInformation.css';
-// import UserClasses from './userClasses';
+import UserClasses from './userClasses';
 
 const UserInformation = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -19,28 +19,39 @@ const UserInformation = () => {
     return (
       <Container fluid className="userInformationPage">
         <NavBar />
-        <input className="search" type="text" placeholder="Search..." onChange={handleChange} />
-        <div className="userContainer">
-          <Row className="user">
-            <Col className="photoContainer">
+        <Row>
+        <Col className="userContainer" sm={4} >
+          <Col className="userInformationContainer">
+            <Row className="photoContainer">
               <img className="userPhoto" src={user.photo_url} alt="photos" />
-            </Col>
-            <Col className="userInformation">
+            </Row>
+            <Row className="userInformation">
               <h3>
-                {user.first_name}
-                {user.last_name}
+                {user.first_name} {user.last_name}
               </h3>
               <p>
-                {user.city}
-                {user.state}
-                {user.zip}
+              <RoomOutlinedIcon className="userIcons"/>
+                {user.city} {user.state}, {user.zip}
               </p>
-              <p>{user.email}</p>
-            </Col>
+              <p>
+                <EmailOutlinedIcon className="userIcons"/>
+                {user.email}
+              </p>
+            </Row>
+          </Col>
+        </Col >
+        <Col className="classScrollInformation" med={8}>
+          <Row className="scrollContainer">
+            <UserClasses />
           </Row>
+<<<<<<< HEAD
+        </Col>
+        </Row>
+=======
         </div>
         <h1 className="classHeader">Classes</h1>
-        {/* <UserClasses /> */}
+        <UserClasses />
+>>>>>>> f0453bbb9dfe420a08151a5ee1f173151a4a50bb
       </Container>
     );
   }

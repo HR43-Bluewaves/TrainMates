@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -7,6 +8,8 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import PersonIcon from '@material-ui/icons/Person';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
 import ClassList from './ClassList';
 import './class.css';
 
@@ -19,8 +22,8 @@ const Classes = () => {
   //   const randomIndex = Math.floor(Math.random() * classes.length);
   //   return classes[randomIndex];
   // };
-  const handleChange = (event) => {
-    setSearchValue(event.target.value);
+  const handleChange = (event, value) => {
+    setSearchValue(value);
   };
 
   const handleHome = () => {
@@ -55,7 +58,26 @@ const Classes = () => {
     <Container fluid className="classes">
       <Nav className="navbar">
         <h1>TRAIN ME MATE</h1>
-        <input type="text" placeholder="Search..." onChange={handleChange} />
+        <Autocomplete
+          id="trainerSearchBar"
+          options={classes}
+          getOptionLabel={(option) => option.class_name}
+          style={{ width: 300 }}
+          onInputChange={handleChange}
+          inputValue={searchValue}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Search..."
+              variant="outlined"
+              // InputProps={{
+              //   endAdornment: (
+              //     <SearchIcon />
+              //   ),
+              // }}
+            />
+          )}
+        />
         <Button className="" type="submit" onClick={handleHome}>
           Home
         </Button>
