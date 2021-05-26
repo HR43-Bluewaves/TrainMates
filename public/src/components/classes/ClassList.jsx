@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useHistory } from 'react-router-dom';
-
+// eslint-disable-next-line max-len
 // Added onClick to do history push into the testing for now. To do later change to do :classID in future. Nader and Michael working on redux to get the classID state
 const ClassList = ({ course, searchValue }) => {
   const history = useHistory();
