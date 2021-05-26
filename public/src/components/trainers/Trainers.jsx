@@ -3,7 +3,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
@@ -13,7 +13,6 @@ import Navbar from '../user-dashboard/Navbar';
 
 const Trainers = () => {
   const [searchValue, setSearchValue] = useState('');
-
   const trainers = useSelector((state) => state.trainersReducer.trainers);
 
   const handleChange = (event, value) => {

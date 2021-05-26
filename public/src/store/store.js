@@ -6,6 +6,7 @@ import userReducer from '../reducers/userReducer';
 import classesReducer from '../reducers/classesReducer';
 import trainersReducer from '../reducers/trainersReducer';
 import sessionReducer from '../reducers/sessionReducer';
+import trainerProfileReducer from '../reducers/trainerProfileReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -15,6 +16,7 @@ const store = createStore(
     classesReducer,
     trainersReducer,
     sessionReducer,
+    trainerProfileReducer,
   }),
   composeEnhancers(applyMiddleware(thunk)),
 );
