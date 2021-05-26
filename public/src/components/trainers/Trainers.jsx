@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-alert */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
 import React, { useState } from 'react';
@@ -8,16 +11,19 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import PersonIcon from '@material-ui/icons/Person';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
 import './trainer.css';
 import TrainersList from './TrainersList';
 
 const Trainers = () => {
   const history = useHistory();
   const [searchValue, setSearchValue] = useState('');
+
   const trainers = useSelector((state) => state.trainersReducer.trainers);
 
-  const handleChange = (event) => {
-    setSearchValue(event.target.value);
+  const handleChange = (event, value) => {
+    setSearchValue(value);
   };
 
   const handleHome = () => {
@@ -52,7 +58,15 @@ const Trainers = () => {
     <div className="trainers">
       <Nav className="navbar">
         <h1>TRAIN ME MATE</h1>
-        <input type="text" placeholder="Search..." onChange={handleChange} />
+        <Autocomplete
+          id="trainerSearchBar"
+          options={trainers}
+          getOptionLabel={(option) => option.first_name}
+          style={{ width: 300 }}
+          onInputChange={handleChange}
+          inputValue={searchValue}
+          renderInput={(params) => <TextField {...params} label="Search..." variant="outlined" />}
+        />
         <Button className="" type="submit" onClick={handleHome}>
           Home
         </Button>

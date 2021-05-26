@@ -14,7 +14,7 @@ const TrainerList = ({ trainer, searchValue }) => {
   return (
     <div>
       <div>
-        {((trainer.first_name.toLowerCase().includes(searchValue)
+        {((trainer.first_name.includes(searchValue)
         || trainer.last_name.toLowerCase().includes(searchValue)
         || trainer.city.toLowerCase().includes(searchValue))
         ) ? (

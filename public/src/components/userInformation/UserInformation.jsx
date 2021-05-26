@@ -6,12 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import NavBar from '../user-dashboard/Navbar';
 import './userInformation.css';
-import './../user-dashboard/home_nav.module.css';
 import UserClasses from './userClasses';
-import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
-import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
-import ChatIcon from '@material-ui/icons/Chat';
-import EditIcon from '@material-ui/icons/Edit';
 
 const UserInformation = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -49,8 +44,14 @@ const UserInformation = () => {
           <Row className="scrollContainer">
             <UserClasses />
           </Row>
+<<<<<<< HEAD
         </Col>
         </Row>
+=======
+        </div>
+        <h1 className="classHeader">Classes</h1>
+        <UserClasses />
+>>>>>>> f0453bbb9dfe420a08151a5ee1f173151a4a50bb
       </Container>
     );
   }
