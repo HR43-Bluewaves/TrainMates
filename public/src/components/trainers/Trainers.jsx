@@ -1,9 +1,10 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-alert */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
@@ -14,6 +15,10 @@ import Navbar from '../user-dashboard/Navbar';
 const Trainers = () => {
   const [searchValue, setSearchValue] = useState('');
   const trainers = useSelector((state) => state.trainersReducer.trainers);
+
+  const filteredTrainers = trainers.filter((trainer) => {
+    return trainer.first_name.toLowerCase().includes(searchValue.toLowerCase());
+  });
 
   const handleChange = (event, value) => {
     setSearchValue(value);
@@ -33,7 +38,7 @@ const Trainers = () => {
       />
       <div className="trainer-list">
         {console.log(trainers)}
-        {trainers.map((trainer, index) => (
+        {filteredTrainers.map((trainer, index) => (
           <TrainersList
             trainer={trainer}
             key={index}
