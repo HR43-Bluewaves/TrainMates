@@ -31,11 +31,6 @@
     "@material-ui/pickers": "^3.3.10",
     "@material-ui/styles": "^4.11.4",
     "add": "^2.0.6",
-<<<<<<< HEAD
-    "@material-ui/lab": "^4.0.0-alpha.58",
-    "@material-ui/pickers": "^3.3.10",
-=======
->>>>>>> 3c2570e603f58db50fe0582188ed7b8b61740f76
     "axios": "^0.21.1",
     "babel": "^6.23.0",
     "babel-loader": "^8.2.2",
@@ -56,6 +51,7 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
+    "regenerator-runtime": "^0.13.7",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.9"
   },

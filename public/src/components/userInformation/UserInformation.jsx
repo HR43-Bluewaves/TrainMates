@@ -52,15 +52,6 @@ const UserInformation = () => {
               <UserClasses />
             </Row>
           </Col>
-<<<<<<< HEAD
-        </Col >
-        <Col className="classScrollInformation" med={8}>
-          <Row className="scrollContainer">
-            <UserClasses />
-          </Row>
-        </Col>
-=======
->>>>>>> 3c2570e603f58db50fe0582188ed7b8b61740f76
         </Row>
       </Container>
     );
