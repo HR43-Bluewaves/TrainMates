@@ -37,7 +37,6 @@ const Home = () => {
       .catch((err) => console.error(err));
   }, []);
 
-
   return (
     <div className={styles.home}>
       <div className="user-home-page">
