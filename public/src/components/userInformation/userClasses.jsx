@@ -3,6 +3,7 @@ import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useSelector } from 'react-redux';
+import { Button } from 'react-bootstrap';
 
 const userClasses = () => {
   const classes = useSelector((state) => state.classesReducer.classes);
@@ -23,6 +24,7 @@ const userClasses = () => {
               <p className="classText">{course.description}</p>
             </div>
           </Row>
+          <Button>Book Class</Button>
         </Col>
       ))}
     </Col>

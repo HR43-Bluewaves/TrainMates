@@ -31,14 +31,11 @@ const UserInformation = () => {
               </Row>
               <Row className="userInformation">
                 <h3>
-                  {user.first_name}
-                  {user.last_name}
+                  {`${user.first_name} ${user.last_name}`}
                 </h3>
                 <p>
                   <RoomOutlinedIcon />
-                  {user.city}
-                  {user.state}
-                  {user.zip}
+                  {`${user.city} ${user.state}, ${user.zip}`}
                 </p>
                 <p>
                   <EmailOutlinedIcon />
