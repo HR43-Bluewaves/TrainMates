@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 const db = require('./database/index');
 
@@ -17,7 +19,7 @@ const queries = {
       }
     });
     processedUsers += '}';
-    //Will need to fix time format
+    //  Will need to fix time format
     const insertQuery = `INSERT INTO sessions (class_id, user_id, trainer_id, time, other_users) VALUES (
       ${class_id}, ${user_id}, ${trainer_id}, current_timestamp, '${processedUsers}');`;
     db.query(insertQuery)
@@ -74,6 +76,15 @@ const queries = {
     db.query('SELECT * FROM classes')
       .then((result) => {
         res.status(200).send(result.rows);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  },
+  getTrainersRnR: (req, res) => {
+    db.query('SELECT * FROM trainer_reviews')
+      .then((response) => {
+        res.status(200).send(response.rows);
       })
       .catch((err) => {
         res.status(400).send(err);

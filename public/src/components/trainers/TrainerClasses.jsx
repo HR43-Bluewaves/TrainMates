@@ -1,12 +1,11 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-// import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 
 const TrainerClasses = () => {
   const history = useHistory();
@@ -15,40 +14,40 @@ const TrainerClasses = () => {
   const profile = useSelector((state) => state.trainerProfileReducer.profile);
 
   return (
-    <Container fluid className="trainerClasses">
+    <Col className="classCardContainer">
       {classes.map((course, index) => (
-        <div key={index}>
+        <Col key={index} className="classCardInformation">
           {course.teacher_id === profile.trainer_id ? (
-            <Row className="trainerClassScroll">
-              <Col className="classCard">
-                <Row className="classPhotoContainer">
-                  <img className="classPhoto" src={course.photo_url} alt="classes" />
-                </Row>
-                <Row className="classInformation">
-                  <div className="classNameContainer">
-                    <p className="className">{course.class_name}</p>
+            <div>
+              <Row className="classPhotoContainer">
+                <img className="classPhoto" src={course.photo_url} alt="class" />
+              </Row>
+              <Row className="classInformation">
+                <div className="classNameContainer">
+                  <p className="className">{course.class_name}</p>
+                </div>
+                <div className="textcontainer">
+                  <div className="classText">
+                    {course.description.length >= 150 ? (
+                      <p>{course.description.slice(0, 150)}...</p>
+                    ) : course.description}
                   </div>
-                </Row>
-                <Row className="textContainer">
-                  <div className="text">
-                    <p>{course.description}</p>
-                  </div>
-                </Row>
-                <Button
-                  className="detailButton"
-                  onClick={() => {
-                    dispatch({ type: 'session', session: course });
-                    history.push('/class-info');
-                  }}
-                >
-                  Details
-                </Button>
-              </Col>
-            </Row>
+                </div>
+              </Row>
+              <Button
+                className="detailButton"
+                onClick={() => {
+                  dispatch({ type: 'session', session: course });
+                  history.push('/class-info');
+                }}
+              >
+                Details
+              </Button>
+            </div>
           ) : null}
-        </div>
+        </Col>
       ))}
-    </Container>
+    </Col>
   );
 };
 
