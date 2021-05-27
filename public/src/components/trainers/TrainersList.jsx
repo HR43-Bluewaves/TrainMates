@@ -4,16 +4,31 @@
 /* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
+import Rating from '@material-ui/lab/Rating';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import './trainer.css';
 
-const TrainerList = ({ trainer, searchValue }) => {
+const useStyles = makeStyles({
+  root: {
+    width: 200,
+    display: 'flex',
+    alignItems: 'center',
+  },
+});
+
+const TrainerList = ({ trainer, searchValue, reviews }) => {
   // eslint-disable-next-line no-console
+  const style = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+
   return (
     <div>
       <div>
@@ -24,7 +39,7 @@ const TrainerList = ({ trainer, searchValue }) => {
           <Row className="trainerScroll">
             <Col className="trainerCard">
               <Row>
-                <div className="photoContainer">
+                <div className="trainerPhotoContainer">
                   <img className="trainerPhoto" src={trainer.photo_url} alt="trainer" />
                 </div>
               </Row>
@@ -40,6 +55,12 @@ const TrainerList = ({ trainer, searchValue }) => {
                   {` ${trainer.gender}\n`} */}
                   <strong>Location:</strong>
                   {` ${trainer.city}, ${trainer.state}`}
+                  <div className={style.root}>
+                    <Box className="reviews" component="fieldset" mb={3} borderColor="transparent">
+                      <Typography component="legend">Overall Rating</Typography>
+                      <Rating name="read-only" value={reviews.rating} readOnly />
+                    </Box>
+                  </div>
                   <Button
                     className="learnMoreButton"
                     onClick={() => {

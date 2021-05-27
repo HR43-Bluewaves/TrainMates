@@ -2,19 +2,20 @@
 .userInformationPage {
   min-width: '100%';
   min-height: '100%';
-  height: 100vh;
+  height: 100%;
   padding-left: 0px;
   padding-right: 0px;
-
 }
 
 .html, body{
   height:100%;
+  background-color: lightgray;
 }
 
 
 /* User Information */
 .userInformationContainer{
+  background-color: lightgray;
   flex-flow: column;
   flex: 1;
   text-align: center;
@@ -67,8 +68,9 @@
   border-radius: 30px;
   border: 1px solid #C06014;
   margin-left: 15px;
-  width: 300px;
+  width: 35vh;
   height: 450px;
+  padding-inline: 5vh;
 }
 
 .classPhoto {
@@ -106,11 +108,11 @@
   display: flex;
 }
 
-.textContainer {
+.textcontainer {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 10px;
-  padding-bottom: 10px;
+  max-height: 15vh;
 }
 
 .classCardContainer{
@@ -128,4 +130,13 @@
   margin-right: 5px;
 }
 
+.starRatings {
+  margin-left: 3vh;
+}
 
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  margin-left: 14vh;
+}
