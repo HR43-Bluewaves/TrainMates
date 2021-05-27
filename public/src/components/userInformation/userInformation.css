@@ -12,7 +12,6 @@
   height:100%;
 }
 
-
 /* User Information */
 .userInformationContainer{
   flex-flow: column;
@@ -25,7 +24,7 @@
 
 .userContainer {
   max-width: 100vw;
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .userInformation {
@@ -52,6 +51,15 @@
   border-radius: 30px;
 }
 
+.classCardContainer{
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  display: -webkit-inline-box;
+}
 
 .classHeaderInformation {
   color: white;
@@ -61,7 +69,6 @@
 }
 
 .classCardInformation {
-  flex-direction: column;
   background-color: #f3f4ed;
   overflow: hidden;
   border-radius: 30px;
@@ -69,6 +76,11 @@
   margin-left: 15px;
   width: 300px;
   height: 450px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
 }
 
 .classPhoto {
@@ -97,13 +109,14 @@
 }
 
 .classScrollInformation {
-  flex-direction: row;
+  flex-direction: column;
   padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
   overflow-x: auto;
   overflow-y: hidden;
   display: flex;
+  justify-content: center;
 }
 
 .textContainer {
@@ -111,21 +124,48 @@
   padding-right: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-.classCardContainer{
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
-  display: inline-flex;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  font-size: 15px
 }
 
 .userIcons{
   margin-right: 5px;
+}
+
+.buttonFooter {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  align-items: center;
+  align-content: flex-end;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100%;
+  padding-bottom: 20px;
+}
+
+.userClassText{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  width: 100%;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: white
+}
+
+.profileText{
+  color:white;
+}
+
+.editIcon{
+  color:white
 }
 
 
