@@ -23,16 +23,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MenuButton() {
   const history = useHistory();
-
-  const handleUser = () => {
-    console.log('clicked')
-    history.push('/user');
-
-  };
-
-
   const user = useSelector((state) => state.userReducer.user);
 
+  const handleUser = () => {
+    history.push('/user');
+  };
+
+  let handleLogOut = () => {
+    history.push('/');
+  }
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -87,9 +86,8 @@ export default function MenuButton() {
                 <Paper>
                   <ClickAwayListener onClickAway={handleClose}>
                     <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                      <MenuItem onClick={handleUser} onClick={handleClose}>Profile</MenuItem>
-                      <MenuItem onClick={handleClose}>My account</MenuItem>
-                      <MenuItem onClick={handleClose}>Logout</MenuItem>
+                      <MenuItem onClick={handleUser}>Profile</MenuItem>
+                      <MenuItem onClick={handleLogOut}>Logout</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>

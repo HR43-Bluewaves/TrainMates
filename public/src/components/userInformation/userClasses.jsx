@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
+import { motion } from 'framer-motion';
 
 const userClasses = () => {
   const classes = useSelector((state) => state.classesReducer.classes);
@@ -12,7 +13,9 @@ const userClasses = () => {
     <Col className="classCardContainer">
       {classes.map((course, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <Col key={index} className="classCardInformation">
+        <motion.Col key={index} className="classCardInformation"
+          whileHover={{ scale: 1.005 }}
+        >
           <Row className="classPhotoContainer">
             <img className="classPhoto" src={course.photo_url} alt="class" />
           </Row>
@@ -24,8 +27,10 @@ const userClasses = () => {
               <p className="classText">{course.description}</p>
             </div>
           </Row>
-          <Button>Book Class</Button>
-        </Col>
+          <Row className="buttonFooter">
+           <Button onClick={()=>{history.push('/class-info')}}>Book Class</Button>
+          </Row>
+        </motion.Col>
       ))}
     </Col>
   );

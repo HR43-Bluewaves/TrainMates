@@ -38,13 +38,13 @@
   border: 1px solid #C06014;
   margin-left: 10px;
   margin-right: 10px;
-  width: 250px;
+  width: 240px;
   margin-top: 30px;
 }
 .trainerPhoto {
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  object-fit:initial;
 }
 
 .trainerClassScroll {
@@ -56,7 +56,7 @@
 }
 
 .photoContainer {
-  max-width: 250px;
+  max-width: 400px;
   height: 250px;
 }
 

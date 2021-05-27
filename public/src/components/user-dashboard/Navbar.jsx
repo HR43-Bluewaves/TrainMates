@@ -59,7 +59,7 @@ const NavBar = () => {
           <ShoppingCartIcon onClick={handleCart} className={styles.icon} />
           <EmailIcon onClick={handleChat} className={styles.icon} />
           <NotificationsIcon onClick={handleNotifications} className={styles.icon} />
-          <MenuButton className={styles.icon} />
+          <MenuButton className="userIcon" />
         </div>
       </Navbar>
     </div>
