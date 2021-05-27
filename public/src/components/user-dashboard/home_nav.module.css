@@ -33,6 +33,11 @@
   justify-content: center;
   align-items: center;
 }
+.class_container{
+  flex-direction: column;
+  overflow: auto;
+  justify-content: flex-start;
+}
 .nav_bar {
   width: 100vw;
 }

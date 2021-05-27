@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Nav } from 'react-bootstrap';
 import style from '../../../dist/landing_test.module.css';
+/* eslint-disable react/prop-types */
 
 const PageOne = ({ handleTrainerLogin, handleLogin }) => (
   <div className={style.page_1}>

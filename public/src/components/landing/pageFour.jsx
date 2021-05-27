@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -21,11 +22,12 @@ const PageFour = ({ handleSignUp }) => {
       ref={ref}
       variants={variantText}
       animate={isVisible ? 'visible' : 'hidden'}
-      transition={{ duration: 2, type: 'spring', bounce: 0.6 }}>
+      transition={{ duration: 2, type: 'spring', bounce: 0.6 }}
+    >
       <div className={style.sign_up_logo} />
       <button className={style.sign_up_bottom} id="sign_up_bottom" type="submit" onClick={handleSignUp}>SIGN UP</button>
     </motion.div>
-  )
-}
+  );
+};
 
 export default PageFour;
