@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 // import { Modal } from 'react-bootstrap';
+/* eslint-disable no-console */
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -13,6 +14,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import UserLogin from './userLogin';
 import LoginChoice from './LoginChoice';
 import SignUp from './SignUp';
+import EditProfile from './EditProfile';
 
 const theme = createMuiTheme({
   palette: {
@@ -20,7 +22,7 @@ const theme = createMuiTheme({
   },
 });
 
-const Login = ({ modalClose, modalType }) => {
+const Login = ({ modalClose, modalType, userId }) => {
   const [show, setShow] = useState(false);
   const [loginType, setLoginType] = useState('');
   const [type, setType] = useState(modalType);
@@ -43,6 +45,10 @@ const Login = ({ modalClose, modalType }) => {
     };
   }, []);
 
+  const editStatus = (status) => {
+    console.log(status);
+  };
+
   const handleClose = () => {
     modalClose();
     setLoginType('');
@@ -56,6 +62,9 @@ const Login = ({ modalClose, modalType }) => {
     }
     if (type === 'trainer') {
       return <SignUp />;
+    }
+    if (type === 'edit') {
+      return <EditProfile editStatus={editStatus} userId={userId} />;
     }
     return <div />;
   };

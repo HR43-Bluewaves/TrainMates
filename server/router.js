@@ -5,6 +5,9 @@ router
   .route('/user')
   .get(db.getUser)
   .post(db.addUser);
+router
+  .route('/user/:id')
+  .put(db.editUser);
 
 router
   .route('/classes')
