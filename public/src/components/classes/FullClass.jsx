@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

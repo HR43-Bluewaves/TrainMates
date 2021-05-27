@@ -1,3 +1,10 @@
+.MuiAutocomplete-root {
+  position: absolute;
+  margin: -3.5% 0 0 13%;
+  z-index: 1;
+  border: solid 1px black;
+}
+
 /* Body */
 .userInformationPage {
   max-width: '100%';
