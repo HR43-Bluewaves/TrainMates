@@ -12,7 +12,7 @@ const ClassList = ({ course, searchValue }) => {
   const dispatch = useDispatch();
   return (
     <div>
-      {(course.class_name.includes(searchValue) || !searchValue) ? (
+      {(course.class_name.toLowerCase().includes(searchValue.toLowerCase()) || !searchValue) ? (
         <Row className="classScroll">
           <Col className="classCard">
             <Row className="classPhotoContainer">
