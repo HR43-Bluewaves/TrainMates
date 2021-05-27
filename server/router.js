@@ -18,4 +18,8 @@ router
   .route('/trainer')
   .get(db.getTrainer);
 
+router
+  .route('/session')
+  .post(db.bookSession);
+
 module.exports = router;
