@@ -7,6 +7,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import PersonIcon from '@material-ui/icons/Person';
 import styles from './home_nav.module.css';
+import MenuButton from '../buttons/MenuButton'
 
 const NavBar = () => {
   const history = useHistory();
@@ -58,7 +59,7 @@ const NavBar = () => {
           <ShoppingCartIcon onClick={handleCart} className={styles.icon} />
           <EmailIcon onClick={handleChat} className={styles.icon} />
           <NotificationsIcon onClick={handleNotifications} className={styles.icon} />
-          <PersonIcon onClick={handleUser} className={styles.icon} />
+          <MenuButton onClick={handleUser} className={styles.icon} />
         </div>
       </Navbar>
     </div>
