@@ -25,7 +25,14 @@ const PageFour = ({ handleSignUp }) => {
       transition={{ duration: 2, type: 'spring', bounce: 0.6 }}
     >
       <div className={style.sign_up_logo} />
-      <button className={style.sign_up_bottom} id="sign_up_bottom" type="submit" onClick={handleSignUp}>SIGN UP</button>
+      <button
+        className={style.sign_up_bottom}
+        id="sign_up_bottom"
+        type="submit"
+        onClick={handleSignUp}
+      >
+        SIGN UP
+      </button>
     </motion.div>
   );
 };
