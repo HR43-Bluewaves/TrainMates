@@ -40,6 +40,11 @@
   color: black;
   height: 100%;
 }
+.trainer_signup:focus,
+.signup:focus,
+.login_button:focus {
+  outline: none !important;
+}
 .login {
   display: flex;
   height: 100%;

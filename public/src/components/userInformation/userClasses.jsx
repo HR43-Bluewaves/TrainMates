@@ -14,11 +14,7 @@ const userClasses = () => {
   return (
     <Col className="classCardContainer">
       {classes.map((course, index) => (
-<<<<<<< HEAD
         // eslint-disable-next-line react/no-array-index-key
-=======
-        eslint-disable-next-line react/no-array-index-key
->>>>>>> 648c5c3cb2bde639aeabae27c873163953f2c071
         <motion.Col
           key={index}
           className="classCardInformation"

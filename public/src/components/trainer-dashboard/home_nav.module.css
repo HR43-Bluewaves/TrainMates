@@ -142,7 +142,9 @@
 }
 .h1 {
   font-size: 2rem;
-  color:#ff8a10;
+  background: -webkit-linear-gradient(0.1turn, #ff8a10, white, #ff8a10);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   position: relative;
 }
 .upcoming_class:before {
