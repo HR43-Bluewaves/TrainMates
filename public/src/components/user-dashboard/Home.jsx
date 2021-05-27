@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
+import { useInView } from 'react-intersection-observer';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import styles from './home_nav.module.css';
 import NavBar from './Navbar';
 
@@ -36,6 +38,17 @@ const Home = () => {
       .catch((err) => console.error(err));
   }, []);
 
+  const [ref, isVisible] = useInView({ threshold: 0 });
+  const variantText = {
+    visible: {
+      opacity: 1,
+      y: -100,
+    },
+    hidden: {
+      opacity: 0,
+      y: 100,
+    },
+  };
   useEffect(() => {
     axios.get('/api/trainer-reviews')
       .then(({ data }) => {
@@ -50,34 +63,58 @@ const Home = () => {
         <NavBar />
         <div className="container">
           <div className={styles.row}>
-            <div className={`col-4 ${styles.upcoming_class}`}>
+            <motion.div
+              className={`col-5 ${styles.upcoming_class}`}
+            >
+              <h1 className={styles.h1}>Upcoming Classes</h1>
               <div className={`${styles.class_container}`}>
                 {classes.map((course) => (
                   <motion.div
+                    whileHover={{ scale: 1.1, originX: 0 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
                     className={styles.classWrapper}
-                    initial={{ x: 100 * course.class_id }}
-                    animate={{ x: 0 }}
-                    transition={{ duration: 1, type: 'spring', bounce: 0.5 }}
                   >
                     <p className={styles.classTitle}>{course.class_name}</p>
-                    <p>{course.description}</p>
+                    <p>mm/dd/yyyy, time</p>
                   </motion.div>
                 ))}
               </div>
-            </div>
-            <div className={`col-8 ${styles.promotion}`}>
+            </motion.div>
+            <div className={`col-7 ${styles.promotion}`}>
               <div className={`${styles.promition_container}`}>
-                <h1>Promotion</h1>
+                <h1 className={styles.h1}>Trending</h1>
+                <div className={`${styles.class_container_below}`}>
+                  {classes.map((course) => (
+                    <motion.div
+                      whileHover={{ scale: 1.1, originX: 0 }}
+                      transition={{ type: 'spring', stiffness: 300 }}
+                      className={styles.classWrapper_below}
+                    >
+                      <p className={styles.classTitle}>{course.class_name}</p>
+                      <p>{course.description}</p>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="container">
-          <div className={`col-12 ${styles.recommend}`}>
-            <div className={`${styles.recommend_container}`}>
-              <h1>Recommend</h1>
+          <motion.div>
+            <div className={`col-12 ${styles.recommend}`}>
+              <motion.div
+                className={`${styles.recommend_container}`}
+                initial={{ x: '-100vw' }}
+                animate={{ x: 0 }}
+                whileHover={{ scale: 1.1, originX: 0 }}
+                transition={{ duration: 1, type: 'spring', bounce: 0.5 }}
+              >
+                <h1>BE GREATER.</h1>
+                <h1>
+                  FIND A Trainer NOW
+                  <ArrowRightIcon style={{ fontSize: 60, position: 'absolute', bottom: '28%' }} />
+                </h1>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
