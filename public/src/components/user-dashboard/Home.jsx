@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './home_nav.module.css';
 import NavBar from './Navbar';
@@ -22,7 +23,6 @@ const Home = () => {
   useEffect(() => {
     axios.get('/api/classes')
       .then(({ data }) => {
-        console.log(data);
         dispatch({ type: 'classes', classes: data });
       })
       .catch((err) => console.error(err));
@@ -31,7 +31,6 @@ const Home = () => {
   useEffect(() => {
     axios.get('/api/trainers')
       .then(({ data }) => {
-        console.log(data);
         dispatch({ type: 'trainers', trainers: data });
       })
       .catch((err) => console.error(err));
@@ -45,7 +44,17 @@ const Home = () => {
           <div className={styles.row}>
             <div className={`col-4 ${styles.upcoming_class}`}>
               <div className={`${styles.class_container}`}>
-                <h1>Upcoming Classes</h1>
+                {classes.map((course) => (
+                  <motion.div
+                    className={styles.classWrapper}
+                    initial={{ x: 100 * course.class_id }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 1, type: 'spring', bounce: 0.5 }}
+                  >
+                    <p className={styles.classTitle}>{course.class_name}</p>
+                    <p>{course.description}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
             <div className={`col-8 ${styles.promotion}`}>
