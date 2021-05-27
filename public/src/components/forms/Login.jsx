@@ -13,6 +13,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import UserLogin from './userLogin';
 import LoginChoice from './LoginChoice';
 import SignUp from './SignUp';
+import EditProfile from './EditProfile';
 
 const theme = createMuiTheme({
   palette: {
@@ -43,6 +44,10 @@ const Login = ({ modalClose, modalType }) => {
     };
   }, []);
 
+  const editStatus = (status) => {
+    console.log(status);
+  };
+
   const handleClose = () => {
     modalClose();
     setLoginType('');
@@ -56,6 +61,9 @@ const Login = ({ modalClose, modalType }) => {
     }
     if (type === 'trainer') {
       return <SignUp />;
+    }
+    if (type === 'edit') {
+      return <EditProfile editStatus={editStatus} />;
     }
     return <div />;
   };
