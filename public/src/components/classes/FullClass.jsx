@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 import React, { useState } from 'react';
@@ -7,8 +8,10 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useSelector } from 'react-redux';
 import Form from 'react-bootstrap/Form';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import axios from 'axios';
 import NavBar from '../user-dashboard/Navbar';
 
 // static data Jenny cho
@@ -37,8 +40,24 @@ const useStyles = makeStyles((theme) => ({
 
 const FullClass = () => {
   const session = useSelector((state) => state.sessionReducer.session);
+  const user = useSelector((state) => state.userReducer.user);
   const [time, setTime] = useState('');
+  const [friends, setFriends] = useState('');
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleBooking = () => {
+    const packagedInfo = {
+      class_id: session.class_id,
+      user_id: user.user_id,
+      trainer_id: session.teacher_id,
+      time,
+      other_users: friends,
+    };
+    alert("You're booked!");
+    axios.post('/api/session', packagedInfo).catch((err) => console.error(err));
+    history.push('/home');
+  };
   return (
     <Container>
       <NavBar />
@@ -79,7 +98,7 @@ const FullClass = () => {
           <Form>
             <Form.Group className="addFriends" controlId="formFriends">
               <Form.Label>Add more friends!</Form.Label>
-              <Form.Control type="text" placeholder="Enter your friends" />
+              <Form.Control type="text" placeholder="Enter your friends" onChange={(e) => setFriends(e.target.value)} />
               <Form.Text className="text-muted">
                 To add more than one, enter their full name separated by &quot;,&quot;
               </Form.Text>
@@ -90,7 +109,7 @@ const FullClass = () => {
       <Row>
         <Col><h2>Actual description</h2></Col>
         <Col>
-          <Button disabled={(time === '') || !(new Date(time) >= new Date())} onClick={() => alert(time)}>
+          <Button disabled={(time === '') || !(new Date(time) >= new Date())} onClick={handleBooking}>
             Book this class
           </Button>
         </Col>

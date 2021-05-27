@@ -1,6 +1,33 @@
+/* eslint-disable camelcase */
 const db = require('./database/index');
 
 const queries = {
+  bookSession: (req, res) => {
+    const {
+      class_id, user_id, trainer_id, time, other_users,
+    } = req.body;
+    let processedUsers = '{';
+    other_users.split(',').map((user, index) => {
+      if (index !== other_users.split(',').length - 1) {
+        const newWord = `"${user.trim()}",`;
+        processedUsers += newWord;
+      } else {
+        const newWord = `"${user.trim()}"`;
+        processedUsers += newWord;
+      }
+    });
+    processedUsers += '}';
+    //Will need to fix time format
+    const insertQuery = `INSERT INTO sessions (class_id, user_id, trainer_id, time, other_users) VALUES (
+      ${class_id}, ${user_id}, ${trainer_id}, current_timestamp, '${processedUsers}');`;
+    db.query(insertQuery)
+      .then((result) => {
+        res.status(200).send(result);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  },
   getUser: (req, res) => {
     const { username, password } = req.query;
     db.query(`SELECT * FROM users WHERE user_name = '${username}' AND '${password}' = password`)
