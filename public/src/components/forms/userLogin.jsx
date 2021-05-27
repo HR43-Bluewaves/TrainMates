@@ -37,7 +37,7 @@ const UserLogin = ({ userType }) => {
           password,
         },
       }).then(({ data }) => {
-        console.log(data)
+        console.log(data);
         if (data.length) {
           data[0].type = userType;
           dispatch({ type: 'user', user: data[0] });

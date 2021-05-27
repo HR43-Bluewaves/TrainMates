@@ -5,9 +5,8 @@ import { Navbar } from 'react-bootstrap';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import PersonIcon from '@material-ui/icons/Person';
 import styles from './home_nav.module.css';
-import MenuButton from '../buttons/MenuButton'
+import MenuButton from '../buttons/MenuButton';
 
 const NavBar = () => {
   const history = useHistory();
@@ -34,10 +33,6 @@ const NavBar = () => {
 
   const handleNotifications = () => {
     history.push('/notifications');
-  };
-
-  const handleUser = () => {
-    history.push('/user');
   };
 
   return (
