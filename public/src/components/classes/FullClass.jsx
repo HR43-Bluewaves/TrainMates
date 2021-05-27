@@ -58,6 +58,7 @@ const FullClass = () => {
     axios.post('/api/session', packagedInfo).catch((err) => console.error(err));
     history.push('/home');
   };
+  // Do not touch the forms
   return (
     <Container>
       <NavBar />

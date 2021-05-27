@@ -57,7 +57,9 @@ const useStyles = makeStyles((theme) => ({
 const Trainers = () => {
   const [searchValue, setSearchValue] = useState('');
   const trainers = useSelector((state) => state.trainersReducer.trainers);
+  const reviews = useSelector((state) => state.trainerReviewsReducer.reviews);
   const style = useStyles();
+
   const filteredTrainers = trainers.filter((trainer) => {
     return trainer.first_name.toLowerCase().includes(searchValue.toLowerCase());
   });
@@ -67,7 +69,7 @@ const Trainers = () => {
   };
 
   return (
-    <div className="trainers">
+    <div>
       <Navbar />
       <Autocomplete
         classes={style}
@@ -86,6 +88,7 @@ const Trainers = () => {
             trainer={trainer}
             key={index}
             searchValue={searchValue}
+            reviews={reviews[index]}
           />
         ))}
       </div>
