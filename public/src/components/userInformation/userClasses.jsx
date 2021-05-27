@@ -9,7 +9,6 @@ const userClasses = () => {
   const classes = useSelector((state) => state.classesReducer.classes);
 
   return (
-
     <Col className="classCardContainer">
       {classes.map((course, index) => (
         // eslint-disable-next-line react/no-array-index-key
