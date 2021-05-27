@@ -128,7 +128,7 @@ const DropDown = () => {
               <Avatar>
                 {`${user.first_name.slice(0, 1)}${user.last_name.slice(0, 1)}`}
               </Avatar>
-              <h4>
+              <h4 className={DropDownStyle.title_text}>
                 {user.first_name}
               </h4>
             </div>

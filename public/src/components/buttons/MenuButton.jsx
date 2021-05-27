@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
@@ -79,14 +80,10 @@ export default function MenuButton() {
           <Popper
             open={open}
             anchorEl={anchorRef.current}
-<<<<<<< HEAD
-            role={undefined} transition disablePortal>
-=======
             role={undefined}
             transition
             disablePortal
           >
->>>>>>> 648c5c3cb2bde639aeabae27c873163953f2c071
             {({ TransitionProps, placement }) => (
               <Grow
                 {...TransitionProps}
