@@ -45,7 +45,8 @@
 }
 .recommend_container {
   justify-content: flex-start;
-    align-items: flex-end;
+  align-items: flex-end;
+  cursor: pointer;
 }
 .class_container {
   flex-direction: column;
@@ -130,13 +131,14 @@
   bottom: 7%;
   background: linear-gradient(transparent 5px, #ff8a10);
 }
-.h1{
+.h1 {
   font-size: 2rem;
   background: -webkit-linear-gradient(0.1turn, #ff8a10, white, #ff8a10);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  position: relative;
 }
-.upcoming_class:before{
+.upcoming_class:before {
   bottom: -1%;
 }
 .promotion:before {

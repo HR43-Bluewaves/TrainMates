@@ -5,6 +5,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
 import { useInView } from 'react-intersection-observer';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import styles from './home_nav.module.css';
 import NavBar from './Navbar';
 
@@ -99,7 +100,10 @@ const Home = () => {
                 transition={{ duration: 1, type: 'spring', bounce: 0.5 }}
               >
                 <h1>BE GREATER.</h1>
-                <h1>FIND A Trainer NOW</h1>
+                <h1>
+                  FIND A Trainer NOW
+                  <ArrowRightIcon style={{ fontSize: 60, position: 'absolute', bottom: '28%' }} />
+                </h1>
               </motion.div>
             </div>
           </motion.div>
