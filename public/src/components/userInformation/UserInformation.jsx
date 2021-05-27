@@ -14,7 +14,6 @@ import NavBar from '../user-dashboard/Navbar';
 import UserClasses from './userClasses';
 import Login from '../forms/Login';
 
-
 const UserInformation = () => {
   const [searchValue, setSearchValue] = useState('');
   const [modalType, setModalType] = useState('');
@@ -32,7 +31,7 @@ const UserInformation = () => {
     return (
       <Container fluid className="userInformationPage">
         <NavBar />
-        <Login modalClose={modalClose} modalType={modalType} />
+        <Login modalClose={modalClose} modalType={modalType} userId={user.user_id} />
         <Row>
           <Col className="userContainer" sm={4}>
             <Col className="userInformationContainer">

@@ -31,7 +31,7 @@ const validationSchema = yup.object({
     .required('Last name is required'),
 });
 
-const EditProfile = ({ editStatus }) => {
+const EditProfile = ({ editStatus, userId }) => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userReducer.user);
   const formik = useFormik({
@@ -47,7 +47,8 @@ const EditProfile = ({ editStatus }) => {
     },
     validationSchema,
     onSubmit: (values) => {
-      axios.put(`/api/user/${values.user_id}`, {
+      console.log(values);
+      axios.put(`/api/user/${userId}`, {
         username: values.username,
         password: values.password,
         email: values.email,

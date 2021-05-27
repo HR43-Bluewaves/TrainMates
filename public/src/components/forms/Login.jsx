@@ -21,7 +21,7 @@ const theme = createMuiTheme({
   },
 });
 
-const Login = ({ modalClose, modalType }) => {
+const Login = ({ modalClose, modalType, userId }) => {
   const [show, setShow] = useState(false);
   const [loginType, setLoginType] = useState('');
   const [type, setType] = useState(modalType);
@@ -63,7 +63,7 @@ const Login = ({ modalClose, modalType }) => {
       return <SignUp />;
     }
     if (type === 'edit') {
-      return <EditProfile editStatus={editStatus} />;
+      return <EditProfile editStatus={editStatus} userId={userId} />;
     }
     return <div />;
   };

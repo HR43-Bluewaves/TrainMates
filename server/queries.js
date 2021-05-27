@@ -17,7 +17,7 @@ const queries = {
       }
     });
     processedUsers += '}';
-    //Will need to fix time format
+    // Will need to fix time format
     const insertQuery = `INSERT INTO sessions (class_id, user_id, trainer_id, time, other_users) VALUES (
       ${class_id}, ${user_id}, ${trainer_id}, current_timestamp, '${processedUsers}');`;
     db.query(insertQuery)
@@ -50,6 +50,20 @@ const queries = {
         res.status(400).send(err);
       });
   },
+  editUser: (req, res) => {
+    const {
+      username, password, email, first, last, city, state, zip,
+    } = req.body;
+    db.query(`UPDATE users SET user_name = '${username}', password = '${password}', email = '${email}', first_name = '${first}', last_name = '${last}', city = '${city}', state = '${state}', zip = '${zip}' WHERE user_id = ${req.params.id}`)
+      .then((result) => {
+        res.status(200).send(result);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).send(err);
+      });
+  },
+
   getTrainer: (req, res) => {
     const { username, password } = req.query;
     db.query(`SELECT * FROM trainers WHERE user_name = '${username}' AND '${password}' = password`)

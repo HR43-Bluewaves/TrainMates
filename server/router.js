@@ -7,7 +7,7 @@ router
   .post(db.addUser);
 router
   .route('/user/:id')
-  .get(db.editUser);
+  .put(db.editUser);
 
 router
   .route('/classes')
