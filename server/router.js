@@ -25,4 +25,8 @@ router
   .route('/session')
   .post(db.bookSession);
 
+router
+  .route('/trainer-reviews')
+  .get(db.getTrainersRnR);
+
 module.exports = router;

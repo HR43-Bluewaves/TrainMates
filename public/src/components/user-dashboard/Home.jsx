@@ -36,6 +36,14 @@ const Home = () => {
       .catch((err) => console.error(err));
   }, []);
 
+  useEffect(() => {
+    axios.get('/api/trainer-reviews')
+      .then(({ data }) => {
+        dispatch({ type: 'reviews', reviews: data });
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
     <div className={styles.home}>
       <div className="user-home-page">

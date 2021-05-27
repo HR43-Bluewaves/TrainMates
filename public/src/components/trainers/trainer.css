@@ -5,6 +5,20 @@
   border: solid 1px black;
 }
 
+.overallRatingTitle {
+  margin: 25px 0px 10px 25px;
+}
+
+.ratings {
+  margin-top: 10px;
+  margin-left: 40px;
+}
+
+.starRatings {
+  margin-top: 10px;
+  margin-left: 40px;
+}
+
 .trainers {
   max-width: '100%';
   max-height: '100%';
@@ -42,9 +56,10 @@
   margin-top: 30px;
 }
 .trainerPhoto {
-  height: 100%;
+  height: 103%;
   width: 100%;
-  object-fit:initial;
+  object-fit: cover;
+  object-position: top;
 }
 
 .trainerClassScroll {
@@ -55,9 +70,9 @@
   padding-right: 20px;
 }
 
-.photoContainer {
-  max-width: 400px;
-  height: 250px;
+.trainerPhotoContainer {
+  padding-left: 0px;
+  height: 35vh;
 }
 
 .trainerClassCardContainer {
