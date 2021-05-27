@@ -12,8 +12,10 @@ const userClasses = () => {
   return (
     <Col className="classCardContainer">
       {classes.map((course, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <motion.Col key={index} className="classCardInformation"
+        eslint-disable-next-line react/no-array-index-key
+        <motion.Col
+          key={index}
+          className="classCardInformation"
           whileHover={{ scale: 1.005 }}
         >
           <Row className="classPhotoContainer">
@@ -28,7 +30,7 @@ const userClasses = () => {
             </div>
           </Row>
           <Row className="buttonFooter">
-           <Button onClick={()=>{history.push('/class-info')}}>Book Class</Button>
+            <Button onClick={() => { history.push('/class-info'); }}>Book Class</Button>
           </Row>
         </motion.Col>
       ))}
