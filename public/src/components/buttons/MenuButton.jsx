@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
@@ -21,9 +22,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MenuButton() {
+  const history = useHistory();
+
+  const handleUser = () => {
+    console.log('clicked')
+    history.push('/user');
+
+  };
+
 
   const user = useSelector((state) => state.userReducer.user);
-  console.log(user)
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -79,7 +87,7 @@ export default function MenuButton() {
                 <Paper>
                   <ClickAwayListener onClickAway={handleClose}>
                     <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                      <MenuItem onClick={handleClose}>Profile</MenuItem>
+                      <MenuItem onClick={handleUser} onClick={handleClose}>Profile</MenuItem>
                       <MenuItem onClick={handleClose}>My account</MenuItem>
                       <MenuItem onClick={handleClose}>Logout</MenuItem>
                     </MenuList>
