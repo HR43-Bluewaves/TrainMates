@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-restricted-globals */
 import React from 'react';
 // import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -13,7 +15,9 @@ const userClasses = () => {
     <Col className="classCardContainer">
       {classes.map((course, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <motion.Col key={index} className="classCardInformation"
+        <motion.Col
+          key={index}
+          className="classCardInformation"
           whileHover={{ scale: 1.005 }}
         >
           <Row className="classPhotoContainer">
@@ -28,7 +32,7 @@ const userClasses = () => {
             </div>
           </Row>
           <Row className="buttonFooter">
-           <Button onClick={()=>{history.push('/class-info')}}>Book Class</Button>
+            <Button onClick={() => { history.push('/class-info'); }}>Book Class</Button>
           </Row>
         </motion.Col>
       ))}

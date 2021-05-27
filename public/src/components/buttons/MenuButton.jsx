@@ -29,9 +29,9 @@ export default function MenuButton() {
     history.push('/user');
   };
 
-  let handleLogOut = () => {
+  const handleLogOut = () => {
     history.push('/');
-  }
+  };
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -65,7 +65,7 @@ export default function MenuButton() {
     prevOpen.current = open;
   }, [open]);
 
-  if(user) {
+  if (user) {
     return (
       <div className={classes.root}>
         <div>
@@ -75,9 +75,12 @@ export default function MenuButton() {
             aria-haspopup="true"
             onClick={handleToggle}
           >
-            {`${user.first_name.slice(0, 1)}${user.last_name.slice(0,1)}`}
+            {`${user.first_name.slice(0, 1)}${user.last_name.slice(0, 1)}`}
           </Avatar>
-          <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+          <Popper
+            open={open}
+            anchorEl={anchorRef.current}
+            role={undefined} transition disablePortal>
             {({ TransitionProps, placement }) => (
               <Grow
                 {...TransitionProps}
