@@ -5,31 +5,32 @@ import Row from 'react-bootstrap/Row';
 import { useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
+import style from './userInformation.module.css';
 
 const userClasses = () => {
   const classes = useSelector((state) => state.upcomingReducer.classes);
 
   return (
-    <Col className="classCardContainer">
+    <Col className={style.classCardContainer}>
       {classes.map((course) => (
         // eslint - disable - next - line react / no - array - index - key
         <motion.Col
           key={course.id}
-          className="classCardInformation"
+          className={style.classCardInformation}
           whileHover={{ scale: 1.005 }}
         >
-          <Row className="classPhotoContainer">
-            <img className="classPhoto" src={course.class_photo} alt="class" />
+          <Row className={style.classPhotoContainer}>
+            <img className={style.classPhoto} src={course.class_photo} alt="class" />
           </Row>
-          <Row className="classInformation">
-            <div className="classNameContainer">
-              <p className="className">{course.class_name}</p>
+          <Row className={style.classInformation}>
+            <div className={style.classNameContainer}>
+              <p className={style.className}>{course.class_name}</p>
             </div>
-            <div className="textContainer">
-              <p className="classText">{course.class_description}</p>
+            <div className={style.textContainer}>
+              <p className={style.classText}>{course.class_description}</p>
             </div>
           </Row>
-          <Row className="buttonFooter">
+          <Row className={style.buttonFooter}>
             <Button>Book Class</Button>
           </Row>
         </motion.Col>

@@ -74,6 +74,11 @@
   /* height: 43vh; */
 }
 
+.classInfoImage{
+  height: 40vh;
+  width: 15vw;
+}
+
 .classPhoto {
   height: 100%;
   width: 100%;
@@ -111,7 +116,8 @@
   min-height: 100vh;
   padding-left: 0px;
   padding-right: 0px;
-  background-color: black;
+  background-color: white;
+  color: black;
 }
 
 .classHeaderBooking{
@@ -120,6 +126,7 @@
   border-width: 1px;
   display: flex;
   align-items: flex-end;
+  font-weight: 50px;
 }
 
 .classScroll {
@@ -167,8 +174,4 @@
 .mat-icon{
   position: relative;
 top: 7px;
-}
-
-.MuiFormHelperText-root.Mui-error {
-  color: white;
 }

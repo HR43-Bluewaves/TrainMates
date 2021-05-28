@@ -15,7 +15,7 @@ import Row from 'react-bootstrap/Row';
 import Navbar from '../user-dashboard/Navbar';
 import TrainerClasses from './TrainerClasses';
 import RatingsAndReviewsModal from './R&RModal';
-import '../userInformation/userInformation.css';
+import './trainerProfile.module.css';
 
 const useStyles = makeStyles({
   root: {

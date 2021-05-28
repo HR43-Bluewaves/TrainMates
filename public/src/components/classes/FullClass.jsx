@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import { useHistory } from 'react-router-dom';
@@ -20,12 +21,6 @@ import './class.css';
 // Will need access to redux user ID to add to the class
 // Will need access to the trainer ID
 // Future will need to figure out date format with postgres
-const dummy = {
-  class_name: 'Vinyasa Yoga',
-  photo_url: 'https://post.healthline.com/wp-content/uploads/2019/10/Tattooed-woman-doing-yoga-at-home-12000x628-facebook.jpg',
-  description: "This timeless approach to yoga links movement and breath through a creative, flowing sequence of postures. Unlock your body's potential, challenge your limits, and soothe your mind in this transformative practice.",
-  teacher_id: 5,
-};
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -42,10 +37,13 @@ const useStyles = makeStyles((theme) => ({
 const FullClass = () => {
   const session = useSelector((state) => state.sessionReducer.session);
   const user = useSelector((state) => state.userReducer.user);
+  const trainerProfile = useSelector((state) => state.trainerProfileReducer.trainerProfile);
   const [time, setTime] = useState('');
   const [friends, setFriends] = useState('');
   const classes = useStyles();
   const history = useHistory();
+  console.log(trainerProfile, 'THIS IS TRAINERS')
+  console.log(session, 'THIS IS SESSION DATA')
 
   const handleBooking = () => {
     const packagedInfo = {
@@ -68,10 +66,21 @@ const FullClass = () => {
         <h1>{session.class_name}</h1>
       </Row>
       <Row className="classInfoContainer">
-        <Col className="classHeaderBooking"><h2>Instructor</h2></Col>
+        <Col className="classHeaderBooking">
+          <motion.h1
+            className="headerText"
+            whileHover={{ scale: 1.1, originX: 0 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            Instructor
+          </motion.h1>
+        </Col>
         <Col className="bookingForm">
           {' '}
-          <h2>Desired time</h2>
+          <Row>
+
+            <h2>Desired time</h2>
+          </Row>
           <form className={classes.container} noValidate>
             <TextField
               id="datetime-local"
@@ -91,11 +100,30 @@ const FullClass = () => {
       </Row>
       <Row>
         <Col className="teacherBio">
-          Teacher bio
+          <Row>
+            <Col>
+              <Col sm={2}>
+                <img className="classInfoImage" src={session.trainer.photo_url} />
+              </Col>
+              <Col sm={4}>
+                <p>{`${session.trainer.first_name} ${session.trainer.last_name}`}</p>
+                <p>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</p>
+                <p>{session.trainer.email}</p>
+              </Col>
+            </Col>
+          </Row>
         </Col>
       </Row>
       <Row>
-        <Col className="classHeaderBooking"><h2>Description</h2></Col>
+        <Col className="classHeaderBooking">
+          <motion.h1
+            className="headerText"
+            whileHover={{ scale: 1.1, originX: 0 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            Description
+          </motion.h1>
+        </Col>
         <Col>
           <Form>
             <Form.Group className="addFriends" controlId="formFriends">
@@ -109,7 +137,10 @@ const FullClass = () => {
         </Col>
       </Row>
       <Row>
-        <Col><h2>{dummy.description}</h2></Col>
+        <Col sm={2}>
+          <img className="classInfoImage" src={session.photo_url} />
+        </Col>
+        <Col sm={4}><h5>{session.description}</h5></Col>
         <Col>
           <Button disabled={(time === '') || !(new Date(time) >= new Date())} onClick={handleBooking}>
             Book this class
