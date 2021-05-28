@@ -1,4 +1,4 @@
-const initialState = { reviews: [] };
+const initialState = { reviews: {} };
 
 const trainerReviewsReducer = (state = initialState, action) => {
   if (action.type === 'reviews') {

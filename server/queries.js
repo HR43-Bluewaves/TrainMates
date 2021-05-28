@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
@@ -19,9 +20,9 @@ const queries = {
       }
     });
     processedUsers += '}';
-    // Will need to fix time format
+    const formattedDate = time.split('T').join(' ');
     const insertQuery = `INSERT INTO sessions (class_id, user_id, trainer_id, time, other_users) VALUES (
-      ${class_id}, ${user_id}, ${trainer_id}, current_timestamp, '${processedUsers}');`;
+      ${class_id}, ${user_id}, ${trainer_id}, '${formattedDate}', '${processedUsers}');`;
     db.query(insertQuery)
       .then((result) => {
         res.status(200).send(result);
@@ -65,7 +66,6 @@ const queries = {
         res.status(400).send(err);
       });
   },
-
   getTrainer: (req, res) => {
     const { username, password } = req.query;
     db.query(`SELECT * FROM trainers WHERE user_name = '${username}' AND '${password}' = password`)
@@ -96,8 +96,22 @@ const queries = {
   },
   getTrainersRnR: (req, res) => {
     db.query('SELECT * FROM trainer_reviews')
-      .then((response) => {
-        res.status(200).send(response.rows);
+      .then((result) => {
+        res.status(200).send(result.rows);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  },
+  addRatingsAndReviews: (req, res) => {
+    console.log(req.body);
+    const {
+      trainer_id, rating, reviewer_id, comment, review_date,
+    } = req.body;
+    db.query(`INSERT INTO trainer_reviews (trainer_id, rating, reviewer_id, comment, review_date)
+              VALUES (${trainer_id}, ${rating}, ${reviewer_id}, '${comment}', current_timestamp)`)
+      .then((result) => {
+        res.status(200).send(result.rows);
       })
       .catch((err) => {
         res.status(400).send(err);

@@ -50,7 +50,15 @@ const Home = () => {
     },
   };
   useEffect(() => {
-    axios.get('/api/trainer-reviews')
+    axios.get('/api/trainer-profile')
+      .then(({ data }) => {
+        dispatch({ type: 'profile', profile: data });
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    axios.get('/api/trainer-profile')
       .then(({ data }) => {
         dispatch({ type: 'reviews', reviews: data });
       })

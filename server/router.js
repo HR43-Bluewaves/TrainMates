@@ -26,7 +26,8 @@ router
   .post(db.bookSession);
 
 router
-  .route('/trainer-reviews')
-  .get(db.getTrainersRnR);
+  .route('/trainer-profile')
+  .get(db.getTrainersRnR)
+  .post(db.addRatingsAndReviews);
 
 module.exports = router;
