@@ -48,7 +48,7 @@ const NavBar = () => {
             Home
           </button>
           <button className={styles.button} type="submit" onClick={handleClasses}>
-            Classes
+            Your Classes
           </button>
           <button className={styles.button} type="submit" onClick={handleClasses}>
             Add a Class
