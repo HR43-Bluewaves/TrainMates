@@ -19,6 +19,9 @@ import Navbar from '../user-dashboard/Navbar';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiInputLabel-outlined:not(.MuiInputLabel-shrink)': {
+      // Default transform is "translate(14px, 20px) scale(1)""
+      // This lines up the label with the initial cursor position in the input
+      // after changing its padding-left.
       transform: 'translate(34px, 20px) scale(1);',
     },
   },
@@ -35,16 +38,6 @@ const useStyles = makeStyles((theme) => ({
     },
     '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
       borderColor: 'transparent',
-    },
-  },
-  formControlRoot: {
-    fontFamily: 'Roboto Mono',
-    width: '50vw',
-    color: 'black',
-    borderRadius: '7px',
-    position: 'relative',
-    '& label.Mui-focused': {
-      color: 'black',
     },
   },
   inputLabelRoot: {
@@ -74,7 +67,7 @@ const Trainers = () => {
     <Container fluid className={styles.classes}>
       <Navbar />
       <Autocomplete
-        classes={`${style} ${styles['MuiAutocomplete-root']}`}
+        classes={`${style}`}
         id="trainerSearchBar"
         options={trainers}
         getOptionLabel={(option) => option.first_name}
