@@ -1,7 +1,7 @@
 .MuiAutocomplete-root {
   position: absolute;
-  left: 1%;
-  top: 7%;
+  left: 11% !important;
+  top: 2% !important;
   z-index: 1;
   border: solid 1px black;
 }
@@ -74,24 +74,32 @@
   background-color: #f3f4ed;
   overflow: hidden;
   border-radius: 30px;
-  border: 1px solid #c06014;
+  /* border: 1px solid #c06014; */
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 30px;
   /* height: 43vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .classPhoto {
+  width: auto;
   height: 100%;
-  width: 100%;
-  object-fit: initial;
+  /* object-fit: cover; */
+  display: block;
+  margin: 0 auto;
 }
 
 .classPhotoContainer {
   height: 200px;
   width: 320px;
+  vertical-align: middle;
 }
-
+.classInformation{
+  width: 100%;
+}
 .classNameContainer {
   text-align: center;
   display: table;
@@ -114,11 +122,18 @@
   /* display: inline-flex; */
 }
 
+.location{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .textContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  padding: 2vh;
 }
 
 .text {

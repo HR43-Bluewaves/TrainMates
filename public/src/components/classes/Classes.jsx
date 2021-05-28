@@ -9,7 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import ClassList from './ClassList';
 import Navbar from '../user-dashboard/Navbar';
-import './class.css';
+import styles from './class.module.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,7 +62,7 @@ const Classes = () => {
   };
 
   return (
-    <Container fluid className="classes">
+    <Container fluid className={styles.classes}>
       <Navbar />
       <Autocomplete
         classes={style}
@@ -74,8 +74,8 @@ const Classes = () => {
         inputValue={searchValue}
         renderInput={(params) => <TextField {...params} label="Search..." variant="outlined" />}
       />
-      <Container className="class-list">
-        <Row className="classesContainer">
+      <Container className={styles['class-list']}>
+        <Row className={styles.classesContainer}>
           {filteredClasses.map((course, index) => (
             <ClassList
               course={course}

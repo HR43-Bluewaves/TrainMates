@@ -9,7 +9,9 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
+import { Container, Row, Col } from 'react-bootstrap';
 import { makeStyles } from '@material-ui/core/styles';
+import styles from './trainer.module.css';
 import './trainer.css';
 import TrainersList from './TrainersList';
 import Navbar from '../user-dashboard/Navbar';
@@ -69,10 +71,10 @@ const Trainers = () => {
   };
 
   return (
-    <div>
+    <Container fluid className={styles.classes}>
       <Navbar />
       <Autocomplete
-        classes={style}
+        classes={`${style} ${styles['MuiAutocomplete-root']}`}
         id="trainerSearchBar"
         options={trainers}
         getOptionLabel={(option) => option.first_name}
@@ -81,18 +83,20 @@ const Trainers = () => {
         inputValue={searchValue}
         renderInput={(params) => <TextField {...params} label="Search..." variant="outlined" />}
       />
-      <div className="trainer-list">
-        {console.log(trainers)}
-        {filteredTrainers.map((trainer, index) => (
-          <TrainersList
-            trainer={trainer}
-            key={index}
-            searchValue={searchValue}
-            reviews={reviews[index]}
-          />
-        ))}
-      </div>
-    </div>
+      <Container className={styles['class-list']}>
+        <Row className={styles.classesContainer}>
+          {console.log(trainers)}
+          {filteredTrainers.map((trainer, index) => (
+            <TrainersList
+              trainer={trainer}
+              key={index}
+              searchValue={searchValue}
+              reviews={reviews[index]}
+            />
+          ))}
+        </Row>
+      </Container>
+    </Container>
   );
 };
 
