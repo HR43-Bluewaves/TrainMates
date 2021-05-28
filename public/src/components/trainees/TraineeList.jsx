@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 
-const TraineeList = ({ trainee, searchValue }) => (
+const TraineeList = ({ trainee }) => (
   <React.Fragment key={trainee.user_id}>
     <Card style={{ width: '18rem' }}>
       <a
@@ -10,6 +10,7 @@ const TraineeList = ({ trainee, searchValue }) => (
         // href={artist.external_urls.spotify}
         rel="noopener noreferrer"
         className="card-image-link"
+        href
       >
         {!(trainee.photo_url.length === 0) ? (
           <Card.Img

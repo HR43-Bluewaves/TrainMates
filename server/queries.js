@@ -5,6 +5,24 @@
 const db = require('./database/index');
 
 const queries = {
+  getSessions: (req, res) => {
+    const queryString = `select sesh.session_id, sesh.time, sesh.other_users,
+    class.class_id, class.class_name, class.photo_url as class_photo, class.description as class_description, class.teacher_id,
+    trainer.first_name as trainer_first_name, trainer.last_name as trainer_last_name,
+    trainer.gender, trainer.email, trainer.city, trainer.state, trainer.zip, trainer.photo_url as trainer_photo
+    from sessions as sesh
+    inner join classes as class on sesh.class_id = class.class_id
+    inner join trainers as trainer on trainer.trainer_id = sesh.trainer_id
+    where sesh.user_id=${req.params.id};`;
+    db.query(queryString)
+      .then((result) => {
+        res.status(200).send(result.rows);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  },
+
   bookSession: (req, res) => {
     const {
       class_id, user_id, trainer_id, time, other_users,
@@ -55,9 +73,10 @@ const queries = {
   },
   editUser: (req, res) => {
     const {
-      username, password, email, first, last, city, state, zip,
+      username, password, email, first, last, city, state, zip, url,
     } = req.body;
-    db.query(`UPDATE users SET user_name = '${username}', password = '${password}', email = '${email}', first_name = '${first}', last_name = '${last}', city = '${city}', state = '${state}', zip = '${zip}' WHERE user_id = ${req.params.id}`)
+    console.log(url);
+    db.query(`UPDATE users SET user_name = '${username}', password = '${password}', email = '${email}', first_name = '${first}', last_name = '${last}', city = '${city}', state = '${state}', zip = '${zip}', photo_url = '${url}' WHERE user_id = ${req.params.id}`)
       .then((result) => {
         res.status(200).send(result);
       })
@@ -69,6 +88,15 @@ const queries = {
   getTrainer: (req, res) => {
     const { username, password } = req.query;
     db.query(`SELECT * FROM trainers WHERE user_name = '${username}' AND '${password}' = password`)
+      .then((result) => {
+        res.status(200).send(result.rows);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  },
+  getTrainerById: (req, res) => {
+    db.query(`SELECT * FROM trainers WHERE trainer_id = ${req.params.id}`)
       .then((result) => {
         res.status(200).send(result.rows);
       })

@@ -1,0 +1,115 @@
+.wrapper {
+  z-index: 100;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.menu_button {
+  align-items: center;
+  background: black;
+  border: 0.1rem solid black;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  height: 5vh;
+  justify-content: center;
+  outline: none;
+  user-select: none;
+  width: 5vh;
+}
+.menu_button:active {
+  border-color: transparent;
+}
+.menu_button:focus {
+  border-color: transparent;
+  outline: none !important;
+}
+
+.dropdown_container {
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.6);
+  overflow-x: hidden;
+  position: absolute;
+  top: 130%;
+  right: 95%;
+  transition: height 0.5s;
+  width: 15vw;
+  z-index: 50;
+  overflow-y: hidden;
+  border: 0.2rem solid #ff8a10;
+  height: 30vh;
+  color: white;
+  background-color: black;
+}
+
+.dropdown {
+  align-items: flex-start;
+  display: flex;
+  height: 100%;
+  position: relative;
+  transition: height 0.3s;
+  width: 100%;
+  padding: 1vh;
+}
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title_text {
+  margin-left: 3vw;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+h4 {
+  color: white;
+  cursor: pointer;
+  margin: 0;
+  padding: 0.5rem 0.5rem;
+  text-align: center;
+  transition: all 0.2s;
+}
+.title:hover {
+  color: black;
+  background: #ff8a10;
+}
+
+.menu_sizes {
+  /* position: absolute; */
+  right: 0;
+  top: 0;
+}
+
+.item_list {
+  list-style-type: none;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0;
+}
+
+.item {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  /* line-height: 5vh; */
+  transition: all 0.2s;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.item:hover {
+  background: white;
+  color: black;
+}

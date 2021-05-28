@@ -7,13 +7,15 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './userInformation.css';
 import '../user-dashboard/home_nav.module.css';
-import NavBar from '../user-dashboard/Navbar';
-import UserClasses from './userClasses';
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import EditIcon from '@material-ui/icons/Edit';
 import ChatIcon from '@material-ui/icons/Chat';
+import UserClasses from './userClasses';
+import NavBar from '../user-dashboard/Navbar';
 import Login from '../forms/Login';
+
+const noImage = 'https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255634-stock-illustration-avatar-icon-male-profile-gray.jpg';
 
 const UserInformation = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -34,52 +36,52 @@ const UserInformation = () => {
         <NavBar />
         <Login modalClose={modalClose} modalType={modalType} userId={user.user_id} />
         <motion.div
-           initial={{ x: '200vw' }}
-           animate={{ x: 0 }}
-           transition={{ duration: 1.5, type: 'spring', stiffness: 50 }}
+          initial={{ x: '200vw' }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1.5, type: 'spring', stiffness: 50 }}
         >
-        <Row>
-          <Col className="userContainer" sm={4}>
-            <motion.Col className="userInformationContainer">
-              <h1 className="profileText">Profile</h1>
-            <div
-              whileHover={{ color: '#C06014' }}
-              transition={{ duration: 1 }}
-            >
-            <EditIcon className="editIcon"onClick={handleEdit}/>
-            </div>
-              <Row className="photoContainer">
-                <img className="userPhoto" src={user.photo_url} alt="photos" />
-              </Row>
-              <Row className="userInformation">
-                <motion.h3
-                animate={{ color: '#C06014' }}
-                transition={{ delay: 1, duration: 2}}
+          <Row>
+            <Col className="userContainer" sm={4}>
+              <motion.Col className="userInformationContainer">
+                <h1 className="profileText">Profile</h1>
+                <div
+                  whileHover={{ color: '#C06014' }}
+                  transition={{ duration: 1 }}
                 >
-                  {`${user.first_name} ${user.last_name}`}
-                </motion.h3>
-                <h5>Location</h5>
-                <p>
-                  <RoomOutlinedIcon />
-                  {`${user.city}, ${user.state} ${user.zip}`}
-                </p>
-                <h5>E-mail</h5>
-                <p>
-                  <EmailOutlinedIcon />
-                  {` ${user.email}`}
-                </p>
+                  <EditIcon className="editIcon" onClick={handleEdit} />
+                </div>
+                <Row className="photoContainer">
+                  <img className="userPhoto" src={user.photo_url ? user.photo_url : noImage} alt="photos" />
+                </Row>
+                <Row className="userInformation">
+                  <motion.h3
+                    animate={{ color: '#C06014' }}
+                    transition={{ delay: 1, duration: 2 }}
+                  >
+                    {`${user.first_name} ${user.last_name}`}
+                  </motion.h3>
+                  <h5>Location</h5>
+                  <p>
+                    {user.city && <RoomOutlinedIcon />}
+                    {user.city && `${user.city}, ${user.state} ${user.zip}`}
+                  </p>
+                  <h5>E-mail</h5>
+                  <p>
+                    <EmailOutlinedIcon />
+                    {` ${user.email}`}
+                  </p>
+                </Row>
+              </motion.Col>
+            </Col>
+            <Col className="classScrollInformation" med={8}>
+              <Row className="userClassText">
+                <h1>Classes</h1>
               </Row>
-            </motion.Col>
-          </Col>
-          <Col className="classScrollInformation" med={8}>
-            <Row className="userClassText">
-              <h1>Classes</h1>
+              <Row className="scrollContainer">
+                <UserClasses />
               </Row>
-            <Row className="scrollContainer">
-              <UserClasses />
-            </Row>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
         </motion.div>
       </Container>
     );

@@ -14,6 +14,8 @@ const Home = () => {
   const classes = useSelector((state) => state.classesReducer.classes);
   const trainers = useSelector((state) => state.trainersReducer.trainers);
   const user = useSelector((state) => state.userReducer.user);
+  const userClasses = useSelector((state) => state.upcomingReducer.classes);
+  console.log('user classes', userClasses);
 
   const randomClass = () => {
     const randomIndex = Math.floor(Math.random() * classes.length);
@@ -34,6 +36,14 @@ const Home = () => {
     axios.get('/api/trainers')
       .then(({ data }) => {
         dispatch({ type: 'trainers', trainers: data });
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    axios.get(`/api/session/${user.user_id}`)
+      .then(({ data }) => {
+        dispatch({ type: 'upcoming', classes: data });
       })
       .catch((err) => console.error(err));
   }, []);
