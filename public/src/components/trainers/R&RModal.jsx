@@ -1,50 +1,17 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-alert */
-/* eslint-disable camelcase */
-/* eslint-disable object-shorthand */
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
-/* eslint-disable arrow-body-style */
 /* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
+/* eslint-disable object-shorthand */
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import Modal from '@material-ui/core/Modal';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
-
-const rand = () => {
-  return Math.round(Math.random() * 20) - 10;
-};
-
-const getModalStyle = () => {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-};
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: 'absolute',
-    width: 600,
-    height: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-  root: {
-    width: 200,
-    display: 'flex',
-    alignItems: 'center',
-  },
-}));
+import styles from './makeStyles';
 
 const RatingsAndReviewsModal = () => {
   const profile = useSelector((state) => state.trainerProfileReducer.profile);
@@ -55,12 +22,12 @@ const RatingsAndReviewsModal = () => {
   const [comment, setComment] = useState('');
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState(0);
-  const [charsRemaining, setCharsRemaining] = useState('60 Characters Remaining');
-  const [modalStyle] = useState(getModalStyle);
-  const style = useStyles();
+  const [charsRemaining, setCharsRemaining] = useState('100 Characters Remaining');
+  const [modalStyle] = useState(styles.getModalStyle);
+  const style = styles.useStyles();
+  const history = useHistory();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = () => {
     let reviewObj = {};
     reviews.forEach((review) => {
       reviewObj = review;
@@ -71,18 +38,19 @@ const RatingsAndReviewsModal = () => {
       reviewer_id: reviewObj.review_id,
       comment: comment,
     };
+    alert("You're review has been submited!");
     axios.post('/api/trainer-profile', formData)
       .then(({ data }) => {
-        console.log(data);
         setNewReview(data);
       })
       .catch((err) => console.error(err));
+    history.push('/home');
   };
 
   const handleCharChange = (event) => {
     const input = event.target.value;
-    if (input.length <= 60) {
-      setCharsRemaining(`${60 - input.length} Characters Remaining`);
+    if (input.length <= 100) {
+      setCharsRemaining(`${100 - input.length} Characters Remaining`);
     }
   };
 
@@ -100,7 +68,7 @@ const RatingsAndReviewsModal = () => {
 
   const body = (
     <div style={modalStyle} className={style.paper}>
-      <form onSubmit={(event) => handleSubmit(event, alert('Your review has been submitted! Press close to continue'))}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <div className={style.root}>
           <div className="starRatings">
             <b>Rating</b>
@@ -119,21 +87,21 @@ const RatingsAndReviewsModal = () => {
               {rating !== null && <Box ml={2}>{[hover !== -1 ? hover : rating]}</Box>}
             </Box>
             <b>Review</b>
-            <textarea onChange={(event) => { handleChange(event); handleCharChange(event); }} value={charValue} maxLength="60" name="summary" rows="2" width="35vh" />
+            <textarea onChange={(event) => { handleChange(event); handleCharChange(event); }} value={charValue} maxLength="100" name="body" rows="3" width="50" />
             <p>{charsRemaining}</p>
           </div>
-          <input className="submitButtonNd" type="submit" />
-          <input className="closeModalNd" type="button" value="Cancel" onClick={handleClose} />
         </div>
+        <input className="submitButtonNd" type="submit" />
+        <input className="closeModalNd" type="button" value="Cancel" onClick={handleClose} />
       </form>
     </div>
   );
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
+      <Button type="button" onClick={handleOpen}>
         Give {profile.first_name} a Rating and Review!
-      </button>
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

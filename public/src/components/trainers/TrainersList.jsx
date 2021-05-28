@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-fragments */
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -60,6 +61,9 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
                     &nbsp;
                     {trainer.state}
                   </p>
+                  <b>
+                    &lsquo;{trainer.slogan}&lsquo;
+                  </b>
                 </div>
                 <div className={style.root}>
                   <Box className="reviews" component="fieldset" mb={3} borderColor="transparent">
