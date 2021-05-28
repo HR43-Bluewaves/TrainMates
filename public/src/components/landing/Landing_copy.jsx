@@ -13,11 +13,13 @@ const Landing = () => {
     setModalType('login');
   };
   const handleTrainerLogin = () => {
-    history.push('/trainerdashboard');
+    setModalType('trainer');
+    // history.push('/trainerdashboard');
   };
   const handleSignUp = () => {
     setModalType('signup');
   };
+
   const modalClose = () => {
     setModalType('');
   };
