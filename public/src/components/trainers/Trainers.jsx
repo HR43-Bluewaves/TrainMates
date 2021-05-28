@@ -15,6 +15,7 @@ import styles from './trainer.module.css';
 import './trainer.css';
 import TrainersList from './TrainersList';
 import Navbar from '../user-dashboard/Navbar';
+import style from './makeStyles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,7 +54,7 @@ const Trainers = () => {
   const [searchValue, setSearchValue] = useState('');
   const trainers = useSelector((state) => state.trainersReducer.trainers);
   const reviews = useSelector((state) => state.trainerReviewsReducer.reviews);
-  const style = useStyles();
+  const searchBarStyle = style.useStyles();
 
   const filteredTrainers = trainers.filter((trainer) => {
     return trainer.first_name.toLowerCase().includes(searchValue.toLowerCase());
@@ -67,7 +68,7 @@ const Trainers = () => {
     <Container fluid className={styles.classes}>
       <Navbar />
       <Autocomplete
-        classes={`${style}`}
+        classes={`${searchBarStyle} ${styles['MuiAutocomplete-root']}`}
         id="trainerSearchBar"
         options={trainers}
         getOptionLabel={(option) => option.first_name}
