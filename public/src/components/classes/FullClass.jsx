@@ -104,12 +104,11 @@ const FullClass = () => {
               <img className="classInfoImage" src={session.trainer.photo_url} alt="" />
             </Col>
 
-            <Col sm={4}>
-              <p>{`${session.trainer.first_name} ${session.trainer.last_name}`}</p>
-              <p>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</p>
-              <p>{session.trainer.email}</p>
+            <Col sm={4} className="bookInfoText">
+              <h5>{`${session.trainer.first_name} ${session.trainer.last_name}`}</h5>
+              <h5>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</h5>
+              <h5>{session.trainer.email}</h5>
             </Col>
-
           </Row>
         </Col>
       </Row>
@@ -139,7 +138,7 @@ const FullClass = () => {
         <Col sm={2}>
           <img className="classInfoImage" src={session.photo_url} alt="" />
         </Col>
-        <Col sm={4}><h5>{session.description}</h5></Col>
+        <Col sm={4} className="bookInfoText"><h5>{session.description}</h5></Col>
         <Col>
           <Button disabled={(time === '') || !(new Date(time) >= new Date())} onClick={handleBooking}>
             Book this class

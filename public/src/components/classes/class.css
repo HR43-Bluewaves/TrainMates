@@ -93,7 +93,6 @@
 .classNameContainer {
   text-align: center;
   display: table;
-  width: 50%;
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -174,4 +173,8 @@
 .mat-icon{
   position: relative;
 top: 7px;
+}
+
+.bookInfoText{
+  padding-top: 20px
 }
