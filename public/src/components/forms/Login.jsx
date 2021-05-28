@@ -60,10 +60,10 @@ const Login = ({ modalClose, modalType, userId }) => {
       return <UserLogin close={handleClose} userType={loginType} />;
     }
     if (type === 'signup') {
-      return <SignUp />;
+      return <SignUp type={loginType} />;
     }
     if (type === 'trainer') {
-      return <SignUp />;
+      return <SignUp type="trainer" />;
     }
     if (type === 'edit') {
       return <EditProfile editStatus={editStatus} userId={userId} />;
@@ -81,10 +81,10 @@ const Login = ({ modalClose, modalType, userId }) => {
           style={{ backgroundColor: 'transparent' }}
           overlayStyle={{ backgroundColor: 'transparent' }}
         >
-          <DialogTitle id="form-dialog-title">Login</DialogTitle>
+          <DialogTitle id="form-dialog-title">{type === 'login' && Login}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Choose login type
+              {type === 'login' && 'Choose login type'}
             </DialogContentText>
             {type === 'login' && <LoginChoice loginType={loginType} setLoginType={setLoginType} />}
             {handleType()}

@@ -9,7 +9,6 @@ import axios from 'axios';
 import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-// import regeneratorRuntime from 'regenerator-runtime';
 
 const validationSchema = yup.object({
   username: yup
@@ -32,7 +31,7 @@ const validationSchema = yup.object({
     .required('Last name is required'),
 });
 
-const SignUp = () => {
+const SignUp = ({ type }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const formik = useFormik({
@@ -45,21 +44,23 @@ const SignUp = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      axios.post('/api/user', {
+      console.log(type);
+      axios.post(`/api/${type}`, {
         username: values.username,
         password: values.password,
         email: values.email,
         first: values.first,
         last: values.last,
       }).then(async () => {
-        const { data } = await axios.get('/api/user', {
+        const { data } = await axios.get(`/api/${type}`, {
           params: {
             username: values.username,
             password: values.password,
           },
         });
         dispatch({ type: 'user', user: data[0] });
-        history.push('/home');
+        const route = type === 'user' ? '/home' : '/trainerdashboard';
+        history.push(route);
       });
     },
   });
