@@ -1,6 +1,7 @@
 .MuiAutocomplete-root {
   position: absolute;
-  margin: -3.5% 0 0 13%;
+  left: 11% !important;
+  top: 2% !important;
   z-index: 1;
   border: solid 1px black;
 }
@@ -12,12 +13,11 @@
   padding-left: 0px;
   padding-right: 0px;
   background-color: #424642;
-
 }
 
 /* User Information */
 .user {
-  box-shadow: 10px 10px 10px -4px #C06014;
+  box-shadow: 10px 10px 10px -4px #c06014;
   background-color: #536162;
   overflow: visible;
   border-radius: 30px;
@@ -28,9 +28,8 @@
   overflow: hidden;
   margin-top: 30px;
 }
-
 .userContainer {
-  display:flex;
+  display: flex;
   justify-content: center;
 }
 
@@ -46,14 +45,22 @@
   width: 300px;
   padding-left: 0px;
 }
+.classesContainer {
+  flex-wrap: wrap;
+  width: 80vw;
+  height: fit-content;
+  position: relative;
+}
 
 .userPhoto {
   width: 100%;
   height: 100%;
-  border-right-color: #C06014;
+  border-right-color: #c06014;
   border-right-width: 2px;
 }
-
+.card_container {
+  max-width: 25vw;
+}
 
 .classHeader {
   color: white;
@@ -67,65 +74,44 @@
   background-color: #f3f4ed;
   overflow: hidden;
   border-radius: 30px;
-  border: 1px solid #C06014;
+  /* border: 1px solid #c06014; */
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 30px;
   /* height: 43vh; */
-}
-
-.classInfoImage{
-  height: 40vh;
-  width: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .classPhoto {
+  width: auto;
   height: 100%;
-  width: 100%;
-  object-fit:initial;
+  /* object-fit: cover; */
+  display: block;
+  margin: 0 auto;
 }
 
 .classPhotoContainer {
   height: 200px;
   width: 320px;
+  vertical-align: middle;
 }
-
+.classInformation{
+  width: 100%;
+}
 .classNameContainer {
   text-align: center;
   display: table;
+  background-color: #c06014;
+  width: 100%;
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
 .className {
-  display:table-cell;
+  display: table-cell;
   color: white;
-}
-
-.container{
-  min-width: 100%;
-  min-height: 100%;
-  padding-left: 0px;
-  padding-right: 0px;
-
-}
-
-.bookingBody{
-  min-width: 100vw;
-  min-height: 100vh;
-  padding-left: 0px;
-  padding-right: 0px;
-  background-color: white;
-  color: black;
-}
-
-.classHeaderBooking{
-  border-bottom: solid;
-  border-bottom-color: #ff8c10b0;
-  border-width: 1px;
-  display: flex;
-  align-items: flex-end;
-  font-weight: 50px;
 }
 
 .classScroll {
@@ -133,12 +119,21 @@
   padding-bottom: 30px;
   padding-left: 20px;
   padding-right: 20px;
-  display: inline-flex;
+  /* display: inline-flex; */
 }
 
+.location{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .textContainer {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+  padding: 2vh;
 }
 
 .text {
@@ -152,29 +147,32 @@
 }
 
 .class-list {
-  display: grid;
-  grid-template-columns: 45vh 45vh 45vh 0vh;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 80%;
+  flex-direction: column;
 }
 
 .classes {
-  max-width: '100%';
-  max-height: '100%';
+  width: 100vw;
+  height: fit-content;
   padding-left: 0px;
   padding-right: 0px;
-  background-color: #424642;
-  height: 100vh;
+  background-color: black;
 }
 
 .detailButton {
-  margin-left: 11vh;
-  margin-top: 4vh;
+  background-color: #c06014;
+  width: 15vw;
+  height: 5vh;
+  border: none;
+  border-radius: 2.5vh;
+  color: #f3f4ed;
+  font-weight: 800;
 }
 
-.mat-icon{
+.mat-icon {
   position: relative;
-top: 7px;
-}
-
-.bookInfoText{
-  padding-top: 20px
+  top: 7px;
 }

@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 import NavBar from '../user-dashboard/Navbar';
-import './class.css';
+import './class.module.css';
 
 // static data Jenny cho
 // This is placeholder for now but we will need to also do a put request to create session
