@@ -10,7 +10,7 @@ import Trainers from '../components/trainers/Trainers';
 /* eslint-disable import/no-named-as-default */
 import Classes from '../components/classes/Classes';
 import Trainee from '../components/trainees/Trainee';
-import Chat from '../components/Chat';
+import Chat from '../components/chat/Chat';
 import Cart from '../components/Cart';
 import Notifications from '../components/Notifications';
 // Trainer dashboard

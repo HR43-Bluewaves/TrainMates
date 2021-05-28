@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-restricted-globals */
 import React from 'react';
 // import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -12,7 +14,7 @@ const userClasses = () => {
   return (
     <Col className="classCardContainer">
       {classes.map((course, index) => (
-        eslint-disable-next-line react/no-array-index-key
+        // eslint-disable-next-line react/no-array-index-key
         <motion.Col
           key={index}
           className="classCardInformation"

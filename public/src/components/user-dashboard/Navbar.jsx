@@ -6,7 +6,8 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import styles from './home_nav.module.css';
-import MenuButton from '../buttons/MenuButton';
+import DropDown from './dynamic_nav/DropDown';
+// import MenuButton from '../buttons/MenuButton';
 
 const NavBar = () => {
   const history = useHistory();
@@ -35,6 +36,10 @@ const NavBar = () => {
     history.push('/notifications');
   };
 
+  // const handleUser = () => {
+  //   history.push('/user');
+  // };
+
   return (
     <div>
       <Navbar sticky="top" className="nav_bar">
@@ -54,8 +59,12 @@ const NavBar = () => {
           <ShoppingCartIcon onClick={handleCart} className={styles.icon} />
           <EmailIcon onClick={handleChat} className={styles.icon} />
           <NotificationsIcon onClick={handleNotifications} className={styles.icon} />
-          <MenuButton className="userIcon" />
+          {/* <MenuButton className="userIcon" /> */}
+          <div className={styles.dropdown_container}>
+            <DropDown />
+          </div>
         </div>
+
       </Navbar>
     </div>
   );
