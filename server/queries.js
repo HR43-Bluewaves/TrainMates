@@ -19,9 +19,9 @@ const queries = {
       }
     });
     processedUsers += '}';
-    // Will need to fix time format
+    const formattedDate = time.split('T').join(' ');
     const insertQuery = `INSERT INTO sessions (class_id, user_id, trainer_id, time, other_users) VALUES (
-      ${class_id}, ${user_id}, ${trainer_id}, current_timestamp, '${processedUsers}');`;
+      ${class_id}, ${user_id}, ${trainer_id}, '${formattedDate}', '${processedUsers}');`;
     db.query(insertQuery)
       .then((result) => {
         res.status(200).send(result);
