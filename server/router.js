@@ -22,6 +22,10 @@ router
   .get(db.getTrainer);
 
 router
+  .route('/trainer/:id')
+  .get(db.getTrainerById);
+
+router
   .route('/session')
   .post(db.bookSession);
 

@@ -46,7 +46,9 @@ const Login = ({ modalClose, modalType, userId }) => {
   }, []);
 
   const editStatus = (status) => {
-    console.log(status);
+    if (status) {
+      modalClose();
+    }
   };
 
   const handleClose = () => {
