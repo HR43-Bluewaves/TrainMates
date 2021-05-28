@@ -1,20 +1,20 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/no-array-index-key */
-import React, { useState } from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { useSelector } from 'react-redux';
-// import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
+import { makeStyles } from '@material-ui/core/styles';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import Navbar from '../user-dashboard/Navbar';
 import TrainerClasses from './TrainerClasses';
+import RatingsAndReviewsModal from './R&RModal';
 import '../userInformation/userInformation.css';
 
 const useStyles = makeStyles({
@@ -25,17 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-const labels = {
-  1: 'Useless+',
-  2: 'Poor+',
-  3: 'Ok+',
-  4: 'Good+',
-  5: 'Excellent+',
-};
-
 const TrainerProfile = () => {
-  const [value, setValue] = useState(0);
-  const [hover, setHover] = useState(0);
   const style = useStyles();
   const profile = useSelector((state) => state.trainerProfileReducer.profile);
   const reviews = useSelector((state) => state.trainerReviewsReducer.reviews);
@@ -60,12 +50,15 @@ const TrainerProfile = () => {
             <Row className="userInformation">
               <h3>
                 {profile.first_name}
+                &nbsp;
                 {profile.last_name}
               </h3>
               <p>
                 <RoomOutlinedIcon />
                 {profile.city}
+                &nbsp;
                 {profile.state}
+                &nbsp;
                 {profile.zip}
               </p>
               <p>
@@ -73,25 +66,7 @@ const TrainerProfile = () => {
                 {profile.email}
               </p>
             </Row>
-            <p>Give {profile.first_name} a rating!</p>
-            <div className={style.root}>
-              <div className="starRatings">
-                <Box component="fieldset" mb={3} borderColor="transparent">
-                  <Rating
-                    name="hover-feedback"
-                    value={value}
-                    precision={1}
-                    onChange={(event, newValue) => {
-                      setValue(newValue);
-                    }}
-                    onChangeActive={(event, newHover) => {
-                      setHover(newHover);
-                    }}
-                  />
-                  {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
-                </Box>
-              </div>
-            </div>
+            <RatingsAndReviewsModal />
             <div className={style.root}>
               <div className="starRatings">
                 <Box component="fieldset" mb={3} borderColor="transparent">

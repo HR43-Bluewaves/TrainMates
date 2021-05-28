@@ -14,6 +14,8 @@ const Home = () => {
   const classes = useSelector((state) => state.classesReducer.classes);
   const trainers = useSelector((state) => state.trainersReducer.trainers);
   const user = useSelector((state) => state.userReducer.user);
+  const userClasses = useSelector((state) => state.upcomingReducer.classes);
+  console.log('user classes', userClasses);
 
   const randomClass = () => {
     const randomIndex = Math.floor(Math.random() * classes.length);
@@ -38,6 +40,14 @@ const Home = () => {
       .catch((err) => console.error(err));
   }, []);
 
+  useEffect(() => {
+    axios.get(`/api/session/${user.user_id}`)
+      .then(({ data }) => {
+        dispatch({ type: 'upcoming', classes: data });
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
   const [ref, isVisible] = useInView({ threshold: 0 });
   const variantText = {
     visible: {
@@ -50,7 +60,15 @@ const Home = () => {
     },
   };
   useEffect(() => {
-    axios.get('/api/trainer-reviews')
+    axios.get('/api/trainer-profile')
+      .then(({ data }) => {
+        dispatch({ type: 'profile', profile: data });
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    axios.get('/api/trainer-profile')
       .then(({ data }) => {
         dispatch({ type: 'reviews', reviews: data });
       })

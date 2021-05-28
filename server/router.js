@@ -30,6 +30,15 @@ router
   .post(db.bookSession);
 
 router
+  .route('/trainer-profile')
+  .get(db.getTrainersRnR)
+  .post(db.addRatingsAndReviews);
+
+router
+  .route('/session/:id')
+  .get(db.getSessions);
+
+router
   .route('/trainer-reviews')
   .get(db.getTrainersRnR);
 
