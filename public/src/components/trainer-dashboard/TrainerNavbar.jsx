@@ -23,9 +23,9 @@ const NavBar = () => {
     history.push('/classes');
   };
 
-  const handleCart = () => {
-    history.push('/cart');
-  };
+  // const handleCart = () => {
+  //   history.push('/cart');
+  // };
 
   const handleChat = () => {
     history.push('/chat');
