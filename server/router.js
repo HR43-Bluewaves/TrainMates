@@ -19,7 +19,8 @@ router
 
 router
   .route('/trainer')
-  .get(db.getTrainer);
+  .get(db.getTrainer)
+  .post(db.addTrainer);
 
 router
   .route('/trainer/:id')
