@@ -54,9 +54,10 @@ const queries = {
   },
   editUser: (req, res) => {
     const {
-      username, password, email, first, last, city, state, zip,
+      username, password, email, first, last, city, state, zip, url,
     } = req.body;
-    db.query(`UPDATE users SET user_name = '${username}', password = '${password}', email = '${email}', first_name = '${first}', last_name = '${last}', city = '${city}', state = '${state}', zip = '${zip}' WHERE user_id = ${req.params.id}`)
+    console.log(url);
+    db.query(`UPDATE users SET user_name = '${username}', password = '${password}', email = '${email}', first_name = '${first}', last_name = '${last}', city = '${city}', state = '${state}', zip = '${zip}', photo_url = '${url}' WHERE user_id = ${req.params.id}`)
       .then((result) => {
         res.status(200).send(result);
       })
@@ -69,6 +70,15 @@ const queries = {
   getTrainer: (req, res) => {
     const { username, password } = req.query;
     db.query(`SELECT * FROM trainers WHERE user_name = '${username}' AND '${password}' = password`)
+      .then((result) => {
+        res.status(200).send(result.rows);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  },
+  getTrainerById: (req, res) => {
+    db.query(`SELECT * FROM trainers WHERE trainer_id = ${req.params.id}`)
       .then((result) => {
         res.status(200).send(result.rows);
       })
