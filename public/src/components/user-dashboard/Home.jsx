@@ -127,7 +127,7 @@ const Home = () => {
               >
                 <h1>BE GREATER.</h1>
                 <h1>
-                  FIND A Trainer NOW
+                  FIND A TRAINER NOW
                   <ArrowRightIcon style={{ fontSize: 60, position: 'absolute', bottom: '28%' }} />
                 </h1>
               </motion.div>

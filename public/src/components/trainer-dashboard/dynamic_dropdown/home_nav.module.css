@@ -55,10 +55,6 @@
   /* border-right: 1px solid #ff8a10; */
   padding-top: 3vh;
 }
-::-webkit-scrollbar {
-  width: 0; /* Remove scrollbar space */
-  background: transparent; /* Optional: just make scrollbar invisible */
-}
 .classWrapper {
   padding-top: 3vh;
   display: flex;
@@ -90,7 +86,6 @@
 .icon_container {
   display: flex;
   align-items: center;
-  margin-right: 2vh;
 }
 .button_container button,
 .icon {
@@ -106,11 +101,8 @@
   font-size: 1rem;
   font-weight: 800;
 }
-.button:hover {
-  transform: scale(1.3);
-}
-.button:focus {
-  outline: none !important;
+.button:hover{
+  transform: scale(1.3) ;
 }
 .promition_container {
   padding-left: 15%;
@@ -125,10 +117,6 @@
   width: 100%;
   background-color: grba(0, 0, 0, 0.1);
   position: relative;
-}
-::-webkit-scrollbar {
-  width: 0; /* Remove scrollbar space */
-  background: transparent; /* Optional: just make scrollbar invisible */
 }
 .classWrapper_below {
   display: flex;
@@ -151,7 +139,7 @@
 }
 .h1 {
   font-size: 2rem;
-  color: #ff8a10;
+  color:#ff8a10;
   position: relative;
 }
 .upcoming_class:before {
@@ -160,7 +148,7 @@
 .promotion:before {
   left: 19%;
 }
-.dropdown_container {
+.dropdown_container{
   display: flex;
   position: relative;
   align-items: center;

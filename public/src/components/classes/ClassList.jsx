@@ -1,35 +1,36 @@
+/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import styles from './class.module.css';
 // eslint-disable-next-line max-len
 // Added onClick to do history push into the testing for now. To do later change to do :classID in future. Nader and Michael working on redux to get the classID state
 const ClassList = ({ course, searchValue }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   return (
-    <div>
+    <Col className={styles.card_container}>
       {(course.class_name.toLowerCase().includes(searchValue.toLowerCase()) || !searchValue) ? (
-        <Row className="classScroll">
-          <Col className="classCard">
-            <Row className="classPhotoContainer">
-              <img className="classPhoto" src={course.photo_url} alt="classes" />
-            </Row>
-            <Row className="classInformation">
-              <div className="classNameContainer">
-                <p className="className">{course.class_name}</p>
+        <div className={styles.classScroll}>
+          <div className={styles.classCard}>
+            <div className={styles.classPhotoContainer}>
+              <img className={styles.classPhoto} src={course.photo_url} alt="classes" />
+            </div>
+            <div className={styles.classInformation}>
+              <div className={styles.classNameContainer}>
+                <p className={styles.className}>{course.class_name}</p>
               </div>
-            </Row>
-            <Row className="textContainer">
-              <div className="text">
-                <p>{course.description}</p>
+            </div>
+            <div className={styles.textContainer}>
+              <div className={styles.text}>
+                <p>{`${course.description.slice(0, 50)} ...`}</p>
               </div>
-              <Button
-                className="detailButton"
+              <button
+                type="button"
+                className={styles.detailButton}
                 onClick={async () => {
                   const teacher = await axios.get(`/api/trainer/${course.teacher_id}`);
                   const courseWithTrainer = {
@@ -42,12 +43,12 @@ const ClassList = ({ course, searchValue }) => {
                 }}
               >
                 Details
-              </Button>
-            </Row>
-          </Col>
-        </Row>
+              </button>
+            </div>
+          </div>
+        </div>
       ) : null}
-    </div>
+    </Col>
   );
 };
 
