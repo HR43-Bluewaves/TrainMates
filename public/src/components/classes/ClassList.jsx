@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 // eslint-disable-next-line max-len
@@ -12,23 +10,24 @@ const ClassList = ({ course, searchValue }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   return (
-    <div>
+    <Col className="card_container">
       {(course.class_name.toLowerCase().includes(searchValue.toLowerCase()) || !searchValue) ? (
-        <Row className="classScroll">
-          <Col className="classCard">
-            <Row className="classPhotoContainer">
+        <div className="classScroll">
+          <div className="classCard">
+            <div className="classPhotoContainer">
               <img className="classPhoto" src={course.photo_url} alt="classes" />
-            </Row>
-            <Row className="classInformation">
+            </div>
+            <div className="classInformation">
               <div className="classNameContainer">
                 <p className="className">{course.class_name}</p>
               </div>
-            </Row>
-            <Row className="textContainer">
+            </div>
+            <div className="textContainer">
               <div className="text">
-                <p>{course.description}</p>
+                <p>{`${course.description.slice(0, 50)} ...`}</p>
               </div>
-              <Button
+              <button
+                type="button"
                 className="detailButton"
                 onClick={async () => {
                   const teacher = await axios.get(`/api/trainer/${course.teacher_id}`);
@@ -42,12 +41,12 @@ const ClassList = ({ course, searchValue }) => {
                 }}
               >
                 Details
-              </Button>
-            </Row>
-          </Col>
-        </Row>
+              </button>
+            </div>
+          </div>
+        </div>
       ) : null}
-    </div>
+    </Col>
   );
 };
 
