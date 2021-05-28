@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-fragments */
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -59,6 +60,9 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
                     {trainer.city}
                     &nbsp;
                     {trainer.state}
+                  </p>
+                  <p>
+                    &lsquo;{trainer.slogan}&lsquo;
                   </p>
                 </div>
                 <div className={style.root}>
