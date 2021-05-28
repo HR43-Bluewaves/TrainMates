@@ -15,6 +15,8 @@ import UserClasses from './userClasses';
 import NavBar from '../user-dashboard/Navbar';
 import Login from '../forms/Login';
 
+const noImage = 'https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255634-stock-illustration-avatar-icon-male-profile-gray.jpg';
+
 const UserInformation = () => {
   const [searchValue, setSearchValue] = useState('');
   const [modalType, setModalType] = useState('');
@@ -49,7 +51,7 @@ const UserInformation = () => {
                   <EditIcon className="editIcon" onClick={handleEdit} />
                 </div>
                 <Row className="photoContainer">
-                  <img className="userPhoto" src={user.photo_url} alt="photos" />
+                  <img className="userPhoto" src={user.photo_url ? user.photo_url : noImage} alt="photos" />
                 </Row>
                 <Row className="userInformation">
                   <motion.h3

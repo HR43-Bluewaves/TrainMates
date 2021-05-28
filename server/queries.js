@@ -77,6 +77,15 @@ const queries = {
         res.status(400).send(err);
       });
   },
+  getTrainerById: (req, res) => {
+    db.query(`SELECT * FROM trainers WHERE trainer_id = ${req.params.id}`)
+      .then((result) => {
+        res.status(200).send(result.rows);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  },
   getAllTrainers: (req, res) => {
     db.query('SELECT * FROM trainers')
       .then((result) => {

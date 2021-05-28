@@ -99,10 +99,8 @@ const EditProfile = ({ editStatus, userId }) => {
     const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile);
     uploadTask.on('state_changed',
       ({ _delegate }) => {
-        console.log(_delegate);
         const { bytesTransferred, totalBytes } = _delegate;
         const percent = (bytesTransferred / totalBytes).toFixed(2) * 100;
-        console.log(percent);
         setProgress(percent);
       }, (err) => {
         console.log(err);
@@ -125,7 +123,6 @@ const EditProfile = ({ editStatus, userId }) => {
       setUploading(true);
     }
     if (imageAsUrl) {
-      console.log(imageAsUrl);
       setUploading(false);
     }
   }, [imageAsFile, imageAsUrl]);

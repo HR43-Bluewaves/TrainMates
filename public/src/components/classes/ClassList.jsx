@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -29,8 +30,13 @@ const ClassList = ({ course, searchValue }) => {
               </div>
               <Button
                 className="detailButton"
-                onClick={() => {
-                  dispatch({ type: 'session', session: course });
+                onClick={async () => {
+                  const teacher = await axios.get(`/api/trainer/${course.teacher_id}`);
+                  const courseWithTrainer = {
+                    ...course,
+                    trainer: teacher.data[0],
+                  };
+                  dispatch({ type: 'session', session: courseWithTrainer });
                   history.push('/class-info');
                 }}
               >
