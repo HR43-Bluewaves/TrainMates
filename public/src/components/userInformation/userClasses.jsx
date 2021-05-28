@@ -9,7 +9,7 @@ import { Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 
 const userClasses = () => {
-  const classes = useSelector((state) => state.classesReducer.classes);
+  const classes = useSelector((state) => state.upcomingReducer.classes);
 
   return (
     <Col className="classCardContainer">
@@ -21,14 +21,14 @@ const userClasses = () => {
           whileHover={{ scale: 1.005 }}
         >
           <Row className="classPhotoContainer">
-            <img className="classPhoto" src={course.photo_url} alt="class" />
+            <img className="classPhoto" src={course.class_photo} alt="class" />
           </Row>
           <Row className="classInformation">
             <div className="classNameContainer">
               <p className="className">{course.class_name}</p>
             </div>
             <div className="textContainer">
-              <p className="classText">{course.description}</p>
+              <p className="classText">{course.class_description}</p>
             </div>
           </Row>
           <Row className="buttonFooter">
