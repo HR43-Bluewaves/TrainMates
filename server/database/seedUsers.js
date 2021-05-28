@@ -14,16 +14,18 @@ CREATE TABLE IF NOT EXISTS ${tableName} (
   STATE TEXT,
   ZIP INT,
   PHOTO_URL TEXT,
+  SLOGAN TEXT,
+  KEYPHRASES TEXT[],
   USER_NAME TEXT NOT NULL,
   PASSWORD TEXT NOT NULL
 );
 `;
 
 const insertData = `
-  INSERT INTO ${tableName} (FIRST_NAME, LAST_NAME, GENDER, EMAIL, CITY, STATE, ZIP, PHOTO_URL, USER_NAME, PASSWORD) VALUES
+  INSERT INTO ${tableName} (FIRST_NAME, LAST_NAME, GENDER, EMAIL, CITY, STATE, ZIP, PHOTO_URL, SLOGAN, KEYPHRASES, USER_NAME, PASSWORD) VALUES
   ('Regina', 'George', 'Female', 'totallyfetch@gmail.com',
    'Evanston', 'IL', 60201 ,'https://img.particlenews.com/image.php?type=thumbnail_580x000&url=3bRbfV_0XEGgX2j00',
-   'regina', 'regina');
+   'OMG I love your bracelet', '{"Pink", "Flawless","Fetch"}', 'regina', 'regina');
 `;
 
 pool.query(creatTable)
