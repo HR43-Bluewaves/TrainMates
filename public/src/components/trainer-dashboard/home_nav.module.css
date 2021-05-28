@@ -86,6 +86,7 @@
 .icon_container {
   display: flex;
   align-items: center;
+  margin-right: 2vh;
 }
 .button_container button,
 .icon {
