@@ -12,7 +12,7 @@ const userClasses = () => {
   return (
     <Col className="classCardContainer">
       {classes.map((course, index) => (
-        eslint-disable-next-line react/no-array-index-key
+        // eslint - disable - next - line react / no - array - index - key
         <motion.Col
           key={index}
           className="classCardInformation"
@@ -33,8 +33,9 @@ const userClasses = () => {
             <Button onClick={() => { history.push('/class-info'); }}>Book Class</Button>
           </Row>
         </motion.Col>
-      ))}
-    </Col>
+      ))
+      }
+    </Col >
   );
 };
 

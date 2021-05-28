@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 import NavBar from '../user-dashboard/Navbar';
+import './class.css';
 
 // static data Jenny cho
 // This is placeholder for now but we will need to also do a put request to create session
@@ -60,15 +61,15 @@ const FullClass = () => {
   };
   // Do not touch the forms
   return (
-    <Container>
+    <Container className="bookingBody">
       <NavBar />
-      <Row>
+      <Row className="classNameContainer">
         {' '}
         <h1>{session.class_name}</h1>
       </Row>
-      <Row>
-        <Col><h2>Instructor</h2></Col>
-        <Col>
+      <Row className="classInfoContainer">
+        <Col className="classHeaderBooking"><h2>Instructor</h2></Col>
+        <Col className="bookingForm">
           {' '}
           <h2>Desired time</h2>
           <form className={classes.container} noValidate>
@@ -89,12 +90,12 @@ const FullClass = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col className="teacherBio">
           Teacher bio
         </Col>
       </Row>
       <Row>
-        <Col><h2>Description</h2></Col>
+        <Col className="classHeaderBooking"><h2>Description</h2></Col>
         <Col>
           <Form>
             <Form.Group className="addFriends" controlId="formFriends">
@@ -108,7 +109,7 @@ const FullClass = () => {
         </Col>
       </Row>
       <Row>
-        <Col><h2>Actual description</h2></Col>
+        <Col><h2>{dummy.description}</h2></Col>
         <Col>
           <Button disabled={(time === '') || !(new Date(time) >= new Date())} onClick={handleBooking}>
             Book this class

@@ -12,6 +12,7 @@
   padding-left: 0px;
   padding-right: 0px;
   background-color: #424642;
+
 }
 
 /* User Information */
@@ -87,8 +88,7 @@
 .classNameContainer {
   text-align: center;
   display: table;
-  background-color: #C06014;
-  width: 100%;
+  width: 50%;
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -96,6 +96,30 @@
 .className {
   display:table-cell;
   color: white;
+}
+
+.container{
+  min-width: 100%;
+  min-height: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+
+}
+
+.bookingBody{
+  min-width: 100vw;
+  min-height: 100vh;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: black;
+}
+
+.classHeaderBooking{
+  border-bottom: solid;
+  border-bottom-color: #ff8c10b0;
+  border-width: 1px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .classScroll {
@@ -143,4 +167,8 @@
 .mat-icon{
   position: relative;
 top: 7px;
+}
+
+.MuiFormHelperText-root.Mui-error {
+  color: white;
 }
