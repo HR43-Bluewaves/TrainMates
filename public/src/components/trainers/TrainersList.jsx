@@ -47,6 +47,7 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
                 <div className="trainerNameContainer">
                   <p className="trainerName">
                     {trainer.first_name}
+                    &nbsp;
                     {trainer.last_name}
                   </p>
                 </div>
@@ -54,7 +55,10 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
                   {/* <strong>Gender:</strong>
                   {` ${trainer.gender}\n`} */}
                   <strong>Location:</strong>
-                  {` ${trainer.city}, ${trainer.state}`}
+                  &nbsp;
+                  {trainer.city}
+                  &nbsp;
+                  {trainer.state}
                   <div className={style.root}>
                     <Box className="reviews" component="fieldset" mb={3} borderColor="transparent">
                       <Typography component="legend">Overall Rating</Typography>
