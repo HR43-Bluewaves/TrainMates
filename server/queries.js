@@ -4,6 +4,24 @@
 const db = require('./database/index');
 
 const queries = {
+  getSessions: (req, res) => {
+    const queryString = `select sesh.session_id, sesh.time, sesh.other_users,
+    class.class_id, class.class_name, class.photo_url as class_photo, class.description as class_description, class.teacher_id,
+    trainer.first_name as trainer_first_name, trainer.last_name as trainer_last_name,
+    trainer.gender, trainer.email, trainer.city, trainer.state, trainer.zip, trainer.photo_url as trainer_photo
+    from sessions as sesh
+    inner join classes as class on sesh.class_id = class.class_id
+    inner join trainers as trainer on trainer.trainer_id = sesh.trainer_id
+    where sesh.user_id=${req.params.id};`;
+    db.query(queryString)
+      .then((result) => {
+        res.status(200).send(result.rows);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  },
+
   bookSession: (req, res) => {
     const {
       class_id, user_id, trainer_id, time, other_users,
@@ -19,9 +37,9 @@ const queries = {
       }
     });
     processedUsers += '}';
-    // Will need to fix time format
+    const formattedDate = time.split('T').join(' ');
     const insertQuery = `INSERT INTO sessions (class_id, user_id, trainer_id, time, other_users) VALUES (
-      ${class_id}, ${user_id}, ${trainer_id}, current_timestamp, '${processedUsers}');`;
+      ${class_id}, ${user_id}, ${trainer_id}, '${formattedDate}', '${processedUsers}');`;
     db.query(insertQuery)
       .then((result) => {
         res.status(200).send(result);
