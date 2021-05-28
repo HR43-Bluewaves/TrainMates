@@ -60,8 +60,8 @@ const UserInformation = () => {
                   </motion.h3>
                   <h5>Location</h5>
                   <p>
-                    <RoomOutlinedIcon />
-                    {`${user.city}, ${user.state} ${user.zip}`}
+                    {user.city && <RoomOutlinedIcon />}
+                    {user.city && `${user.city}, ${user.state} ${user.zip}`}
                   </p>
                   <h5>E-mail</h5>
                   <p>

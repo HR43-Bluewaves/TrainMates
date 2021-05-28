@@ -54,9 +54,10 @@ const queries = {
   },
   editUser: (req, res) => {
     const {
-      username, password, email, first, last, city, state, zip,
+      username, password, email, first, last, city, state, zip, url,
     } = req.body;
-    db.query(`UPDATE users SET user_name = '${username}', password = '${password}', email = '${email}', first_name = '${first}', last_name = '${last}', city = '${city}', state = '${state}', zip = '${zip}' WHERE user_id = ${req.params.id}`)
+    console.log(url);
+    db.query(`UPDATE users SET user_name = '${username}', password = '${password}', email = '${email}', first_name = '${first}', last_name = '${last}', city = '${city}', state = '${state}', zip = '${zip}', photo_url = '${url}' WHERE user_id = ${req.params.id}`)
       .then((result) => {
         res.status(200).send(result);
       })
