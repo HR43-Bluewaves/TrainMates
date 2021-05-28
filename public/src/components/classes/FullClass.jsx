@@ -42,8 +42,8 @@ const FullClass = () => {
   const [friends, setFriends] = useState('');
   const classes = useStyles();
   const history = useHistory();
-  console.log(trainerProfile, 'THIS IS TRAINERS')
-  console.log(session, 'THIS IS SESSION DATA')
+
+  const noImage = 'https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255634-stock-illustration-avatar-icon-male-profile-gray.jpg';
 
   const handleBooking = () => {
     const packagedInfo = {
@@ -78,7 +78,6 @@ const FullClass = () => {
         <Col className="bookingForm">
           {' '}
           <Row>
-
             <h2>Desired time</h2>
           </Row>
           <form className={classes.container} noValidate>
@@ -101,16 +100,16 @@ const FullClass = () => {
       <Row>
         <Col className="teacherBio">
           <Row>
-            <Col>
-              <Col sm={2}>
-                <img className="classInfoImage" src={session.trainer.photo_url} />
-              </Col>
-              <Col sm={4}>
-                <p>{`${session.trainer.first_name} ${session.trainer.last_name}`}</p>
-                <p>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</p>
-                <p>{session.trainer.email}</p>
-              </Col>
+            <Col sm={2}>
+              <img className="classInfoImage" src={session.trainer.photo_url} alt="" />
             </Col>
+
+            <Col sm={4}>
+              <p>{`${session.trainer.first_name} ${session.trainer.last_name}`}</p>
+              <p>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</p>
+              <p>{session.trainer.email}</p>
+            </Col>
+
           </Row>
         </Col>
       </Row>
@@ -138,7 +137,7 @@ const FullClass = () => {
       </Row>
       <Row>
         <Col sm={2}>
-          <img className="classInfoImage" src={session.photo_url} />
+          <img className="classInfoImage" src={session.photo_url} alt="" />
         </Col>
         <Col sm={4}><h5>{session.description}</h5></Col>
         <Col>
