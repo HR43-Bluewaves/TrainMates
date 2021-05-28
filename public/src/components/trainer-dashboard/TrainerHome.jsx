@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styles from '../test.module.css';
+import './home_nav.module.css';
 import NavBar from './TrainerNavbar';
 
 const TrainerHome = () => {
@@ -16,7 +16,7 @@ const TrainerHome = () => {
   }, []);
 
   return (
-    <div className={styles.div}>
+    <div>
       <h1>This is the trainer home page</h1>
       <div className="user-home-page">
         <NavBar />

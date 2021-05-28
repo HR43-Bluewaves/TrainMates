@@ -33,9 +33,8 @@ const userClasses = () => {
             <Button onClick={() => { history.push('/class-info'); }}>Book Class</Button>
           </Row>
         </motion.Col>
-      ))
-      }
-    </Col >
+      ))}
+    </Col>
   );
 };
 
