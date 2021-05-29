@@ -24,11 +24,6 @@ const useStyles = makeStyles({
 });
 
 const TrainerList = ({ trainer, searchValue, reviews }) => {
-<<<<<<< HEAD
-  // eslint-disable-next-line no-console
-  console.log(reviews);
-=======
->>>>>>> c0606ed9879042b4ab1413ddf0e230220dba6633
   const style = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
