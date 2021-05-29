@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 // import './trainer.css';
 import styles from './trainer.module.css';
+import noImage from '../../../noImage';
 
 const useStyles = makeStyles({
   root: {
@@ -22,12 +23,10 @@ const useStyles = makeStyles({
     justifyContent: 'center',
   },
 });
-
 const TrainerList = ({ trainer, searchValue, reviews }) => {
   const style = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
-
   return (
     <Col className={styles.card_container}>
       {((trainer.first_name.toLowerCase().includes(searchValue.toLowerCase())
@@ -37,7 +36,7 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
         <div className={styles.classScroll}>
           <div className={styles.classCard}>
             <div className={styles.classPhotoContainer}>
-              <img className={styles.classPhoto} src={trainer.photo_url} alt="trainer" />
+              <img className={styles.classPhoto} src={trainer.photo_url || noImage} alt="trainer" />
             </div>
             <div className={styles.classInformation}>
               <div className={styles.classNameContainer}>
@@ -64,7 +63,7 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
                 <div className={style.root}>
                   <Box className="reviews" component="fieldset" mb={3} borderColor="transparent">
                     <Typography component="legend"><strong>Overall Rating</strong></Typography>
-                    <Rating name="read-only" value={reviews.rating} readOnly />
+                    {reviews && <Rating name="read-only" value={reviews.rating} readOnly />}
                   </Box>
                 </div>
                 <button
@@ -85,5 +84,4 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
     </Col>
   );
 };
-
 export default TrainerList;
