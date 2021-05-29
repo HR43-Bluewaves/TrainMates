@@ -50,7 +50,6 @@ const TrainerClasses = () => {
                     Details
                   </button>
                 </div>
-
               </Row>
             </div>
           </div>

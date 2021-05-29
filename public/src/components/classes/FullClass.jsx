@@ -37,13 +37,11 @@ const useStyles = makeStyles((theme) => ({
 const FullClass = () => {
   const session = useSelector((state) => state.sessionReducer.session);
   const user = useSelector((state) => state.userReducer.user);
-  const trainerProfile = useSelector((state) => state.trainerProfileReducer.trainerProfile);
+  const profile = useSelector((state) => state.trainerProfileReducer.profile);
   const [time, setTime] = useState('');
   const [friends, setFriends] = useState('');
   const classes = useStyles();
   const history = useHistory();
-  console.log(trainerProfile, 'THIS IS TRAINERS');
-  console.log(session, 'THIS IS SESSION DATA');
 
   const handleBooking = () => {
     const packagedInfo = {
@@ -79,13 +77,13 @@ const FullClass = () => {
               <Row className={style.trainerInformation}>
                 <div>
                   <Col>
-                    <img className={style.classInfoImage} src={session.trainer.photo_url} alt="" />
+                    <img className={style.classInfoImage} src={profile.photo_url} alt="" />
                   </Col>
                   <Col className={style.teacherBio}>
                     <ul>
-                      <p>{`${session.trainer.first_name} ${session.trainer.last_name}`}</p>
-                      <p>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</p>
-                      <p>{session.trainer.email}</p>
+                      <p>{`${profile.first_name} ${profile.last_name}`}</p>
+                      <p>{`${profile.city} ${profile.state}, ${profile.zip}`}</p>
+                      <p>{profile.email}</p>
 
                     </ul>
                   </Col>
