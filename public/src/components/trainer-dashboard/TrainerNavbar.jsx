@@ -8,7 +8,8 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import styles from '../user-dashboard/home_nav.module.css';
 import DropDown from './dynamic_dropdown/DropDown';
 
-const NavBar = () => {
+// eslint-disable-next-line react/prop-types
+const NavBar = ({ addClass }) => {
   const history = useHistory();
 
   const handleHome = () => {
@@ -50,7 +51,7 @@ const NavBar = () => {
           <button className={styles.button} type="submit" onClick={handleClasses}>
             Your Classes
           </button>
-          <button className={styles.button} type="submit" onClick={handleClasses}>
+          <button className={styles.button} type="submit" onClick={addClass}>
             Add a Class
           </button>
         </div>

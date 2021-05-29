@@ -134,6 +134,20 @@ const queries = {
         res.status(400).send(err);
       });
   },
+  addClass: (req, res) => {
+    const {
+      name, description, id, url,
+    } = req.body;
+    console.log(req.body);
+    db.query(`INSERT INTO classes (class_name, photo_url, description, teacher_id) VALUES ('${name}', '${url}', '${description}', ${id})`)
+      .then((result) => {
+        res.status(200).send(result);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).send(err);
+      });
+  },
   getTrainersRnR: (req, res) => {
     db.query('SELECT * FROM trainer_reviews')
       .then((result) => {

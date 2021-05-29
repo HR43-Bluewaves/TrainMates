@@ -21,17 +21,3 @@ const LoginChoice = ({ setLoginType, loginType }) => {
 };
 
 export default LoginChoice;
-// <Button onClick={() => {
-//   setType('login');
-//   setLoginType('trainer');
-// }}
-// >
-//   Trainer
-// </Button>
-// <Button onClick={() => {
-//   setType('login');
-//   setLoginType('user');
-// }}
-// >
-//   User
-// </Button>

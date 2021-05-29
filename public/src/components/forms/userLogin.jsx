@@ -41,7 +41,8 @@ const UserLogin = ({ userType }) => {
         if (data.length) {
           data[0].type = userType;
           dispatch({ type: 'user', user: data[0] });
-          history.push('/home');
+          const route = userType === 'user' ? '/home' : '/trainerdashboard';
+          history.push(route);
         } else {
           // something telling username/password is invalid
         }
