@@ -10,10 +10,10 @@ import Login from '../forms/Login';
 
 const TrainerHome = () => {
   const dispatch = useDispatch();
-  const [classes, setClasses] = useState([]);
+  // const [classes, setClasses] = useState([]);
   const [modalType, setModalType] = useState('');
   const user = useSelector((state) => state.userReducer.user);
-  const courses = useSelector((state) => state.classesReducer.classes); //Bingyi here
+  const courses = useSelector((state) => state.classesReducer.classes);
   const TeacherUpcomingClasses = useSelector((state) => state.upcomingReducer.classes);
   console.log('Trainerside', user);
   console.log('Teacher upcomg class', TeacherUpcomingClasses);
@@ -73,7 +73,7 @@ const TrainerHome = () => {
               <div className={`${styles.promition_container}`}>
                 <h1 className={styles.h1}>Trending</h1>
                 <div className={`${styles.class_container_below}`}>
-                  {classes.map((course) => (
+                  {courses.map((course) => (
                     <motion.div
                       whileHover={{ scale: 1.1, originX: 0 }}
                       transition={{ type: 'spring', stiffness: 300 }}
