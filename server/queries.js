@@ -30,10 +30,10 @@ const queries = {
     let processedUsers = '{';
     other_users.split(',').map((user, index) => {
       if (index !== other_users.split(',').length - 1) {
-        const newWord = `"${user.trim()}",`;
+        const newWord = `"${user.trim().split("'").join("''")}",`;
         processedUsers += newWord;
       } else {
-        const newWord = `"${user.trim()}"`;
+        const newWord = `"${user.trim().split("'").join("''")}"`;
         processedUsers += newWord;
       }
     });

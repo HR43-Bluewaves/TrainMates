@@ -131,4 +131,14 @@ pool.query(creatTable)
       pool.query(insertData + trainerData).then(() => console.log(`Trainer '${trainer.first_name}' added`));
     });
   })
+  .then(() => {
+    pool.query(`
+    ALTER TABLE ${tableName}
+    DROP COLUMN TRAINER_ID,
+    ADD COLUMN TRAINER_ID SERIAL;
+    `)
+      .then(() => {
+        console.log('Readded trainer ID');
+      });
+  })
   .catch((err) => console.error('Error executing query', err.stack));
