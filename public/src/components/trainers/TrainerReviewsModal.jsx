@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
@@ -27,7 +28,13 @@ const TrainerReviews = () => {
         {reviews.map((review) => (
           <Row>
             {review.trainer_id === profile.trainer_id ? (
-              review.comment
+              <div>
+                <span>
+                  {review.rating}
+                </span>
+                <br />
+                {review.comment}
+              </div>
             ) : null}
           </Row>
         ))}
