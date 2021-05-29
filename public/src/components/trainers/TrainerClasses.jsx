@@ -6,7 +6,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import cssStyle from './trainer.module.css';
 
 const TrainerClasses = () => {

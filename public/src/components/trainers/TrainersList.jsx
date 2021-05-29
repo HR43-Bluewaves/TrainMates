@@ -27,6 +27,7 @@ const useStyles = makeStyles({
 
 const TrainerList = ({ trainer, searchValue, reviews }) => {
   // eslint-disable-next-line no-console
+  console.log(reviews);
   const style = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();

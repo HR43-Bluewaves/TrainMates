@@ -11,13 +11,13 @@ import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 // import Rating from '@material-ui/lab/Rating';
 // import Box from '@material-ui/core/Box';
 // import Typography from '@material-ui/core/Typography';
-import { Row, Col } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import Navbar from '../user-dashboard/Navbar';
 import TrainerClasses from './TrainerClasses';
 import RatingsAndReviewsModal from './R&RModal';
 import Login from '../forms/Login';
 import TrainerReviewsModal from './TrainerReviewsModal';
-import styles from './makeStyles';
+// import styles from './makeStyles';
 import cssStyle from './trainer.module.css';
 
 const TrainerProfile = () => {
@@ -43,7 +43,8 @@ const TrainerProfile = () => {
         <Row>
           <div className={`${cssStyle.classScrollInformation} col-4`}>
             <motion.div
-              className={cssStyle.userInformationContainer}>
+              className={cssStyle.userInformationContainer}
+            >
               <h1 className={cssStyle.profileText}>Profile</h1>
               <Row className={cssStyle.photoContainer}>
                 <img className={cssStyle.userPhoto} src={profile.photo_url} alt="photos" />
