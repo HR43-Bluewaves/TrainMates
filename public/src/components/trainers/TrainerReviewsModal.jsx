@@ -30,10 +30,16 @@ const TrainerReviews = () => {
     setOpen(false);
   };
 
-  let result = 0;
-  for (let i = 0; i < reviews.length; i++) {
-    result += (reviews[i].rating) / reviews.length;
-  }
+  const getAverageRating = () => {
+    let result = 0;
+    reviews.forEach((review) => {
+      if (review.trainer_id === profile.trainer_id) {
+        (result += review.rating) / reviews.length;
+      }
+    });
+    return result;
+  };
+
   const body = (
     <div style={modalStyle} className={style.paper}>
       <div>
@@ -60,7 +66,7 @@ const TrainerReviews = () => {
         <div className={cssStyle.starRatings}>
           <Box component="fieldset" mb={3} borderColor="transparent">
             <Typography component="legend">Overall Rating</Typography>
-            <Rating name="read-only" value={result} readOnly />
+            <Rating name="read-only" value={getAverageRating()} readOnly />
           </Box>
         </div>
       </div>
