@@ -23,14 +23,22 @@ const queries = {
       });
   },
   getSessionsForTrainer: (req, res) => {
-    const queryString = `select sesh.session_id, sesh.time, sesh.other_users,
+    const queryString = `select combined_sesh.session_id, combined_sesh.time, combined_sesh.other_users,
+    combined_sesh.user_first_name, combined_sesh.user_last_name,
     class.class_id, class.class_name, class.photo_url as class_photo, class.description as class_description, class.teacher_id,
     trainer.first_name as trainer_first_name, trainer.last_name as trainer_last_name,
     trainer.gender, trainer.email, trainer.city, trainer.state, trainer.zip, trainer.photo_url as trainer_photo
-    from sessions as sesh
-    inner join classes as class on sesh.class_id = class.class_id
-    inner join trainers as trainer on trainer.trainer_id = sesh.trainer_id
-    where sesh.trainer_id=${req.params.id};`;
+    from (
+      select sesh.*,
+      users.first_name as user_first_name, users.last_name as user_last_name
+        from sessions as sesh
+        inner join users on users.user_id = sesh.user_id
+        where sesh.trainer_id=${req.params.id}
+    ) as combined_sesh
+    inner join classes as class on combined_sesh.class_id = class.class_id
+    inner join trainers as trainer on trainer.trainer_id = combined_sesh.trainer_id
+    where combined_sesh.trainer_id=${req.params.id};
+    `;
     db.query(queryString)
       .then((result) => {
         res.status(200).send(result.rows);
