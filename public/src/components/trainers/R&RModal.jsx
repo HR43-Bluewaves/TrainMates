@@ -12,6 +12,7 @@ import Modal from '@material-ui/core/Modal';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import styles from './makeStyles';
+import cssStyle from './trainer.module.css';
 
 const RatingsAndReviewsModal = () => {
   const profile = useSelector((state) => state.trainerProfileReducer.profile);
@@ -102,11 +103,13 @@ const RatingsAndReviewsModal = () => {
 
   return (
     <div>
-      <Button type="button" onClick={handleOpen}>
+      <button type="button" onClick={handleOpen} className={cssStyle.button}>
         Give
+        {' '}
         {profile.first_name}
+        {' '}
         a Rating and Review!
-      </Button>
+      </button>
       <Modal
         open={open}
         onClose={handleClose}

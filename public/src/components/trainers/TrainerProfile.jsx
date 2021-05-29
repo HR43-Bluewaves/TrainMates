@@ -4,53 +4,48 @@ import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
-import Rating from '@material-ui/lab/Rating';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+// import Rating from '@material-ui/lab/Rating';
+// import Box from '@material-ui/core/Box';
+// import Typography from '@material-ui/core/Typography';
+import { Row } from 'react-bootstrap';
 import Navbar from '../user-dashboard/Navbar';
 import TrainerClasses from './TrainerClasses';
 import RatingsAndReviewsModal from './R&RModal';
 import Login from '../forms/Login';
 import TrainerReviewsModal from './TrainerReviewsModal';
-import styles from './makeStyles';
+// import styles from './makeStyles';
+import cssStyle from './trainer.module.css';
 
 const TrainerProfile = () => {
-  const style = styles.useStyles();
+  // const style = styles.useStyles();
   const [modalType, setModalType] = useState('');
   const profile = useSelector((state) => state.trainerProfileReducer.profile);
-  const reviews = useSelector((state) => state.trainerReviewsReducer.reviews);
-
-  const getAverageRating = () => {
-    let result = 0;
-    reviews.forEach((review) => {
-      result += review.rating;
-    });
-    return result / reviews.length;
-  };
+  // const reviews = useSelector((state) => state.trainerReviewsReducer.reviews);
 
   const modalClose = () => {
     setModalType('');
   };
 
   return (
-    <Container fluid className="userInformationPage">
+    <div className={cssStyle.userInformationPage}>
       <Navbar />
       <Login modalClose={modalClose} modalType={modalType} userId={profile.user_id} />
       <motion.div
         initial={{ x: '200vw' }}
         animate={{ x: 0 }}
         transition={{ duration: 1.5, type: 'spring', stiffness: 50 }}
-      >
+      />
+      <Container className={cssStyle.bookingContainer}>
         <Row>
-          <Col className="trainerContainer" sm={4}>
-            <motion.Col className="userInformationContainer">
-              <h1 className="profileText">Profile</h1>
-              <Row className="photoContainer">
-                <img className="userPhoto" src={profile.photo_url} alt="photos" />
+          <div className={`${cssStyle.classScrollInformation} col-4`}>
+            <motion.div
+              className={cssStyle.userInformationContainer}
+            >
+              <h1 className={cssStyle.profileText}>Profile</h1>
+              <Row className={cssStyle.photoContainer}>
+                <img className={cssStyle.userPhoto} src={profile.photo_url} alt="photos" />
               </Row>
-              <Row className="userInformation">
+              <Row className={cssStyle.userInformation}>
                 <motion.h3
                   animate={{ color: '#C06014' }}
                   transition={{ delay: 1, duration: 2 }}
@@ -74,29 +69,25 @@ const TrainerProfile = () => {
                   {` ${profile.email}`}
                 </p>
               </Row>
-              <RatingsAndReviewsModal />
-              <div className={style.root}>
-                <div className="starRatings">
-                  <Box component="fieldset" mb={3} borderColor="transparent">
-                    <Typography component="legend">Overall Rating</Typography>
-                    <Rating name="read-only" value={getAverageRating()} readOnly />
-                  </Box>
-                </div>
+              <TrainerReviewsModal />
+              <div className={cssStyle.ratingContainer}>
+                <RatingsAndReviewsModal />
               </div>
-            </motion.Col>
-            <TrainerReviewsModal />
-          </Col>
-          <Col className="classScrollInformation" med={8}>
-            <Row className="trainerClassText">
+            </motion.div>
+          </div>
+          <div className={`${cssStyle.classScrollInformation} col-8`}>
+            <Row className={cssStyle.trainerClassText}>
               <h1>Classes</h1>
             </Row>
-            <Row className="scrollContainer">
-              <TrainerClasses />
+            <Row className={cssStyle.scrollContainer}>
+              <Row>
+                <TrainerClasses />
+              </Row>
             </Row>
-          </Col>
+          </div>
         </Row>
-      </motion.div>
-    </Container>
+      </Container>
+    </div>
   );
 };
 export default TrainerProfile;

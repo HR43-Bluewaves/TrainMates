@@ -6,7 +6,6 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import { Container, Row } from 'react-bootstrap';
 import styles from './trainer.module.css';
-import './trainer.css';
 import TrainersList from './TrainersList';
 import Navbar from '../user-dashboard/Navbar';
 import style from './makeStyles';

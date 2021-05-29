@@ -1,11 +1,11 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import { motion } from 'framer-motion';
+import cssStyle from './trainer.module.css';
 
 const TrainerClasses = () => {
   const history = useHistory();
@@ -18,42 +18,45 @@ const TrainerClasses = () => {
   });
 
   return (
-    <Col className="classCardContainer">
-      {filteredClasses.map((course) => (
-        <motion.Col
-          key={course.id}
-          className="classCardInformation"
-          whileHover={{ scale: 1.005 }}
-        >
-          <div>
-            <Row className="classPhotoContainer">
-              <img className="classPhoto" src={course.photo_url} alt="class" />
-            </Row>
-            <div>
-              <Row className="classInformation">
-                <div className="classNameContainer">
-                  <p className="className">{course.class_name}</p>
+    <Row className={cssStyle.classesContainer}>
+      {filteredClasses.map((course, index) => (
+        <Col key={index} className={cssStyle.profile_container}>
+          <div className={cssStyle.classScroll}>
+            <div className={cssStyle.classCard_profile}>
+              <div className={cssStyle.classPhotoContainer}>
+                <img className={cssStyle.classPhoto} src={course.photo_url} alt="class" />
+              </div>
+              <Row className={cssStyle.classInformation}>
+                <div className={cssStyle.classNameContainer}>
+                  <p className={cssStyle.className}>{course.class_name}</p>
                 </div>
-                <div className="textContainer">
-                  <p className="classText">{course.description}</p>
+                <div className={cssStyle.bottom_container}>
+                  <div className={cssStyle.classText}>
+                    {course.description.length >= 100 ? (
+                      <p>
+                        {course.description.slice(0, 100)}
+                        ...
+                      </p>
+                    ) : course.description}
+                  </div>
+                  <button
+                    type="button"
+                    className={cssStyle.detailButton}
+                    onClick={() => {
+                      dispatch({ type: 'session', session: course });
+                      history.push('/class-info');
+                    }}
+                  >
+                    Details
+                  </button>
                 </div>
+
               </Row>
             </div>
-            <Row>
-              <Button
-                className="showDetailButton"
-                onClick={() => {
-                  dispatch({ type: 'session', session: course });
-                  history.push('/class-info');
-                }}
-              >
-                Details
-              </Button>
-            </Row>
           </div>
-        </motion.Col>
+        </Col>
       ))}
-    </Col>
+    </Row>
   );
 };
 

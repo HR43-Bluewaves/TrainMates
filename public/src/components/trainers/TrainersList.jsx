@@ -1,3 +1,7 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/jsx-fragments */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -7,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import './trainer.css';
+// import './trainer.css';
 import styles from './trainer.module.css';
 
 const useStyles = makeStyles({
