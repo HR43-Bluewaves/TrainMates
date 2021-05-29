@@ -146,4 +146,5 @@ const FullClass = () => {
     </Container>
   );
 };
+
 export default FullClass;
