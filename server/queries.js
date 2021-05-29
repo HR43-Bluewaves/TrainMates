@@ -30,10 +30,10 @@ const queries = {
     let processedUsers = '{';
     other_users.split(',').map((user, index) => {
       if (index !== other_users.split(',').length - 1) {
-        const newWord = `"${user.trim()}",`;
+        const newWord = `"${user.trim().split("'").join("''")}",`;
         processedUsers += newWord;
       } else {
-        const newWord = `"${user.trim()}"`;
+        const newWord = `"${user.trim().split("'").join("''")}"`;
         processedUsers += newWord;
       }
     });
@@ -131,6 +131,20 @@ const queries = {
         res.status(200).send(result.rows);
       })
       .catch((err) => {
+        res.status(400).send(err);
+      });
+  },
+  addClass: (req, res) => {
+    const {
+      name, description, id, url,
+    } = req.body;
+    console.log(req.body);
+    db.query(`INSERT INTO classes (class_name, photo_url, description, teacher_id) VALUES ('${name}', '${url}', '${description}', ${id})`)
+      .then((result) => {
+        res.status(200).send(result);
+      })
+      .catch((err) => {
+        console.log(err);
         res.status(400).send(err);
       });
   },
