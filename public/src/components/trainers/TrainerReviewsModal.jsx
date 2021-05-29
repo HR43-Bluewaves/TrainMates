@@ -2,11 +2,11 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import Modal from '@material-ui/core/Modal';
 import Row from 'react-bootstrap/Row';
 import styles from './makeStyles';
 import './trainer.css';
+import cssStyle from './trainer.module.css';
 
 const TrainerReviews = () => {
   const style = styles.useStyles();
@@ -38,10 +38,10 @@ const TrainerReviews = () => {
   );
 
   return (
-    <div>
-      <Button className="reviewsButton" type="button" onClick={handleOpen}>
+    <div className={cssStyle.viewReview_contaier}>
+      <button className={cssStyle.button} type="button" onClick={handleOpen}>
         View {profile.first_name}s Reviews
-      </Button>
+      </button>
       <Modal
         open={open}
         onClose={handleClose}
