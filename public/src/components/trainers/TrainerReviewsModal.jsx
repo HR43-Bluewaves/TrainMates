@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-plusplus */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable arrow-body-style */
@@ -28,6 +30,10 @@ const TrainerReviews = () => {
     setOpen(false);
   };
 
+  let result = 0;
+  for (let i = 0; i < reviews.length; i++) {
+    result += (reviews[i].rating) / reviews.length;
+  }
   const body = (
     <div style={modalStyle} className={style.paper}>
       <div>
@@ -48,20 +54,13 @@ const TrainerReviews = () => {
     </div>
   );
 
-  const getAverageRating = () => {
-    let result = 0;
-    reviews.forEach((review) => {
-      result += review.rating;
-    });
-    return result / reviews.length;
-  };
   return (
     <div>
       <div className={cssStyle.viewReview_contaier} onClick={handleOpen}>
         <div className={cssStyle.starRatings}>
           <Box component="fieldset" mb={3} borderColor="transparent">
             <Typography component="legend">Overall Rating</Typography>
-            <Rating name="read-only" value={getAverageRating()} readOnly />
+            <Rating name="read-only" value={result} readOnly />
           </Box>
         </div>
       </div>

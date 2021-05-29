@@ -24,6 +24,7 @@ const useStyles = makeStyles({
 });
 
 const TrainerList = ({ trainer, searchValue, reviews }) => {
+  console.log(reviews);
   const style = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
