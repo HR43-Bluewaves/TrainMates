@@ -1,5 +1,3 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';

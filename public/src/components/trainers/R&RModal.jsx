@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-console */
-/* eslint-disable no-alert */
+/* eslint-disable no-unused-vars */
 /* eslint-disable object-shorthand */
 import React, { useState } from 'react';
 import axios from 'axios';
@@ -38,7 +36,6 @@ const RatingsAndReviewsModal = () => {
       reviewer_id: reviewObj.review_id,
       comment: comment,
     };
-    alert("You're review has been submited!");
     axios.post('/api/trainer-profile', formData)
       .then(({ data }) => {
         setNewReview(data);
@@ -100,7 +97,9 @@ const RatingsAndReviewsModal = () => {
   return (
     <div>
       <Button type="button" onClick={handleOpen}>
-        Give {profile.first_name} a Rating and Review!
+        Give
+        {profile.first_name}
+        a Rating and Review!
       </Button>
       <Modal
         open={open}
