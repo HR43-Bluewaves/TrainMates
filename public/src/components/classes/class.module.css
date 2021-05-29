@@ -13,6 +13,7 @@
   padding-left: 0px;
   padding-right: 0px;
   background-color: #424642;
+
 }
 
 /* User Information */
@@ -81,6 +82,11 @@
   /* height: 43vh; */
 }
 
+.classInfoImage{
+  height: 40vh;
+  width: 15vw;
+}
+
 .classPhoto {
   height: 100%;
   width: 100%;
@@ -104,6 +110,33 @@
 .className {
   display: table-cell;
   color: white;
+}
+
+.container{
+  min-width: 100%;
+  min-height: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+
+}
+
+.bookingBody{
+  min-width: 100vw;
+  min-height: 100vh;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: white;
+  color: black;
+}
+
+.classHeaderBooking{
+  border-bottom: solid;
+  border-bottom-color: #ff8c10b0;
+  border-width: 1px;
+  display: flex;
+  align-items: center;
+  font-weight: 50px;
+  flex-direction: column;
 }
 
 .classScroll {
@@ -161,4 +194,47 @@
 .mat-icon {
   position: relative;
   top: 7px;
+}
+
+.trainerInformation{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.trainerInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type=date], input[type=datetime-local], input[type=month], input[type=time] {
+  -webkit-appearance: listbox;
+  color: white;
+}
+
+.allInfo{
+  color: white;
+  background: black;
+}
+
+.containerTop{
+  color:white;
+  background: black;
+}
+
+.rightSide{
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  justify-content: center;
+}
+
+.instructor{
+  background: #c06014
 }
