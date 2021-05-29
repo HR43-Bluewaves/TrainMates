@@ -95,6 +95,18 @@ const queries = {
         res.status(400).send(err);
       });
   },
+  addTrainer: (req, res) => {
+    const {
+      username, password, email, first, last,
+    } = req.body;
+    db.query(`INSERT INTO trainers (first_name, last_name, email, user_name, password) VALUES ('${first}', '${last}', '${email}', '${username}', '${password}')`)
+      .then((result) => {
+        res.status(200).send(result);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  },
   getTrainerById: (req, res) => {
     db.query(`SELECT * FROM trainers WHERE trainer_id = ${req.params.id}`)
       .then((result) => {

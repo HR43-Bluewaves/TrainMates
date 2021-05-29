@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 // import PersonIcon from '@material-ui/icons/Person';
@@ -16,17 +15,17 @@ const NavBar = () => {
     history.push('/trainerdashboard');
   };
 
-  const handleTrainees = () => {
-    history.push('/trainees');
-  };
+  // const handleTrainees = () => {
+  //   history.push('/trainees');
+  // };
 
   const handleClasses = () => {
     history.push('/classes');
   };
 
-  const handleCart = () => {
-    history.push('/cart');
-  };
+  // const handleCart = () => {
+  //   history.push('/cart');
+  // };
 
   const handleChat = () => {
     history.push('/chat');
@@ -48,15 +47,14 @@ const NavBar = () => {
           <button className={styles.button} type="submit" onClick={handleHome}>
             Home
           </button>
-          <button className={styles.button} type="submit" onClick={handleTrainees}>
-            Trainers
+          <button className={styles.button} type="submit" onClick={handleClasses}>
+            Your Classes
           </button>
           <button className={styles.button} type="submit" onClick={handleClasses}>
-            Classes
+            Add a Class
           </button>
         </div>
         <div className={styles.icon_container}>
-          <ShoppingCartIcon onClick={handleCart} className={styles.icon} />
           <EmailIcon onClick={handleChat} className={styles.icon} />
           <NotificationsIcon onClick={handleNotifications} className={styles.icon} />
           {/* <MenuButton className="userIcon" /> */}

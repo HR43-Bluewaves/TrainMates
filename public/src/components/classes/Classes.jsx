@@ -3,13 +3,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Container from 'react-bootstrap/Container';
+import { Container, Row, Col } from 'react-bootstrap';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import ClassList from './ClassList';
 import Navbar from '../user-dashboard/Navbar';
-import './class.css';
+import styles from './class.module.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,29 +62,30 @@ const Classes = () => {
   };
 
   return (
-    <Container fluid className="classes">
+    <Container fluid className={styles.classes}>
       <Navbar />
       <Autocomplete
         classes={style}
         id="trainerSearchBar"
         options={classes}
         getOptionLabel={(option) => option.class_name}
-        style={{ width: 300 }}
+        style={{ width: 300, height: 50 }}
         onInputChange={handleChange}
         inputValue={searchValue}
         renderInput={(params) => <TextField {...params} label="Search..." variant="outlined" />}
       />
-      <h1>Classes</h1>
-      <div className="class-list">
-        {filteredClasses.map((course, index) => (
-          <ClassList
-            course={course}
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            searchValue={searchValue}
-          />
-        ))}
-      </div>
+      <Container className={styles['class-list']}>
+        <Row className={styles.classesContainer}>
+          {filteredClasses.map((course, index) => (
+            <ClassList
+              course={course}
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              searchValue={searchValue}
+            />
+          ))}
+        </Row>
+      </Container>
     </Container>
   );
 };

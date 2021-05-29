@@ -1,8 +1,10 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './home_nav.module.css';
+import { motion } from 'framer-motion';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import NavBar from './TrainerNavbar';
+import styles from './home_nav.module.css';
 
 const TrainerHome = () => {
   const [classes, setClasses] = useState([]);
@@ -17,16 +19,62 @@ const TrainerHome = () => {
 
   return (
     <div>
-      <h1>This is the trainer home page</h1>
-      <div className="user-home-page">
+      <div className={styles.home}>
         <NavBar />
-        <div className="upcomingClasses">
-          {classes.map((course, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <div key={index}>
-              {course.class_name}
+        <div className="container">
+          <div className={styles.row}>
+            <motion.div
+              className={`col-5 ${styles.upcoming_class}`}
+            >
+              <h1 className={styles.h1}>Upcoming Classes</h1>
+              <div className={`${styles.class_container}`}>
+                {classes.map((course) => (
+                  <motion.div
+                    whileHover={{ scale: 1.1, originX: 0 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    className={styles.classWrapper}
+                  >
+                    <p className={styles.classTitle}>{course.class_name}</p>
+                    <p>mm/dd/yyyy, time</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+            <div className={`col-7 ${styles.promotion}`}>
+              <div className={`${styles.promition_container}`}>
+                <h1 className={styles.h1}>Trending</h1>
+                <div className={`${styles.class_container_below}`}>
+                  {classes.map((course) => (
+                    <motion.div
+                      whileHover={{ scale: 1.1, originX: 0 }}
+                      transition={{ type: 'spring', stiffness: 300 }}
+                      className={styles.classWrapper_below}
+                    >
+                      <p className={styles.classTitle}>{course.class_name}</p>
+                      <p>{course.description}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             </div>
-          ))}
+          </div>
+          <motion.div>
+            <div className={`col-12 ${styles.recommend}`}>
+              <motion.div
+                className={`${styles.recommend_container}`}
+                initial={{ x: '-100vw' }}
+                animate={{ x: 0 }}
+                whileHover={{ scale: 1.1, originX: 0 }}
+                transition={{ duration: 1, type: 'spring', bounce: 0.5 }}
+              >
+                <h1>SHOW YOUR SKILLS.</h1>
+                <h1>
+                  ADD MORE CLASS NOW
+                  <ArrowRightIcon style={{ fontSize: 60, position: 'absolute', bottom: '28%' }} />
+                </h1>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>
