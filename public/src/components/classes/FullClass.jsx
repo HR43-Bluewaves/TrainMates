@@ -15,13 +15,11 @@ import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 import NavBar from '../user-dashboard/Navbar';
 import style from './class.module.css';
-
 // static data Jenny cho
 // This is placeholder for now but we will need to also do a put request to create session
 // Will need access to redux user ID to add to the class
 // Will need access to the trainer ID
 // Future will need to figure out date format with postgres
-
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -33,18 +31,14 @@ const useStyles = makeStyles((theme) => ({
     width: 250,
   },
 }));
-
 const FullClass = () => {
   const session = useSelector((state) => state.sessionReducer.session);
   const user = useSelector((state) => state.userReducer.user);
-  const trainerProfile = useSelector((state) => state.trainerProfileReducer.trainerProfile);
+  const profile = useSelector((state) => state.trainerProfileReducer.profile);
   const [time, setTime] = useState('');
   const [friends, setFriends] = useState('');
   const classes = useStyles();
   const history = useHistory();
-  console.log(trainerProfile, 'THIS IS TRAINERS');
-  console.log(session, 'THIS IS SESSION DATA');
-
   const handleBooking = () => {
     const packagedInfo = {
       class_id: session.class_id,
@@ -79,14 +73,13 @@ const FullClass = () => {
               <Row className={style.trainerInformation}>
                 <div>
                   <Col>
-                    <img className={style.classInfoImage} src={session.trainer.photo_url} alt="" />
+                    <img className={style.classInfoImage} src={profile.photo_url} alt="" />
                   </Col>
                   <Col className={style.teacherBio}>
                     <ul>
-                      <p>{`${session.trainer.first_name} ${session.trainer.last_name}`}</p>
-                      <p>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</p>
-                      <p>{session.trainer.email}</p>
-
+                      <p>{`${profile.first_name} ${profile.last_name}`}</p>
+                      <p>{`${profile.city} ${profile.state}, ${profile.zip}`}</p>
+                      <p>{profile.email}</p>
                     </ul>
                   </Col>
                 </div>
@@ -153,5 +146,4 @@ const FullClass = () => {
     </Container>
   );
 };
-
 export default FullClass;
