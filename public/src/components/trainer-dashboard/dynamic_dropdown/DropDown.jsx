@@ -103,7 +103,7 @@ const DropDown = () => {
   // const user = useSelector((state) => state.userReducer.user);
 
   const handleUser = () => {
-    history.push('/user');
+    history.push('/trainer');
   };
 
   const handleLogOut = () => {
