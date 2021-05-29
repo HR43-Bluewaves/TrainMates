@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 import NavBar from '../user-dashboard/Navbar';
-import './class.module.css';
+import style from './class.module.css';
 
 // static data Jenny cho
 // This is placeholder for now but we will need to also do a put request to create session
@@ -42,8 +42,8 @@ const FullClass = () => {
   const [friends, setFriends] = useState('');
   const classes = useStyles();
   const history = useHistory();
-
-  const noImage = 'https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255634-stock-illustration-avatar-icon-male-profile-gray.jpg';
+  console.log(trainerProfile, 'THIS IS TRAINERS');
+  console.log(session, 'THIS IS SESSION DATA');
 
   const handleBooking = () => {
     const packagedInfo = {
@@ -59,92 +59,97 @@ const FullClass = () => {
   };
   // Do not touch the forms
   return (
-    <Container className="bookingBody">
+    <Container fluid className={style.bookingBody}>
       <NavBar />
-      <Row className="classNameContainer">
-        {' '}
-        <h1>{session.class_name}</h1>
-      </Row>
-      <Row className="classInfoContainer">
-        <Col className="classHeaderBooking">
-          <motion.h1
-            className="headerText"
-            whileHover={{ scale: 1.1, originX: 0 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            Instructor
-          </motion.h1>
-        </Col>
-        <Col className="bookingForm">
-          {' '}
-          <Row>
-            <h2>Desired time</h2>
-          </Row>
-          <form className={classes.container} noValidate>
-            <TextField
-              id="datetime-local"
-              label="Pick your classtime"
-              type="datetime-local"
-              className={classes.textField}
-              error={(new Date(time) <= new Date()) || time === ''}
-              helperText={(time !== '') && (new Date(time) >= new Date()) ? '' : 'Please pick an approriate time'}
-              // variant="filled"
-              onChange={(e) => setTime(e.target.value)}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </form>
-        </Col>
-      </Row>
-      <Row>
-        <Col className="teacherBio">
-          <Row>
-            <Col sm={2}>
-              <img className="classInfoImage" src={session.trainer.photo_url} alt="" />
-            </Col>
+      <Container className={style.containerTop}>
+        <Row className={style.classInfoContainer}>
+          <Col className={style.classHeaderBooking}>
+            <Row className={style.classNameContainer}>
+              {' '}
+              <h1>{session.class_name}</h1>
+            </Row>
+            <div className={style.trainerInfo}>
+              <Row>
+                <h2
+                  className={style.headerText}
+                >
+                  Instructor
+                </h2>
+              </Row>
+              <Row className={style.trainerInformation}>
+                <div>
+                  <Col>
+                    <img className={style.classInfoImage} src={session.trainer.photo_url} alt="" />
+                  </Col>
+                  <Col className={style.teacherBio}>
+                    <ul>
+                      <p>{`${session.trainer.first_name} ${session.trainer.last_name}`}</p>
+                      <p>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</p>
+                      <p>{session.trainer.email}</p>
 
-            <Col sm={4} className="bookInfoText">
-              <h5>{`${session.trainer.first_name} ${session.trainer.last_name}`}</h5>
-              <h5>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</h5>
-              <h5>{session.trainer.email}</h5>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-      <Row>
-        <Col className="classHeaderBooking">
-          <motion.h1
-            className="headerText"
-            whileHover={{ scale: 1.1, originX: 0 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            Description
-          </motion.h1>
-        </Col>
-        <Col>
-          <Form>
-            <Form.Group className="addFriends" controlId="formFriends">
-              <Form.Label>Add more friends!</Form.Label>
-              <Form.Control type="text" placeholder="Enter your friends" onChange={(e) => setFriends(e.target.value)} />
-              <Form.Text className="text-muted">
-                To add more than one, enter their full name separated by &quot;,&quot;
-              </Form.Text>
-            </Form.Group>
-          </Form>
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={2}>
-          <img className="classInfoImage" src={session.photo_url} alt="" />
-        </Col>
-        <Col sm={4} className="bookInfoText"><h5>{session.description}</h5></Col>
-        <Col>
-          <Button disabled={(time === '') || !(new Date(time) >= new Date())} onClick={handleBooking}>
-            Book this class
-          </Button>
-        </Col>
-      </Row>
+                    </ul>
+                  </Col>
+                </div>
+              </Row>
+            </div>
+            <div>
+              <Row className={style.classHeaderBooking}>
+                <h2
+                  className={style.headerText}
+                >
+                  Description
+                </h2>
+              </Row>
+              <Row>
+                <Col>
+                  <img className={style.classInfoImage} src={session.photo_url} alt="" />
+                </Col>
+                <Col>
+                  <p>{session.description}</p>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+          <Col className={style.rightSide}>
+            <Row>
+              <h2>Desired time</h2>
+            </Row>
+            <Row className={style.bookingForm}>
+              <form className={classes.container} noValidate>
+                <TextField
+                  id="datetime-local"
+                  label="Pick your classtime"
+                  type="datetime-local"
+                  className={classes.textField}
+                  error={(new Date(time) <= new Date()) || time === ''}
+                  helperText={(time !== '') && (new Date(time) >= new Date()) ? '' : 'Please pick an approriate time'}
+                  // variant="filled"
+                  onChange={(e) => setTime(e.target.value)}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </form>
+            </Row>
+            <Row>
+              <Form>
+                <Form.Group className={style.addFriends} controlId="formFriends">
+                  <Form.Label>Add more friends!</Form.Label>
+                  <Form.Control type="text" placeholder="Enter your friends" onChange={(e) => setFriends(e.target.value)} />
+                  <Form.Text className="text-muted">
+                    To add more than one, enter their full name separated by &quot;,&quot;
+                  </Form.Text>
+                </Form.Group>
+              </Form>
+            </Row>
+            <Row>
+              <Button disabled={(time === '') || !(new Date(time) >= new Date())} onClick={handleBooking}>
+                Book this class
+              </Button>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
     </Container>
   );
 };
