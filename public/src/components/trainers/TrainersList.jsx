@@ -5,9 +5,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { Button } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
-// import Row from 'react-bootstrap/Row';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
@@ -26,8 +24,11 @@ const useStyles = makeStyles({
 });
 
 const TrainerList = ({ trainer, searchValue, reviews }) => {
+<<<<<<< HEAD
   // eslint-disable-next-line no-console
   console.log(reviews);
+=======
+>>>>>>> c0606ed9879042b4ab1413ddf0e230220dba6633
   const style = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
   return (
     <Col className={styles.card_container}>
       {((trainer.first_name.toLowerCase().includes(searchValue.toLowerCase())
-        || trainer.last_name.toLowerCase().includes(searchValue)
+        || trainer.last_name.toLowerCase().includes(searchValue.toLowerCase())
         || trainer.city.toLowerCase().includes(searchValue))
       ) ? (
         <div className={styles.classScroll}>
@@ -52,8 +53,6 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
                 </p>
               </div>
               <div className={styles.textContainer}>
-                {/* <strong>Gender:</strong>
-                  {` ${trainer.gender}\n`} */}
                 <div className={styles.location}>
                   <strong>Location:</strong>
                   <p>

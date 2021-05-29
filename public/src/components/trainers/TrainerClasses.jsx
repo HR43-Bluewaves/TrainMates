@@ -1,6 +1,5 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/no-array-index-key */
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -34,7 +33,10 @@ const TrainerClasses = () => {
                 <div className={cssStyle.bottom_container}>
                   <div className={cssStyle.classText}>
                     {course.description.length >= 100 ? (
-                      <p>{course.description.slice(0, 100)}...</p>
+                      <p>
+                        {course.description.slice(0, 100)}
+                        ...
+                      </p>
                     ) : course.description}
                   </div>
                   <button

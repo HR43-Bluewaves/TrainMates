@@ -1,7 +1,3 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable no-plusplus */
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import { useSelector } from 'react-redux';

@@ -1,16 +1,10 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable arrow-body-style */
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-alert */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-console */
+/* eslint-disable arrow-body-style */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
-import { Container, Row, Col } from 'react-bootstrap';
-import { makeStyles } from '@material-ui/core/styles';
+import { Container, Row } from 'react-bootstrap';
 import styles from './trainer.module.css';
 import TrainersList from './TrainersList';
 import Navbar from '../user-dashboard/Navbar';
@@ -78,11 +72,10 @@ const Trainers = () => {
       />
       <Container className={styles['class-list']}>
         <Row className={styles.classesContainer}>
-          {console.log(trainers)}
           {filteredTrainers.map((trainer, index) => (
             <TrainersList
               trainer={trainer}
-              key={index}
+              key={trainer.id}
               searchValue={searchValue}
               reviews={reviews[index]}
             />

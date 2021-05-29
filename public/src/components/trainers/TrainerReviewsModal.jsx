@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable arrow-body-style */
+=======
+>>>>>>> c0606ed9879042b4ab1413ddf0e230220dba6633
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -34,7 +37,13 @@ const TrainerReviews = () => {
         {reviews.map((review) => (
           <Row>
             {review.trainer_id === profile.trainer_id ? (
-              review.comment
+              <div>
+                <span>
+                  {review.rating}
+                </span>
+                <br />
+                {review.comment}
+              </div>
             ) : null}
           </Row>
         ))}
