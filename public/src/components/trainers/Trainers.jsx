@@ -14,14 +14,11 @@ import style from './makeStyles';
 const Trainers = () => {
   const [searchValue, setSearchValue] = useState('');
   const trainers = useSelector((state) => state.trainersReducer.trainers);
-  const reviews = useSelector((state) => state.trainerReviewsReducer.reviews);
   const searchBarStyle = style.useStyles();
-  console.log('reviews', reviews);
+
   const filteredTrainers = trainers.filter((trainer) => {
     return trainer.first_name.toLowerCase().includes(searchValue.toLowerCase());
   });
-
-  console.log('filtered trainers', filteredTrainers);
 
   const handleChange = (event, value) => {
     setSearchValue(value);
@@ -42,12 +39,11 @@ const Trainers = () => {
       />
       <Container className={styles['class-list']}>
         <Row className={styles.classesContainer}>
-          {filteredTrainers.map((trainer, index) => (
+          {filteredTrainers.map((trainer) => (
             <TrainersList
               trainer={trainer}
               key={trainer.id}
               searchValue={searchValue}
-              reviews={reviews[index]}
             />
           ))}
         </Row>

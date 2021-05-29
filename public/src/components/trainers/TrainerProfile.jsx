@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable no-return-assign */
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import { useSelector } from 'react-redux';
@@ -20,7 +22,6 @@ const TrainerProfile = () => {
   // const style = styles.useStyles();
   const [modalType, setModalType] = useState('');
   const profile = useSelector((state) => state.trainerProfileReducer.profile);
-  // const reviews = useSelector((state) => state.trainerReviewsReducer.reviews);
 
   const modalClose = () => {
     setModalType('');
