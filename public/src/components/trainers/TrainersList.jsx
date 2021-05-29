@@ -60,6 +60,11 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
                     &nbsp;
                     {trainer.state}
                   </p>
+                  <b>
+                    &lsquo;
+                    {trainer.slogan}
+                    &lsquo;
+                  </b>
                 </div>
                 <div className={style.root}>
                   <Box className="reviews" component="fieldset" mb={3} borderColor="transparent">
