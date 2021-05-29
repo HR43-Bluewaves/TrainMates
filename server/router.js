@@ -41,6 +41,10 @@ router
   .get(db.getSessions);
 
 router
+  .route('/session/train/:id')
+  .get(db.getSessionsForTrainer);
+
+router
   .route('/trainer-reviews')
   .get(db.getTrainersRnR);
 
