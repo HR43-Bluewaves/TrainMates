@@ -1,14 +1,7 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/jsx-fragments */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { Button } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
-// import Row from 'react-bootstrap/Row';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
@@ -27,7 +20,6 @@ const useStyles = makeStyles({
 });
 
 const TrainerList = ({ trainer, searchValue, reviews }) => {
-  // eslint-disable-next-line no-console
   const style = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -35,7 +27,7 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
   return (
     <Col className={styles.card_container}>
       {((trainer.first_name.toLowerCase().includes(searchValue.toLowerCase())
-        || trainer.last_name.toLowerCase().includes(searchValue)
+        || trainer.last_name.toLowerCase().includes(searchValue.toLowerCase())
         || trainer.city.toLowerCase().includes(searchValue))
       ) ? (
         <div className={styles.classScroll}>
@@ -52,8 +44,6 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
                 </p>
               </div>
               <div className={styles.textContainer}>
-                {/* <strong>Gender:</strong>
-                  {` ${trainer.gender}\n`} */}
                 <div className={styles.location}>
                   <strong>Location:</strong>
                   <p>
@@ -62,7 +52,9 @@ const TrainerList = ({ trainer, searchValue, reviews }) => {
                     {trainer.state}
                   </p>
                   <b>
-                    &lsquo;{trainer.slogan}&lsquo;
+                    &lsquo;
+                    {trainer.slogan}
+                    &lsquo;
                   </b>
                 </div>
                 <div className={style.root}>

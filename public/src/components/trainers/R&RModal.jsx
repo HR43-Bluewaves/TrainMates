@@ -1,12 +1,12 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
 /* eslint-disable object-shorthand */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
+// /* eslint-disable no-console */
+// /* eslint-disable no-unused-vars */
+// /* eslint-disable object-shorthand */
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Modal from '@material-ui/core/Modal';
 import Rating from '@material-ui/lab/Rating';
@@ -17,17 +17,29 @@ const RatingsAndReviewsModal = () => {
   const profile = useSelector((state) => state.trainerProfileReducer.profile);
   const reviews = useSelector((state) => state.trainerReviewsReducer.reviews);
   const [newReview, setNewReview] = useState([]);
-  const [charValue, setCharValue] = useState('');
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState(0);
-  const [charsRemaining, setCharsRemaining] = useState('100 Characters Remaining');
+  const [charsRemaining, setCharsRemaining] = useState(`${50} Characters Remaining`);
   const [modalStyle] = useState(styles.getModalStyle);
   const style = styles.useStyles();
-  const history = useHistory();
 
-  const handleSubmit = () => {
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleReset = () => {
+    setComment('');
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.target.reset();
     let reviewObj = {};
     reviews.forEach((review) => {
       reviewObj = review;
@@ -38,32 +50,23 @@ const RatingsAndReviewsModal = () => {
       reviewer_id: reviewObj.review_id,
       comment: comment,
     };
-    alert("You're review has been submited!");
     axios.post('/api/trainer-profile', formData)
       .then(({ data }) => {
         setNewReview(data);
       })
       .catch((err) => console.error(err));
-    history.push('/home');
-  };
-
-  const handleCharChange = (event) => {
-    const input = event.target.value;
-    if (input.length <= 100) {
-      setCharsRemaining(`${100 - input.length} Characters Remaining`);
-    }
+    handleClose();
+    handleReset();
   };
 
   const handleChange = (event) => {
-    setCharValue(event.target.value);
+    const input = event.target.value;
     setComment(event.target.value);
-  };
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
+    if (input.length <= 50) {
+      setCharsRemaining(`${50 - input.length} Characters Required`);
+    } else {
+      setCharsRemaining(`${500 - input.length} Characters Remaining`);
+    }
   };
 
   const body = (
@@ -87,7 +90,7 @@ const RatingsAndReviewsModal = () => {
               {rating !== null && <Box ml={2}>{[hover !== -1 ? hover : rating]}</Box>}
             </Box>
             <b>Review</b>
-            <textarea onChange={(event) => { handleChange(event); handleCharChange(event); }} value={charValue} maxLength="100" name="body" rows="3" width="50" />
+            <textarea onChange={(event) => handleChange(event)} value={comment} maxLength="500" name="body" rows="3" width="100" />
             <p>{charsRemaining}</p>
           </div>
         </div>
@@ -100,7 +103,9 @@ const RatingsAndReviewsModal = () => {
   return (
     <div>
       <Button type="button" onClick={handleOpen}>
-        Give {profile.first_name} a Rating and Review!
+        Give
+        {profile.first_name}
+        a Rating and Review!
       </Button>
       <Modal
         open={open}
