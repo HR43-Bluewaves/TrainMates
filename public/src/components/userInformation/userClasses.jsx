@@ -1,5 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-restricted-globals */
 import React from 'react';
 // import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -7,32 +5,33 @@ import Row from 'react-bootstrap/Row';
 import { useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
+import style from './userInformation.module.css';
 
 const userClasses = () => {
   const classes = useSelector((state) => state.upcomingReducer.classes);
 
   return (
-    <Col className="classCardContainer">
-      {classes.map((course, index) => (
-        // eslint-disable-next-line react/no-array-index-key
+    <Col className={style.classCardContainer}>
+      {classes.map((course) => (
+        // eslint - disable - next - line react / no - array - index - key
         <motion.Col
-          key={index}
-          className="classCardInformation"
+          key={course.id}
+          className={style.classCardInformation}
           whileHover={{ scale: 1.005 }}
         >
-          <Row className="classPhotoContainer">
-            <img className="classPhoto" src={course.class_photo} alt="class" />
+          <Row className={style.classPhotoContainer}>
+            <img className={style.classPhoto} src={course.class_photo} alt="class" />
           </Row>
-          <Row className="classInformation">
-            <div className="classNameContainer">
-              <p className="className">{course.class_name}</p>
+          <Row className={style.classInformation}>
+            <div className={style.classNameContainer}>
+              <p className={style.className}>{course.class_name}</p>
             </div>
-            <div className="textContainer">
-              <p className="classText">{course.class_description}</p>
+            <div className={style.textContainer}>
+              <p className={style.classText}>{course.class_description}</p>
             </div>
           </Row>
-          <Row className="buttonFooter">
-            <Button onClick={() => { history.push('/class-info'); }}>Book Class</Button>
+          <Row className={style.buttonFooter}>
+            <Button>Book Class</Button>
           </Row>
         </motion.Col>
       ))}

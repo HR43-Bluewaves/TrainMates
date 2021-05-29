@@ -37,7 +37,6 @@ const ClassList = ({ course, searchValue }) => {
                     ...course,
                     trainer: teacher.data[0],
                   };
-                  console.log(courseWithTrainer);
                   dispatch({ type: 'session', session: courseWithTrainer });
                   history.push('/class-info');
                 }}
