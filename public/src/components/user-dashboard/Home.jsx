@@ -16,6 +16,7 @@ const Home = () => {
   const user = useSelector((state) => state.userReducer.user);
   const userClasses = useSelector((state) => state.upcomingReducer.classes);
   console.log('user classes', userClasses);
+  console.log('current user', user);
 
   const randomClass = () => {
     const randomIndex = Math.floor(Math.random() * classes.length);
