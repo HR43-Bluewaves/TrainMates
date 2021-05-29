@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
@@ -42,8 +43,13 @@ const TrainerClasses = () => {
                   <button
                     type="button"
                     className={cssStyle.detailButton}
-                    onClick={() => {
-                      dispatch({ type: 'session', session: course });
+                    onClick={async () => {
+                      const teacher = await axios.get(`/api/trainer/${course.teacher_id}`);
+                      const courseWithTrainer = {
+                        ...course,
+                        trainer: teacher.data[0],
+                      };
+                      dispatch({ type: 'session', session: courseWithTrainer });
                       history.push('/class-info');
                     }}
                   >
