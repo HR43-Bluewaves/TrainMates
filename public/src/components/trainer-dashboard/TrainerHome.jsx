@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import NavBar from './TrainerNavbar';
 import styles from './home_nav.module.css';

@@ -103,17 +103,13 @@ const RatingsAndReviewsModal = () => {
 
   return (
     <div>
-<<<<<<< HEAD
       <button type="button" onClick={handleOpen} className={cssStyle.button}>
-        Give {profile.first_name} a Rating and Review!
-      </button>
-=======
-      <Button type="button" onClick={handleOpen}>
         Give
+        {' '}
         {profile.first_name}
+        {' '}
         a Rating and Review!
-      </Button>
->>>>>>> c0606ed9879042b4ab1413ddf0e230220dba6633
+      </button>
       <Modal
         open={open}
         onClose={handleClose}
