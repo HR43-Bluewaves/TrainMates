@@ -124,16 +124,15 @@
 
 /* Body */
 .userInformationPage {
-  min-width: '100%';
-  min-height: '100%';
-  height: 100%;
+  width: 100vw;
+  height: 130vh;
   padding-left: 0px;
   padding-right: 0px;
+  background-color: black;
 }
-
 .html, body{
   height:100%;
-  background-color: lightgray;
+  background-color: black;
 }
 
 
@@ -185,7 +184,7 @@
   padding-bottom: 30px;
 }
 
-.classCardInformation {
+/* .classCardInformation {
   flex-direction: column;
   background-color: #f3f4ed;
   overflow: hidden;
@@ -195,7 +194,7 @@
   width: 35vh;
   height: 450px;
   padding-inline: 5vh;
-}
+} */
 
 .classPhoto {
   height: 100%;
@@ -258,9 +257,3 @@
   margin-left: 3vh;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
-  margin-left: 14vh;
-}

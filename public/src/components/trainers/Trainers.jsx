@@ -12,7 +12,6 @@ import TextField from '@material-ui/core/TextField';
 import { Container, Row, Col } from 'react-bootstrap';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from './trainer.module.css';
-import './trainer.css';
 import TrainersList from './TrainersList';
 import Navbar from '../user-dashboard/Navbar';
 import style from './makeStyles';

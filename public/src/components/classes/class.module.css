@@ -142,7 +142,7 @@
 
 .classes {
   width: 100vw;
-  height: 150vh;
+  height: fit-content;
   padding-left: 0px;
   padding-right: 0px;
   background-color: black;

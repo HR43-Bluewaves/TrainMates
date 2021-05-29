@@ -1,11 +1,16 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Modal from '@material-ui/core/Modal';
 import Row from 'react-bootstrap/Row';
-import styles from './makeStyles';
 import './trainer.css';
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import styles from './makeStyles';
 import cssStyle from './trainer.module.css';
 
 const TrainerReviews = () => {
@@ -37,11 +42,26 @@ const TrainerReviews = () => {
     </div>
   );
 
+  const getAverageRating = () => {
+    let result = 0;
+    reviews.forEach((review) => {
+      result += review.rating;
+    });
+    return result / reviews.length;
+  };
   return (
-    <div className={cssStyle.viewReview_contaier}>
-      <button className={cssStyle.button} type="button" onClick={handleOpen}>
+    <div>
+      <div className={cssStyle.viewReview_contaier} onClick={handleOpen}>
+        <div className={cssStyle.starRatings}>
+          <Box component="fieldset" mb={3} borderColor="transparent">
+            <Typography component="legend">Overall Rating</Typography>
+            <Rating name="read-only" value={getAverageRating()} readOnly />
+          </Box>
+        </div>
+      </div>
+      {/* <button className={cssStyle.button} type="button" >
         View {profile.first_name}s Reviews
-      </button>
+      </button> */}
       <Modal
         open={open}
         onClose={handleClose}

@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import cssStyle from './trainer.module.css';
 
 const TrainerClasses = () => {
   const history = useHistory();
@@ -19,36 +20,42 @@ const TrainerClasses = () => {
   });
 
   return (
-    <Col className="classCardContainer">
+    <Row className={cssStyle.classesContainer}>
       {filteredClasses.map((course, index) => (
-        <Col key={index} className="classCardInformation">
-          <Row className="classPhotoContainer">
-            <img className="classPhoto" src={course.photo_url} alt="class" />
-          </Row>
-          <Row className="classInformation">
-            <div className="classNameContainer">
-              <p className="className">{course.class_name}</p>
-            </div>
-            <div className="textcontainer">
-              <div className="classText">
-                {course.description.length >= 150 ? (
-                  <p>{course.description.slice(0, 150)}...</p>
-                ) : course.description}
+        <Col key={index} className={cssStyle.profile_container}>
+          <div className={cssStyle.classScroll}>
+            <div className={cssStyle.classCard_profile}>
+              <div className={cssStyle.classPhotoContainer}>
+                <img className={cssStyle.classPhoto} src={course.photo_url} alt="class" />
               </div>
+              <Row className={cssStyle.classInformation}>
+                <div className={cssStyle.classNameContainer}>
+                  <p className={cssStyle.className}>{course.class_name}</p>
+                </div>
+                <div className={cssStyle.bottom_container}>
+                  <div className={cssStyle.classText}>
+                    {course.description.length >= 100 ? (
+                      <p>{course.description.slice(0, 100)}...</p>
+                    ) : course.description}
+                  </div>
+                  <button
+                    type="button"
+                    className={cssStyle.detailButton}
+                    onClick={() => {
+                      dispatch({ type: 'session', session: course });
+                      history.push('/class-info');
+                    }}
+                  >
+                    Details
+                  </button>
+                </div>
+
+              </Row>
             </div>
-          </Row>
-          <Button
-            className="detailButton"
-            onClick={() => {
-              dispatch({ type: 'session', session: course });
-              history.push('/class-info');
-            }}
-          >
-            Details
-          </Button>
+          </div>
         </Col>
       ))}
-    </Col>
+    </Row>
   );
 };
 
