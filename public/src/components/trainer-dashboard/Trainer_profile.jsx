@@ -9,7 +9,7 @@ import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import EditIcon from '@material-ui/icons/Edit';
 import ChatIcon from '@material-ui/icons/Chat';
-import TrainerClasses from '../trainers/TrainerClasses';
+import TrainerClasses from './TrainerClassList';
 import NavBar from './TrainerNavbar';
 import Login from '../forms/Login';
 import style from '../userInformation/userInformation.module.css';
@@ -78,7 +78,7 @@ const TrainerProfileTrainerSide = () => {
                   <h1>Classes</h1>
                 </Row>
                 <Row className={style.scrollContainer}>
-                  {/* <TrainerClasses /> */}
+                  <TrainerClasses />
                 </Row>
               </Col>
             </Row>

@@ -21,7 +21,7 @@ const NavBar = ({ addClass }) => {
   // };
 
   const handleClasses = () => {
-    // history.push('/classes');
+    history.push('/trainer');
   };
 
   // const handleCart = () => {

@@ -10,16 +10,11 @@ import cssStyle from './trainer.module.css';
 const TrainerClasses = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const courses = useSelector((state) => state.classesReducer.classes);
-  const profile = useSelector((state) => state.trainerProfileReducer.profile);
-
-  const filteredClasses = courses.filter((course) => {
-    return course.teacher_id === profile.trainer_id ? course.photo_url : null;
-  });
-
+  const classes = useSelector((state) => state.classesReducer.classes);
+  console.log('TRAINER CLASSES!!!!!!!!!!!!');
   return (
     <Row className={cssStyle.classesContainer}>
-      {filteredClasses.map((course, index) => (
+      {classes.map((course, index) => (
         <Col key={index} className={cssStyle.profile_container}>
           <div className={cssStyle.classScroll}>
             <div className={cssStyle.classCard_profile}>
