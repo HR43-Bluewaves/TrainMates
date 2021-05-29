@@ -10,10 +10,10 @@ import cssStyle from './trainer.module.css';
 const TrainerClasses = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const classes = useSelector((state) => state.classesReducer.classes);
+  const courses = useSelector((state) => state.classesReducer.classes);
   const profile = useSelector((state) => state.trainerProfileReducer.profile);
 
-  const filteredClasses = classes.filter((course) => {
+  const filteredClasses = courses.filter((course) => {
     return course.teacher_id === profile.trainer_id ? course.photo_url : null;
   });
 

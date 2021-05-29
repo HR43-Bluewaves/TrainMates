@@ -18,7 +18,8 @@ import TrainerHome from '../components/trainer-dashboard/TrainerHome';
 import userInformation from '../components/userInformation/UserInformation';
 // Test
 import FullClass from '../components/classes/FullClass';
-import TrainerProfile from '../components/trainers/TrainerProfile';
+import TrainerProfileUser from '../components/trainers/TrainerProfile';
+import TrainerProfile from '../components/trainer-dashboard/Trainer_profile';
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -36,7 +37,8 @@ const AppRouter = () => (
         <Route path="/trainerdashboard" component={TrainerHome} />
         <Route path="/user" component={userInformation} />
         <Route path="/class-info" component={FullClass} />
-        <Route path="/trainer-profile" component={TrainerProfile} />
+        <Route path="/trainer-profile" component={TrainerProfileUser} />
+        <Route path="/trainer" component={TrainerProfile} />
       </Switch>
     </div>
   </BrowserRouter>

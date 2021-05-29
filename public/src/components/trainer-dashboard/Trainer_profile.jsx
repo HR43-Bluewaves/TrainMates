@@ -10,7 +10,7 @@ import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import EditIcon from '@material-ui/icons/Edit';
 import ChatIcon from '@material-ui/icons/Chat';
 import TrainerClasses from './TrainerClassList';
-import NavBar from '../user-dashboard/Navbar';
+import NavBar from './TrainerNavbar';
 import Login from '../forms/Login';
 import style from '../userInformation/userInformation.module.css';
 
@@ -29,7 +29,6 @@ const TrainerProfileTrainerSide = () => {
   const handleEdit = () => {
     setModalType('edit');
   };
-  console.log('TRAINER PROFILE');
   if (user) {
     return (
       <Container fluid className={style.userInformationPage}>
