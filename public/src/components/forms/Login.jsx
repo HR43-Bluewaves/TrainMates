@@ -15,6 +15,7 @@ import UserLogin from './userLogin';
 import LoginChoice from './LoginChoice';
 import SignUp from './SignUp';
 import EditProfile from './EditProfile';
+import AddClass from './AddClass';
 
 const theme = createMuiTheme({
   palette: {
@@ -67,6 +68,9 @@ const Login = ({ modalClose, modalType, userId }) => {
     }
     if (type === 'edit') {
       return <EditProfile editStatus={editStatus} userId={userId} />;
+    }
+    if (type === 'class') {
+      return <AddClass editStatus={editStatus} userId={userId} />;
     }
     return <div />;
   };

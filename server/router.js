@@ -11,7 +11,8 @@ router
 
 router
   .route('/classes')
-  .get(db.getAllClasses);
+  .get(db.getAllClasses)
+  .post(db.addClass);
 
 router
   .route('/trainers')
