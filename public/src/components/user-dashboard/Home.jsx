@@ -15,8 +15,6 @@ const Home = () => {
   const trainers = useSelector((state) => state.trainersReducer.trainers);
   const user = useSelector((state) => state.userReducer.user);
   const userClasses = useSelector((state) => state.upcomingReducer.classes);
-  console.log('user classes', userClasses);
-  console.log('current user', user);
 
   const randomClass = () => {
     const randomIndex = Math.floor(Math.random() * classes.length);
@@ -87,14 +85,14 @@ const Home = () => {
             >
               <h1 className={styles.h1}>Upcoming Classes</h1>
               <div className={`${styles.class_container}`}>
-                {classes.map((course) => (
+                {userClasses.map((course) => (
                   <motion.div
                     whileHover={{ scale: 1.1, originX: 0 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                     className={styles.classWrapper}
                   >
                     <p className={styles.classTitle}>{course.class_name}</p>
-                    <p>mm/dd/yyyy, time</p>
+                    <p>{`${course.time.split('T')[0]} at ${course.time.split('T')[1].split('.')[0].slice(0, 5)} with ${course.trainer_first_name} ${course.trainer_last_name}`}</p>
                   </motion.div>
                 ))}
               </div>

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
@@ -15,13 +16,11 @@ import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 import NavBar from '../user-dashboard/Navbar';
 import style from './class.module.css';
-
 // static data Jenny cho
 // This is placeholder for now but we will need to also do a put request to create session
 // Will need access to redux user ID to add to the class
 // Will need access to the trainer ID
 // Future will need to figure out date format with postgres
-
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -33,18 +32,15 @@ const useStyles = makeStyles((theme) => ({
     width: 250,
   },
 }));
-
 const FullClass = () => {
   const session = useSelector((state) => state.sessionReducer.session);
   const user = useSelector((state) => state.userReducer.user);
-  const trainerProfile = useSelector((state) => state.trainerProfileReducer.trainerProfile);
+  const profile = useSelector((state) => state.trainerProfileReducer.profile);
   const [time, setTime] = useState('');
   const [friends, setFriends] = useState('');
   const classes = useStyles();
+  console.log('SESSION', session);
   const history = useHistory();
-  console.log(trainerProfile, 'THIS IS TRAINERS');
-  console.log(session, 'THIS IS SESSION DATA');
-
   const handleBooking = () => {
     const packagedInfo = {
       class_id: session.class_id,
@@ -77,6 +73,7 @@ const FullClass = () => {
                 </h2>
               </Row>
               <Row className={style.trainerInformation}>
+                {/* {session.teacher_id === profile.trainer_id ? ( */}
                 <div>
                   <Col>
                     <img className={style.classInfoImage} src={session.trainer.photo_url} alt="" />
@@ -86,10 +83,10 @@ const FullClass = () => {
                       <p>{`${session.trainer.first_name} ${session.trainer.last_name}`}</p>
                       <p>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</p>
                       <p>{session.trainer.email}</p>
-
                     </ul>
                   </Col>
                 </div>
+                {/* ) : null} */}
               </Row>
             </div>
             <div>
@@ -102,6 +99,9 @@ const FullClass = () => {
               </Row>
               <Row>
                 <Col>
+                  <div>
+                    <Col />
+                  </div>
                   <img className={style.classInfoImage} src={session.photo_url} alt="" />
                 </Col>
                 <Col>
@@ -153,5 +153,4 @@ const FullClass = () => {
     </Container>
   );
 };
-
 export default FullClass;

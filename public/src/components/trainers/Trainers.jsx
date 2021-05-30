@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable arrow-body-style */
 import React, { useState } from 'react';
@@ -13,7 +14,6 @@ import style from './makeStyles';
 const Trainers = () => {
   const [searchValue, setSearchValue] = useState('');
   const trainers = useSelector((state) => state.trainersReducer.trainers);
-  const reviews = useSelector((state) => state.trainerReviewsReducer.reviews);
   const searchBarStyle = style.useStyles();
 
   const filteredTrainers = trainers.filter((trainer) => {
@@ -39,12 +39,11 @@ const Trainers = () => {
       />
       <Container className={styles['class-list']}>
         <Row className={styles.classesContainer}>
-          {filteredTrainers.map((trainer, index) => (
+          {filteredTrainers.map((trainer) => (
             <TrainersList
               trainer={trainer}
               key={trainer.id}
               searchValue={searchValue}
-              reviews={reviews[index]}
             />
           ))}
         </Row>

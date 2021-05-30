@@ -2,17 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import NavBar from './TrainerNavbar';
 import styles from './home_nav.module.css';
 import Login from '../forms/Login';
 
 const TrainerHome = () => {
+  const dispatch = useDispatch();
   const [classes, setClasses] = useState([]);
   const [modalType, setModalType] = useState('');
   const user = useSelector((state) => state.userReducer.user);
-  console.log(user);
+  const courses = useSelector((state) => state.classesReducer.classes); //Bingyi here
+  const TeacherUpcomingClasses = useSelector((state) => state.upcomingReducer.classes);
+  console.log('Trainerside', user);
+  console.log('Teacher upcomg class', TeacherUpcomingClasses);
 
   const addClass = () => {
     setModalType('class');
@@ -20,10 +24,23 @@ const TrainerHome = () => {
   const modalClose = () => {
     setModalType('');
   };
+
   useEffect(() => {
-    axios.get('http://localhost:3000/api/classes')
-      .then((res) => {
-        setClasses(res.data);
+    axios.get('/api/classes')
+      .then(({ data }) => {
+        const processedData = data.filter((course) => (
+          course.teacher_id === user.trainer_id
+        ));
+        console.log('Processed', processedData);
+        dispatch({ type: 'classes', classes: processedData });
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    axios.get(`/api/session/train/${user.trainer_id}`)
+      .then(({ data }) => {
+        dispatch({ type: 'upcoming', classes: data });
       })
       .catch((err) => console.error(err));
   }, []);
@@ -40,14 +57,14 @@ const TrainerHome = () => {
             >
               <h1 className={styles.h1}>Upcoming Classes</h1>
               <div className={`${styles.class_container}`}>
-                {classes.map((course) => (
+                {TeacherUpcomingClasses.map((course) => (
                   <motion.div
                     whileHover={{ scale: 1.1, originX: 0 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                     className={styles.classWrapper}
                   >
                     <p className={styles.classTitle}>{course.class_name}</p>
-                    <p>mm/dd/yyyy, time</p>
+                    <p>{`${course.time.split('T')[0]} at ${course.time.split('T')[1].split('.')[0].slice(0, 5)} with ${course.user_first_name} ${course.user_last_name}`}</p>
                   </motion.div>
                 ))}
               </div>
