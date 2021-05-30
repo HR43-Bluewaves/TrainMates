@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 // import PersonIcon from '@material-ui/icons/Person';
@@ -9,7 +10,7 @@ import styles from '../user-dashboard/home_nav.module.css';
 import DropDown from './dynamic_dropdown/DropDown';
 
 // eslint-disable-next-line react/prop-types
-const NavBar = ({ addClass }) => {
+const TrainerNavBar = ({ addClass }) => {
   const history = useHistory();
 
   const handleHome = () => {
@@ -21,12 +22,12 @@ const NavBar = ({ addClass }) => {
   // };
 
   const handleClasses = () => {
-    history.push('/trainer');
+    history.push('/trainer-yourclass');
   };
 
-  // const handleCart = () => {
-  //   history.push('/cart');
-  // };
+  const handleCart = () => {
+    history.push('/cart');
+  };
 
   const handleChat = () => {
     history.push('/chat');
@@ -56,6 +57,7 @@ const NavBar = ({ addClass }) => {
           </button>
         </div>
         <div className={styles.icon_container}>
+          <ShoppingCartIcon onClick={handleCart} className={styles.icon} />
           <EmailIcon onClick={handleChat} className={styles.icon} />
           <NotificationsIcon onClick={handleNotifications} className={styles.icon} />
           {/* <MenuButton className="userIcon" /> */}
@@ -68,4 +70,4 @@ const NavBar = ({ addClass }) => {
   );
 };
 
-export default NavBar;
+export default TrainerNavBar;

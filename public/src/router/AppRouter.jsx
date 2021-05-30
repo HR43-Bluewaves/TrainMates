@@ -19,7 +19,7 @@ import userInformation from '../components/userInformation/UserInformation';
 // Test
 import FullClass from '../components/classes/FullClass';
 import TrainerProfileUser from '../components/trainers/TrainerProfile';
-import TrainerProfile from '../components/trainer-dashboard/Trainer_profile';
+import TrainerProfileTrainerSide from '../components/trainer-dashboard/Trainer_profile';
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -38,7 +38,7 @@ const AppRouter = () => (
         <Route path="/user" component={userInformation} />
         <Route path="/class-info" component={FullClass} />
         <Route path="/trainer-profile" component={TrainerProfileUser} />
-        <Route path="/trainer" component={TrainerProfile} />
+        <Route path="/trainer-yourclass" component={TrainerProfileTrainerSide} />
       </Switch>
     </div>
   </BrowserRouter>
