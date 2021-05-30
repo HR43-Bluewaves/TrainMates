@@ -17,7 +17,7 @@ const userClasses = () => {
         <motion.Col
           key={course.id}
           className={style.classCardInformation}
-          whileHover={{ y: -10 }}
+          whileHover={{ y: 10 }}
         >
           <Row className={style.classPhotoContainer}>
             <img className={style.classPhoto} src={course.class_photo} alt="class" />
@@ -31,7 +31,12 @@ const userClasses = () => {
             </div>
           </Row>
           <Row className={style.buttonFooter}>
-            <Button>Book Class</Button>
+            <button
+              type="button"
+              className={style.bookbutton}
+            >
+              Book Class
+            </button>
           </Row>
         </motion.Col>
       ))}
