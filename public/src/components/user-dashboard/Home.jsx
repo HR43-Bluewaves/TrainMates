@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
@@ -11,6 +12,7 @@ import NavBar from './Navbar';
 
 const Home = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const classes = useSelector((state) => state.classesReducer.classes);
   const trainers = useSelector((state) => state.trainersReducer.trainers);
   const user = useSelector((state) => state.userReducer.user);
@@ -123,6 +125,7 @@ const Home = () => {
                 animate={{ x: 0 }}
                 whileHover={{ scale: 1.1, originX: 0 }}
                 transition={{ duration: 1, type: 'spring', bounce: 0.5 }}
+                onClick={() => { history.push('/trainers'); }}
               >
                 <h1>BE GREATER.</h1>
                 <h1>

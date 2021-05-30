@@ -73,9 +73,7 @@ const TrainerList = ({ trainer, searchValue }) => {
                     {trainer.state}
                   </p>
                   <b>
-                    &lsquo;
                     {trainer.slogan ? trainer.slogan : 'Train Me, Mate'}
-                    &lsquo;
                   </b>
                 </div>
                 <div className={style.root}>

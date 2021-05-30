@@ -2,9 +2,15 @@ import React from 'react';
 import NavBar from './user-dashboard/Navbar';
 
 const Notifications = () => (
-
   <div>
-    <h1>This is the notifications page</h1>
+    <style type="text/css">
+      {`
+        .temp {
+          color: white
+        }
+      `}
+    </style>
+    <h1 className="temp">Notification features coming soon!</h1>
     <NavBar />
   </div>
 );
