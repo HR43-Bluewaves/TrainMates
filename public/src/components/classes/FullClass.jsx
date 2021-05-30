@@ -58,61 +58,51 @@ const FullClass = () => {
     <Container fluid className={style.bookingBody}>
       <NavBar />
       <Container className={style.containerTop}>
-        <Row
-          className={style.classNameContainer}
-        >
-          {' '}
-          <h1>{session.class_name}</h1>
-        </Row>
-        <Col className={style.classInfoContainer}>
-          <Row className={style.classHeaderBooking}>
-            <div className={style.trainerInfo}>
-              <Row>
-                <h2
-                  className={style.headerText}
-                >
-                  Instructor
-                </h2>
-              </Row>
+        <Row>
+          <Col sm={6} className={style.classInfoContainer}>
+            <div
+              className={style.classNameContainer}
+            >
+              <h1>{session.class_name}</h1>
+            </div>
+            <Row className={style.classHeaderBooking}>
+              <h2
+                className={style.headerText}
+              >
+                Instructor
+              </h2>
               <Row className={style.trainerInformation}>
                 {/* {session.teacher_id === profile.trainer_id ? ( */}
-                <div>
+                <Row>
                   <Col>
                     <img className={style.classInfoImage} src={session.trainer.photo_url} alt="" />
                   </Col>
                   <Col className={style.teacherBio}>
-                    <ul>
-                      <p>{`${session.trainer.first_name} ${session.trainer.last_name}`}</p>
-                      <p>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</p>
-                      <p>{session.trainer.email}</p>
-                    </ul>
+                    <p>{`${session.trainer.first_name} ${session.trainer.last_name}`}</p>
+                    {/* <p>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</p> */}
+                    <p>{session.trainer.email}</p>
                   </Col>
-                </div>
+                </Row>
                 {/* ) : null} */}
               </Row>
-            </div>
-            <div>
-              <Row className={style.classHeaderBooking}>
+              <div className={style.classHeaderBooking}>
                 <h2
                   className={style.headerText}
                 >
                   Description
                 </h2>
-              </Row>
+              </div>
               <Row>
-                <Col>
-                  <div>
-                    <Col />
-                  </div>
-                  <img className={style.classInfoImage} src={session.photo_url} alt="" />
-                </Col>
-                <Col>
-                  <p>{session.description}</p>
-                </Col>
+                {/* <Col>
+                    <img className={style.classInfoImage} src={session.photo_url} alt="" />
+                  </Col> */}
+                {/* <Col> */}
+                <p>{session.description}</p>
+                {/* </Col> */}
               </Row>
-            </div>
-          </Row>
-          <Row className={style.rightSide}>
+            </Row>
+          </Col>
+          <Col sm={6} className={style.rightSide}>
             <Row>
               <h2>Desired time</h2>
             </Row>
@@ -149,8 +139,8 @@ const FullClass = () => {
                 Book this class
               </Button>
             </Row>
-          </Row>
-        </Col>
+          </Col>
+        </Row>
       </Container>
     </Container>
   );
