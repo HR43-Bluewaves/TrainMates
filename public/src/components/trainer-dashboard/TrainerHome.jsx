@@ -71,7 +71,7 @@ const TrainerHome = () => {
             </motion.div>
             <div className={`col-7 ${styles.promotion}`}>
               <div className={`${styles.promition_container}`}>
-                <h1 className={styles.h1}>Trending</h1>
+                <h1 className={styles.h1}>My Classes</h1>
                 <div className={`${styles.class_container_below}`}>
                   {courses.map((course) => (
                     <motion.div

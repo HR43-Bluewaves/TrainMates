@@ -3,7 +3,6 @@ import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useSelector } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import style from './userInformation.module.css';
 
@@ -30,14 +29,14 @@ const userClasses = () => {
               <p className={style.classText}>{course.class_description}</p>
             </div>
           </Row>
-          <Row className={style.buttonFooter}>
+          {/* <Row className={style.buttonFooter}>
             <button
               type="button"
               className={style.bookbutton}
             >
               Book Class
             </button>
-          </Row>
+          </Row> */}
         </motion.Col>
       ))}
     </Col>
