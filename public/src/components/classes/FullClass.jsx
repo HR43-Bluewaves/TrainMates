@@ -62,12 +62,12 @@ const FullClass = () => {
     <Container fluid className={style.bookingBody}>
       <NavBar />
       <Container className={style.containerTop}>
-        <Row className={style.classInfoContainer}>
-          <Col className={style.classHeaderBooking}>
             <Row className={style.classNameContainer}>
               {' '}
               <h1>{session.class_name}</h1>
             </Row>
+        <Col className={style.classInfoContainer}>
+          <Row className={style.classHeaderBooking}>
             <div className={style.trainerInfo}>
               <Row>
                 <h2
@@ -109,8 +109,8 @@ const FullClass = () => {
                 </Col>
               </Row>
             </div>
-          </Col>
-          <Col className={style.rightSide}>
+          </Row>
+          <Row className={style.rightSide}>
             <Row>
               <h2>Desired time</h2>
             </Row>
@@ -147,8 +147,8 @@ const FullClass = () => {
                 Book this class
               </Button>
             </Row>
-          </Col>
-        </Row>
+          </Row>
+        </Col>
       </Container>
     </Container>
   );
