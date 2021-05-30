@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-plusplus */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable arrow-body-style */
@@ -28,6 +30,16 @@ const TrainerReviews = () => {
     setOpen(false);
   };
 
+  const getAverageRating = () => {
+    let result = 0;
+    reviews.forEach((review) => {
+      if (review.trainer_id === profile.trainer_id) {
+        (result += review.rating) / reviews.length;
+      }
+    });
+    return result;
+  };
+
   const body = (
     <div style={modalStyle} className={style.paper}>
       <div>
@@ -48,13 +60,6 @@ const TrainerReviews = () => {
     </div>
   );
 
-  const getAverageRating = () => {
-    let result = 0;
-    reviews.forEach((review) => {
-      result += review.rating;
-    });
-    return result / reviews.length;
-  };
   return (
     <div>
       <div className={cssStyle.viewReview_contaier} onClick={handleOpen}>

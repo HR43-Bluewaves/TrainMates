@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
@@ -38,6 +39,7 @@ const FullClass = () => {
   const [time, setTime] = useState('');
   const [friends, setFriends] = useState('');
   const classes = useStyles();
+  console.log('SESSION', session);
   const history = useHistory();
   const handleBooking = () => {
     const packagedInfo = {
@@ -71,18 +73,20 @@ const FullClass = () => {
                 </h2>
               </Row>
               <Row className={style.trainerInformation}>
+                {/* {session.teacher_id === profile.trainer_id ? ( */}
                 <div>
                   <Col>
-                    <img className={style.classInfoImage} src={profile.photo_url} alt="" />
+                    <img className={style.classInfoImage} src={session.trainer.photo_url} alt="" />
                   </Col>
                   <Col className={style.teacherBio}>
                     <ul>
-                      <p>{`${profile.first_name} ${profile.last_name}`}</p>
-                      <p>{`${profile.city} ${profile.state}, ${profile.zip}`}</p>
-                      <p>{profile.email}</p>
+                      <p>{`${session.trainer.first_name} ${session.trainer.last_name}`}</p>
+                      <p>{`${session.trainer.city} ${session.trainer.state}, ${session.trainer.zip}`}</p>
+                      <p>{session.trainer.email}</p>
                     </ul>
                   </Col>
                 </div>
+                {/* ) : null} */}
               </Row>
             </div>
             <div>
@@ -95,6 +99,9 @@ const FullClass = () => {
               </Row>
               <Row>
                 <Col>
+                  <div>
+                    <Col />
+                  </div>
                   <img className={style.classInfoImage} src={session.photo_url} alt="" />
                 </Col>
                 <Col>
@@ -146,5 +153,4 @@ const FullClass = () => {
     </Container>
   );
 };
-
 export default FullClass;

@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
@@ -24,7 +25,7 @@ const TrainerClasses = () => {
           <div className={cssStyle.classScroll}>
             <div className={cssStyle.classCard_profile}>
               <div className={cssStyle.classPhotoContainer}>
-                <img className={cssStyle.classPhoto} src={course.photo_url} alt="class" />
+                <img className={cssStyle.classPhoto} src={course.photo_url ? course.photo_url : <h1>Casses Coming Soon</h1>} alt="class" />
               </div>
               <Row className={cssStyle.classInformation}>
                 <div className={cssStyle.classNameContainer}>
@@ -42,15 +43,19 @@ const TrainerClasses = () => {
                   <button
                     type="button"
                     className={cssStyle.detailButton}
-                    onClick={() => {
-                      dispatch({ type: 'session', session: course });
+                    onClick={async () => {
+                      const teacher = await axios.get(`/api/trainer/${course.teacher_id}`);
+                      const courseWithTrainer = {
+                        ...course,
+                        trainer: teacher.data[0],
+                      };
+                      dispatch({ type: 'session', session: courseWithTrainer });
                       history.push('/class-info');
                     }}
                   >
                     Details
                   </button>
                 </div>
-
               </Row>
             </div>
           </div>
