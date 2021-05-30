@@ -1,8 +1,10 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Col from 'react-bootstrap/Col';
+import { motion } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import cssStyle from './trainer.module.css';
@@ -15,7 +17,7 @@ const TrainerClasses = () => {
   return (
     <Row className={cssStyle.classesContainer}>
       {classes.map((course, index) => (
-        <Col key={index} className={cssStyle.profile_container}>
+        <motion.Col key={index} className={cssStyle.profile_container} whileHover={{ y: 10 }}>
           <div className={cssStyle.classScroll}>
             <div className={cssStyle.classCard_profile}>
               <div className={cssStyle.classPhotoContainer}>
@@ -49,7 +51,7 @@ const TrainerClasses = () => {
               </Row>
             </div>
           </div>
-        </Col>
+        </motion.Col>
       ))}
     </Row>
   );
