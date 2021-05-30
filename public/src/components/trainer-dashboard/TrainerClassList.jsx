@@ -41,10 +41,12 @@ const TrainerClasses = () => {
                     className={cssStyle.detailButton}
                     onClick={() => {
                       dispatch({ type: 'session', session: course });
-                      history.push('/class-info');
+                      // Where Michael will edit the class
+                      // history.push('/class-info');
+                      alert('Clicked');
                     }}
                   >
-                    Details
+                    Edit
                   </button>
                 </div>
 

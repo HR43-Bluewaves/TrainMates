@@ -9,7 +9,7 @@ import styles from '../user-dashboard/home_nav.module.css';
 import DropDown from './dynamic_dropdown/DropDown';
 
 // eslint-disable-next-line react/prop-types
-const NavBar = ({ addClass }) => {
+const TrainerNavBar = ({ addClass }) => {
   const history = useHistory();
 
   const handleHome = () => {
@@ -21,7 +21,7 @@ const NavBar = ({ addClass }) => {
   // };
 
   const handleClasses = () => {
-    history.push('/trainer');
+    history.push('/trainer-yourclass');
   };
 
   // const handleCart = () => {
@@ -68,4 +68,4 @@ const NavBar = ({ addClass }) => {
   );
 };
 
-export default NavBar;
+export default TrainerNavBar;

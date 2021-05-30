@@ -10,7 +10,7 @@ import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import EditIcon from '@material-ui/icons/Edit';
 import ChatIcon from '@material-ui/icons/Chat';
 import TrainerClasses from './TrainerClassList';
-import NavBar from './TrainerNavbar';
+import TrainerNavBar from './TrainerNavbar';
 import Login from '../forms/Login';
 import style from '../userInformation/userInformation.module.css';
 
@@ -32,7 +32,7 @@ const TrainerProfileTrainerSide = () => {
   if (user) {
     return (
       <Container fluid className={style.userInformationPage}>
-        <NavBar />
+        <TrainerNavBar />
         <Login modalClose={modalClose} modalType={modalType} userId={user.user_id} />
         <Container>
           <motion.div

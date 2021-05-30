@@ -4,7 +4,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import NavBar from './TrainerNavbar';
+import TrainerNavBar from './TrainerNavbar';
 import styles from './home_nav.module.css';
 import Login from '../forms/Login';
 
@@ -49,7 +49,7 @@ const TrainerHome = () => {
     <div>
       <Login modalClose={modalClose} modalType={modalType} userId={user.trainer_id} />
       <div className={styles.home}>
-        <NavBar addClass={addClass} />
+        <TrainerNavBar addClass={addClass} />
         <div className="container">
           <div className={styles.row}>
             <motion.div
