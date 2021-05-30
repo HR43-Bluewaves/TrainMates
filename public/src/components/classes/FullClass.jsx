@@ -58,10 +58,12 @@ const FullClass = () => {
     <Container fluid className={style.bookingBody}>
       <NavBar />
       <Container className={style.containerTop}>
-            <Row className={style.classNameContainer}>
-              {' '}
-              <h1>{session.class_name}</h1>
-            </Row>
+        <Row
+          className={style.classNameContainer}
+        >
+          {' '}
+          <h1>{session.class_name}</h1>
+        </Row>
         <Col className={style.classInfoContainer}>
           <Row className={style.classHeaderBooking}>
             <div className={style.trainerInfo}>
