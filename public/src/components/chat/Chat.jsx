@@ -1,10 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { Col, Container } from 'react-bootstrap';
 import NavBar from '../user-dashboard/Navbar';
+import TrainerNavBar from '../trainer-dashboard/TrainerNavbar';
 import styles from './chat.module.css';
 
 const Chat = () => {
+  const user = useSelector((state) => state.userReducer.user);
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -22,7 +26,15 @@ const Chat = () => {
 
   return (
     <div className={styles.Chatcontainer}>
-      <NavBar />
+      <style type="text/css">
+        {`
+          .temp {
+            color: white
+          }
+        `}
+      </style>
+      <h1 className="temp">More chat features coming soon!</h1>
+      {user.type === 'trainer' ? <TrainerNavBar /> : <NavBar />}
       <Container className={styles.chatbox}>
         <Col xs={5} className={styles.contactList}>
           <div className={styles.listTitle}>

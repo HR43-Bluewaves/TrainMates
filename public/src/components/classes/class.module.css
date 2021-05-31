@@ -13,7 +13,6 @@
   padding-left: 0px;
   padding-right: 0px;
   background-color: #424642;
-
 }
 
 /* User Information */
@@ -82,7 +81,7 @@
   /* height: 43vh; */
 }
 
-.classInfoImage{
+.classInfoImage {
   height: 40vh;
   width: 15vw;
 }
@@ -97,46 +96,68 @@
   height: 200px;
   width: 320px;
 }
+.classNameContainer1 {
+  width: 100%;
+  background-color: #c06014;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .classNameContainer {
-  text-align: center;
-  display: table;
-  background-color: #c06014;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #c06014;
+  border-bottom: 1px solid #c06014;
   width: 100%;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  margin: 5vh 0;
 }
 
-.className {
-  display: table-cell;
+.Name {
   color: white;
+  margin: 0.5vh 0;
 }
 
-.container{
+.container {
   min-width: 100%;
   min-height: 100%;
   padding-left: 0px;
   padding-right: 0px;
-
 }
 
-.bookingBody{
-  min-width: 100vw;
-  min-height: 100vh;
+.bookingBody {
+  width: 100vw;
+  height: 100vh;
   padding-left: 0px;
   padding-right: 0px;
-  background-color: white;
+  background-color: black;
   color: black;
 }
-
-.classHeaderBooking{
-  border-bottom: solid;
-  border-bottom-color: #ff8c10b0;
-  border-width: 1px;
+.bookingForm{
+  background-color: #fff;
+  border-radius: 1vh;
+}
+.teacherBio {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: fl;
+}
+.descrip {
+  padding: 2vw;
+  margin: 0;
+}
+.headerText {
+  color: #c06014;
+}
+.classHeaderBooking {
+  display: flex;
+  align-items: flex-start;
   font-weight: 50px;
   flex-direction: column;
+  justify-content: flex-start;
+  margin: 0;
 }
 
 .classScroll {
@@ -146,16 +167,21 @@
   padding-right: 20px;
   /* display: inline-flex; */
 }
+.classInformation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .textContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding:2vh
+  padding: 2vh;
 }
 
-.text {
+/* .text {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 10px;
@@ -163,7 +189,7 @@
   text-align: center;
   height: 8vh;
   overflow: hidden;
-}
+} */
 
 .class-list {
   display: flex;
@@ -192,49 +218,58 @@
 }
 
 .mat-icon {
-  position: relative;
-  top: 7px;
+  position: relative；;
+  /* top: 7px; */
 }
 
-.trainerInformation{
+.trainerInformation {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 95%;
+  padding: 3vh 0;
+  margin: 0;
 }
 
-.trainerInfo{
+.trainerInfo {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-input[type=date], input[type=datetime-local], input[type=month], input[type=time] {
+input[type='date'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='time'] {
   -webkit-appearance: listbox;
-  color: white;
+  color: black;
 }
 
-.allInfo{
+.allInfo {
   color: white;
   background: black;
 }
-
-.containerTop{
-  color:white;
-  background: black;
-}
-
-.rightSide{
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
+.classInfoContainer {
   display: flex;
   flex-direction: column;
-  align-content: stretch;
-  justify-content: center;
+}
+.containerTop {
+  color: white;
+  background: black;
 }
 
-.instructor{
-  background: #c06014
+.rightSide {
+  padding-left: 7vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: flex-start;
+  color: white;
+}
+
+.instructor {
+  background: #c06014;
 }

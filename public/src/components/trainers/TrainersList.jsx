@@ -6,13 +6,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Col from 'react-bootstrap/Col';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 // import './trainer.css';
+import { motion } from 'framer-motion';
 import styles from './trainer.module.css';
 
 const noImage = 'https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255634-stock-illustration-avatar-icon-male-profile-gray.jpg';
@@ -43,7 +43,10 @@ const TrainerList = ({ trainer, searchValue }) => {
   };
 
   return (
-    <Col className={styles.card_container}>
+    <motion.Col
+      className={styles.card_container}
+      whileHover={{ y: 10 }}
+    >
       {((trainer.first_name.toLowerCase().includes(searchValue.toLowerCase())
         || trainer.last_name.toLowerCase().includes(searchValue.toLowerCase())
         || trainer.city.toLowerCase().includes(searchValue))
@@ -70,9 +73,7 @@ const TrainerList = ({ trainer, searchValue }) => {
                     {trainer.state}
                   </p>
                   <b>
-                    &lsquo;
                     {trainer.slogan ? trainer.slogan : 'Train Me, Mate'}
-                    &lsquo;
                   </b>
                 </div>
                 <div className={style.root}>
@@ -81,6 +82,7 @@ const TrainerList = ({ trainer, searchValue }) => {
                     <Rating name="read-only" value={getAverageRating()} readOnly />
                   </Box>
                 </div>
+
                 <button
                   type="button"
                   className={styles.detailButton}
@@ -96,7 +98,7 @@ const TrainerList = ({ trainer, searchValue }) => {
           </div>
         </div>
         ) : null}
-    </Col>
+    </motion.Col>
   );
 };
 

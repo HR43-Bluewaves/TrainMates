@@ -3,7 +3,6 @@ import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useSelector } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import style from './userInformation.module.css';
 
@@ -17,7 +16,7 @@ const userClasses = () => {
         <motion.Col
           key={course.id}
           className={style.classCardInformation}
-          whileHover={{ y: -10 }}
+          whileHover={{ y: 10 }}
         >
           <Row className={style.classPhotoContainer}>
             <img className={style.classPhoto} src={course.class_photo} alt="class" />
@@ -30,9 +29,14 @@ const userClasses = () => {
               <p className={style.classText}>{course.class_description}</p>
             </div>
           </Row>
-          <Row className={style.buttonFooter}>
-            <Button>Book Class</Button>
-          </Row>
+          {/* <Row className={style.buttonFooter}>
+            <button
+              type="button"
+              className={style.bookbutton}
+            >
+              Book Class
+            </button>
+          </Row> */}
         </motion.Col>
       ))}
     </Col>

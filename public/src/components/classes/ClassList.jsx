@@ -2,7 +2,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import axios from 'axios';
-import Col from 'react-bootstrap/Col';
+import { motion } from 'framer-motion';
+// import Col from 'react-bootstrap/Col';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from './class.module.css';
@@ -12,7 +13,10 @@ const ClassList = ({ course, searchValue }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   return (
-    <Col className={styles.card_container}>
+    <motion.Col
+      className={styles.card_container}
+      whileHover={{ y: 10 }}
+    >
       {(course.class_name.toLowerCase().includes(searchValue.toLowerCase()) || !searchValue) ? (
         <div className={styles.classScroll}>
           <div className={styles.classCard}>
@@ -20,8 +24,8 @@ const ClassList = ({ course, searchValue }) => {
               <img className={styles.classPhoto} src={course.photo_url} alt="classes" />
             </div>
             <div className={styles.classInformation}>
-              <div className={styles.classNameContainer}>
-                <p className={styles.className}>{course.class_name}</p>
+              <div className={styles.classNameContainer1}>
+                <p className={styles.Name}>{course.class_name}</p>
               </div>
             </div>
             <div className={styles.textContainer}>
@@ -47,7 +51,7 @@ const ClassList = ({ course, searchValue }) => {
           </div>
         </div>
       ) : null}
-    </Col>
+    </motion.Col>
   );
 };
 

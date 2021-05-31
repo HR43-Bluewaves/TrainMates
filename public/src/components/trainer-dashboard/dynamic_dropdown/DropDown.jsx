@@ -4,10 +4,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { motion, useCycle } from 'framer-motion';
-// import Avatar from '@material-ui/core/Avatar';
+import Avatar from '@material-ui/core/Avatar';
 import DropDownStyle from './dropdown.module.css';
 
 const Path = (props) => (
@@ -100,58 +100,61 @@ const slideHorizontalAnimation = {
 const DropDown = () => {
   const [isOpen, toggleDropdown] = useCycle(false, true);
   const history = useHistory();
-  // const user = useSelector((state) => state.userReducer.user);
+  const user = useSelector((state) => state.userReducer.user);
 
   const handleUser = () => {
-    history.push('/trainer');
+    history.push('/trainer-yourclass');
   };
 
   const handleLogOut = () => {
     history.push('/');
   };
 
-  return (
-    <div className={DropDownStyle.wrapper}>
-      <MenuButton onClick={toggleDropdown} isOpen={isOpen} />
-      <motion.div
-        className={DropDownStyle.dropdown_container}
-        initial="close"
-        animate={isOpen ? 'open' : 'close'}
-        variants={slideVerticalAnimation}
-      >
+  if (user) {
+    return (
+      <div className={DropDownStyle.wrapper}>
+        <MenuButton onClick={toggleDropdown} isOpen={isOpen} />
         <motion.div
-          className={DropDownStyle.dropdown}
-          variants={slideHorizontalAnimation}
+          className={DropDownStyle.dropdown_container}
+          initial="close"
+          animate={isOpen ? 'open' : 'close'}
+          variants={slideVerticalAnimation}
         >
-          <motion.div className={`${DropDownStyle.menu} ${DropDownStyle.menu_sizes}`}>
-            <div className={DropDownStyle.title}>
-              {/* <Avatar>
-                {`${user.first_name.slice(0, 1)}${user.last_name.slice(0, 1)}`}
-              </Avatar>
-              <h4 className={DropDownStyle.title_text}>
-                {user.first_name}
-              </h4> */}
-            </div>
+          <motion.div
+            className={DropDownStyle.dropdown}
+            variants={slideHorizontalAnimation}
+          >
+            <motion.div className={`${DropDownStyle.menu} ${DropDownStyle.menu_sizes}`}>
+              <div className={DropDownStyle.title}>
+                <Avatar>
+                  {`${user.first_name.slice(0, 1)}${user.last_name.slice(0, 1)}`}
+                </Avatar>
+                <h4 className={DropDownStyle.title_text}>
+                  {user.first_name}
+                </h4>
+              </div>
 
-            <ul className={DropDownStyle.item_list}>
-              <li
-                className={DropDownStyle.item}
-                onClick={handleUser}
-              >
-                Profile
-              </li>
-              <li
-                className={DropDownStyle.item}
-                onClick={handleLogOut}
-              >
-                Logout
-              </li>
-            </ul>
+              <ul className={DropDownStyle.item_list}>
+                <li
+                  className={DropDownStyle.item}
+                  onClick={handleUser}
+                >
+                  Profile
+                </li>
+                <li
+                  className={DropDownStyle.item}
+                  onClick={handleLogOut}
+                >
+                  Logout
+                </li>
+              </ul>
+            </motion.div>
           </motion.div>
         </motion.div>
-      </motion.div>
-    </div>
-  );
+      </div>
+    );
+  }
+  return null;
 };
 
 export default DropDown;

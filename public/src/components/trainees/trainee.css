@@ -20,9 +20,3 @@
   height: 250px;
 }
 
-.MuiAutocomplete-root {
-  border: solid;
-  position: absolute;
-  margin: -3.5% 0 0 13%;
-  z-index: 1;
-}
