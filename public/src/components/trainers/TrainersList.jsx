@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-fragments */
@@ -25,6 +26,9 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  box: {
+    margin: 0,
   },
 });
 
@@ -78,15 +82,15 @@ const TrainerList = ({ trainer, searchValue }) => {
                     {trainer.slogan ? trainer.slogan : 'Train Me, Mate'}
                   </b>
                   {trainer.keyphrases ? (
-                    <ButtonGroup aria-label="keyphrases">
+                    <div aria-label="keyphrases" className={styles.keywordBox}>
                       {trainer.keyphrases.slice(0, 3).map((phrase) => (
-                        <Button disabled variant="outline-dark">{phrase}</Button>
+                        <span className={styles.keyword}>{phrase}</span>
                       ))}
-                    </ButtonGroup>
-                  ) : <ButtonGroup aria-label="keyphrases"><Button disabled variant="outline-dark">Mater working on interests!</Button></ButtonGroup>}
+                    </div>
+                  ) : <div aria-label="keyphrases" className={styles.keywordBox}><span disabled variant="outline-dark" className={styles.keyword}>Mater working on interests!</span></div>}
                 </div>
                 <div className={style.root}>
-                  <Box className="reviews" component="fieldset" mb={3} borderColor="transparent">
+                  <Box className={style.box} component="fieldset" mb={3} borderColor="transparent">
                     <Typography component="legend"><p style={{ fontWeight: 700 }}>Overall Rating</p></Typography>
                     <Rating name="read-only" value={getAverageRating()} readOnly />
                   </Box>

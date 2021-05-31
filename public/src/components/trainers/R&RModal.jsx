@@ -94,7 +94,7 @@ const RatingsAndReviewsModal = () => {
             </div>
             <div className={cssStyle.starContainer}>
               <b className={cssStyle.title}>Review</b>
-              <textarea onChange={(event) => handleChange(event)} value={comment} maxLength="500" name="body" rows="3" width="100" />
+              <textarea onChange={(event) => handleChange(event)} value={comment} maxLength="500" name="body" rows="3" width="200" />
               <p>{charsRemaining}</p>
             </div>
           </div>
