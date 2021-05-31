@@ -24,8 +24,8 @@ const ClassList = ({ course, searchValue }) => {
               <img className={styles.classPhoto} src={course.photo_url} alt="classes" />
             </div>
             <div className={styles.classInformation}>
-              <div className={styles.classNameContainer}>
-                <p className={styles.className}>{course.class_name}</p>
+              <div className={styles.classNameContainer1}>
+                <p className={styles.Name}>{course.class_name}</p>
               </div>
             </div>
             <div className={styles.textContainer}>
