@@ -13,9 +13,6 @@ import Form from 'react-bootstrap/Form';
 import { useHistory } from 'react-router-dom';
 import {
   makeStyles,
-  withStyles,
-  ThemeProvider,
-  createMuiTheme,
 } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
@@ -60,15 +57,6 @@ const FullClass = () => {
     history.push('/home');
   };
 
-  const theme = createMuiTheme({
-    overrides: {
-      MuiPickersClock: {
-        clock: {
-          backgroundColor: 'red',
-        },
-      },
-    },
-  });
   // Do not touch the forms
   return (
     <Container fluid className={style.bookingBody}>
@@ -134,21 +122,19 @@ const FullClass = () => {
             <h2>Desired time</h2>
             <div className={style.bookingForm}>
               <form className={classes.container} noValidate>
-                <ThemeProvider theme={theme}>
-                  <TextField
-                    id="datetime-local"
-                    label="Pick your classtime"
-                    type="datetime-local"
-                    className={classes.textField}
-                    error={(new Date(time) <= new Date()) || time === ''}
-                    helperText={(time !== '') && (new Date(time) >= new Date()) ? '' : 'Please pick an approriate time'}
+                <TextField
+                  id="datetime-local"
+                  label="Pick your classtime"
+                  type="datetime-local"
+                  className={classes.textField}
+                  error={(new Date(time) <= new Date()) || time === ''}
+                  helperText={(time !== '') && (new Date(time) >= new Date()) ? '' : 'Please pick an approriate time'}
                     // variant="filled"
-                    onChange={(e) => setTime(e.target.value)}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                  />
-                </ThemeProvider>
+                  onChange={(e) => setTime(e.target.value)}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
               </form>
             </div>
             <div>
