@@ -30,7 +30,7 @@ const ClassList = ({ course, searchValue }) => {
             </div>
             <div className={styles.textContainer}>
               <div className={styles.text}>
-                <p>{`${course.description.slice(0, 50)} ...`}</p>
+                <p>{`${course.description.slice(0, 65)} ...`}</p>
               </div>
               <button
                 type="button"

@@ -78,7 +78,7 @@ const TrainerList = ({ trainer, searchValue }) => {
                 </div>
                 <div className={style.root}>
                   <Box className="reviews" component="fieldset" mb={3} borderColor="transparent">
-                    <Typography component="legend"><strong>Overall Rating</strong></Typography>
+                    <Typography component="legend"><p style={{ fontWeight: 700 }}>Overall Rating</p></Typography>
                     <Rating name="read-only" value={getAverageRating()} readOnly />
                   </Box>
                 </div>
@@ -97,7 +97,7 @@ const TrainerList = ({ trainer, searchValue }) => {
             </div>
           </div>
         </div>
-        ) : null}
+      ) : null}
     </motion.Col>
   );
 };
