@@ -13,7 +13,9 @@ const queries = {
     from sessions as sesh
     inner join classes as class on sesh.class_id = class.class_id
     inner join trainers as trainer on trainer.trainer_id = sesh.trainer_id
-    where sesh.user_id=${req.params.id};`;
+    where sesh.user_id=${req.params.id}
+    order by sesh.time;
+    ;`;
     db.query(queryString)
       .then((result) => {
         res.status(200).send(result.rows);
@@ -37,7 +39,9 @@ const queries = {
     ) as combined_sesh
     inner join classes as class on combined_sesh.class_id = class.class_id
     inner join trainers as trainer on trainer.trainer_id = combined_sesh.trainer_id
-    where combined_sesh.trainer_id=${req.params.id};
+    where combined_sesh.trainer_id=${req.params.id}
+    order by combined_sesh.time
+    ;
     `;
     db.query(queryString)
       .then((result) => {
