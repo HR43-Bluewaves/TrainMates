@@ -134,6 +134,10 @@
   background-color: black;
   color: black;
 }
+.bookingForm{
+  background-color: #fff;
+  border-radius: 1vh;
+}
 .teacherBio {
   display: flex;
   flex-direction: column;
@@ -240,7 +244,7 @@ input[type='datetime-local'],
 input[type='month'],
 input[type='time'] {
   -webkit-appearance: listbox;
-  color: white;
+  color: black;
 }
 
 .allInfo {
