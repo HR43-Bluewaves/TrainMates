@@ -9,6 +9,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
 
 const validationSchema = yup.object({
   username: yup
@@ -31,7 +32,16 @@ const validationSchema = yup.object({
     .required('Last name is required'),
 });
 
-const SignUp = ({ type }) => {
+const styles = {
+  root: {
+    background: 'white',
+    paddingLeft: '20px',
+  },
+  input: {
+    color: 'black',
+  },
+};
+const SignUp = ({ type, classes }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const formik = useFormik({
@@ -78,17 +88,27 @@ const SignUp = ({ type }) => {
           onChange={formik.handleChange}
           error={formik.touched.first && Boolean(formik.errors.first)}
           helperText={formik.touched.first && formik.errors.first}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <TextField
           fullWidth
           id="last"
           name="last"
-          label="Last Name"
+          label="Last name"
           type="last"
           value={formik.values.last}
           onChange={formik.handleChange}
           error={formik.touched.last && Boolean(formik.errors.last)}
           helperText={formik.touched.last && formik.errors.last}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <TextField
           fullWidth
@@ -100,6 +120,10 @@ const SignUp = ({ type }) => {
           onChange={formik.handleChange}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <TextField
           fullWidth
@@ -110,6 +134,11 @@ const SignUp = ({ type }) => {
           onChange={formik.handleChange}
           error={formik.touched.username && Boolean(formik.errors.username)}
           helperText={formik.touched.username && formik.errors.username}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <TextField
           fullWidth
@@ -121,13 +150,18 @@ const SignUp = ({ type }) => {
           onChange={formik.handleChange}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <Button color="primary" variant="contained" fullWidth type="submit">
-          Submit
+          <span style={{ color: 'white' }}>Submit</span>
         </Button>
       </form>
     </div>
   );
 };
 
-export default SignUp;
+export default withStyles(styles)(SignUp);

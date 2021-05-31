@@ -9,6 +9,17 @@ import axios from 'axios';
 import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  root: {
+    background: 'white',
+    paddingLeft: '20px',
+  },
+  input: {
+    color: 'black',
+  },
+};
 
 const validationSchema = yup.object({
   username: yup
@@ -21,7 +32,7 @@ const validationSchema = yup.object({
     .required('Password is required'),
 });
 
-const UserLogin = ({ userType }) => {
+const UserLogin = ({ userType, classes }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const formik = useFormik({
@@ -62,6 +73,11 @@ const UserLogin = ({ userType }) => {
           onChange={formik.handleChange}
           error={formik.touched.username && Boolean(formik.errors.username)}
           helperText={formik.touched.username && formik.errors.username}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <TextField
           fullWidth
@@ -73,13 +89,18 @@ const UserLogin = ({ userType }) => {
           onChange={formik.handleChange}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <Button color="primary" variant="contained" fullWidth type="submit">
-          Submit
+          <span style={{ color: 'white' }}>Submit</span>
         </Button>
       </form>
     </div>
   );
 };
 
-export default UserLogin;
+export default withStyles(styles)(UserLogin);

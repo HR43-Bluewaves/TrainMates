@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import AddIcon from '@material-ui/icons/Add';
 // eslint-disable-next-line no-unused-vars
@@ -21,6 +21,16 @@ const useStyles = makeStyles({
     width: '100%',
   },
 });
+
+const styles = {
+  root: {
+    background: 'white',
+    paddingLeft: '20px',
+  },
+  input: {
+    color: 'black',
+  },
+};
 
 const validationSchema = yup.object({
   username: yup
@@ -43,8 +53,8 @@ const validationSchema = yup.object({
     .required('Last name is required'),
 });
 
-const EditProfile = ({ editStatus, userId }) => {
-  const classes = useStyles();
+const EditProfile = ({ editStatus, userId, classes }) => {
+  const progBar = useStyles();
   const [imageAsFile, setImageAsFile] = useState('');
   const [imageAsUrl, setImageAsUrl] = useState('');
   const [uploading, setUploading] = useState(false);
@@ -140,6 +150,11 @@ const EditProfile = ({ editStatus, userId }) => {
           onChange={formik.handleChange}
           error={formik.touched.first && Boolean(formik.errors.first)}
           helperText={formik.touched.first && formik.errors.first}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <TextField
           fullWidth
@@ -151,6 +166,11 @@ const EditProfile = ({ editStatus, userId }) => {
           onChange={formik.handleChange}
           error={formik.touched.last && Boolean(formik.errors.last)}
           helperText={formik.touched.last && formik.errors.last}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <TextField
           fullWidth
@@ -162,6 +182,11 @@ const EditProfile = ({ editStatus, userId }) => {
           onChange={formik.handleChange}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <TextField
           fullWidth
@@ -172,6 +197,11 @@ const EditProfile = ({ editStatus, userId }) => {
           onChange={formik.handleChange}
           error={formik.touched.username && Boolean(formik.errors.username)}
           helperText={formik.touched.username && formik.errors.username}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <TextField
           fullWidth
@@ -183,6 +213,11 @@ const EditProfile = ({ editStatus, userId }) => {
           onChange={formik.handleChange}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <TextField
           fullWidth
@@ -194,6 +229,11 @@ const EditProfile = ({ editStatus, userId }) => {
           onChange={formik.handleChange}
           error={formik.touched.city && Boolean(formik.errors.city)}
           helperText={formik.touched.city && formik.errors.city}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <TextField
           fullWidth
@@ -205,6 +245,11 @@ const EditProfile = ({ editStatus, userId }) => {
           onChange={formik.handleChange}
           error={formik.touched.state && Boolean(formik.errors.state)}
           helperText={formik.touched.state && formik.errors.state}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <TextField
           fullWidth
@@ -216,6 +261,11 @@ const EditProfile = ({ editStatus, userId }) => {
           onChange={formik.handleChange}
           error={formik.touched.zip && Boolean(formik.errors.zip)}
           helperText={formik.touched.zip && formik.errors.zip}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <br />
         <br />
@@ -242,9 +292,9 @@ const EditProfile = ({ editStatus, userId }) => {
           </Fab>
         </label>
         <Button color="primary" variant="contained" fullWidth type="submit" disabled={uploading}>
-          {!uploading ? 'Submit'
+          {!uploading ? <span style={{ color: 'white' }}>Submit</span>
             : (
-              <div className={classes.root}>
+              <div className={progBar.root}>
                 <LinearProgress variant="determinate" value={progress} />
               </div>
             )}
@@ -254,4 +304,4 @@ const EditProfile = ({ editStatus, userId }) => {
   );
 };
 
-export default EditProfile;
+export default withStyles(styles)(EditProfile);
