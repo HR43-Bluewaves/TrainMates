@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 // import './trainer.css';
 import { motion } from 'framer-motion';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import styles from './trainer.module.css';
 
 const noImage = 'https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255634-stock-illustration-avatar-icon-male-profile-gray.jpg';
@@ -75,6 +77,13 @@ const TrainerList = ({ trainer, searchValue }) => {
                   <b>
                     {trainer.slogan ? trainer.slogan : 'Train Me, Mate'}
                   </b>
+                  {trainer.keyphrases ? (
+                    <ButtonGroup aria-label="keyphrases">
+                      {trainer.keyphrases.slice(0, 3).map((phrase) => (
+                        <Button disabled variant="outline-dark">{phrase}</Button>
+                      ))}
+                    </ButtonGroup>
+                  ) : <ButtonGroup aria-label="keyphrases"><Button disabled variant="outline-dark">Mater working on interests!</Button></ButtonGroup>}
                 </div>
                 <div className={style.root}>
                   <Box className="reviews" component="fieldset" mb={3} borderColor="transparent">
