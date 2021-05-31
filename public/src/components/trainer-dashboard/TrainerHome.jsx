@@ -15,8 +15,7 @@ const TrainerHome = () => {
   const user = useSelector((state) => state.userReducer.user);
   const courses = useSelector((state) => state.classesReducer.classes);
   const TeacherUpcomingClasses = useSelector((state) => state.upcomingReducer.classes);
-  console.log('Trainerside', user);
-  console.log('Teacher upcomg class', TeacherUpcomingClasses);
+  console.log('COURSES', courses);
 
   const addClass = () => {
     setModalType('class');
@@ -31,7 +30,6 @@ const TrainerHome = () => {
         const processedData = data.filter((course) => (
           course.teacher_id === user.trainer_id
         ));
-        console.log('Processed', processedData);
         dispatch({ type: 'classes', classes: processedData });
       })
       .catch((err) => console.error(err));
