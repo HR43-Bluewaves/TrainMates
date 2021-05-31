@@ -54,7 +54,8 @@ const AddClass = ({ editStatus, userId }) => {
         id: userId,
       }).then(async () => {
         const { data } = await axios.get('/api/classes');
-        dispatch({ type: 'classes', classes: data[0] });
+        console.log('updated classes', data);
+        dispatch({ type: 'classes', classes: data });
         editStatus(true);
       }).catch((err) => {
         console.log(err);

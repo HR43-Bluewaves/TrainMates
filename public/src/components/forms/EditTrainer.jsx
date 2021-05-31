@@ -53,8 +53,8 @@ const validationSchema = yup.object({
     .required('Last name is required'),
 });
 
-const EditProfile = ({ editStatus, userId, classes }) => {
-  const progBar = useStyles();
+const EditTrainer = ({ editStatus, userId, classes }) => {
+  const uploadBar = useStyles();
   const [imageAsFile, setImageAsFile] = useState('');
   const [imageAsUrl, setImageAsUrl] = useState('');
   const [uploading, setUploading] = useState(false);
@@ -71,10 +71,12 @@ const EditProfile = ({ editStatus, userId, classes }) => {
       city: userInfo.city || '',
       state: userInfo.state || '',
       zip: userInfo.zip || '',
+      slogan: userInfo.slogan || '',
+      keyphrases: userInfo.keyphrases || '',
     },
     validationSchema,
     onSubmit: (values) => {
-      axios.put(`/api/user/${userId}`, {
+      axios.put(`/api/trainer/${userId}`, {
         username: values.username,
         password: values.password,
         email: values.email,
@@ -83,9 +85,11 @@ const EditProfile = ({ editStatus, userId, classes }) => {
         city: values.city,
         state: values.state,
         zip: values.zip || 0,
+        slogan: values.slogan,
+        keyphrases: values.keyphrases,
         url: imageAsUrl || userInfo.photo_url,
       }).then(async () => {
-        const { data } = await axios.get('/api/user', {
+        const { data } = await axios.get('/api/trainer', {
           params: {
             username: values.username,
             password: values.password,
@@ -267,6 +271,38 @@ const EditProfile = ({ editStatus, userId, classes }) => {
             className: classes.input,
           }}
         />
+        <TextField
+          fullWidth
+          id="slogan"
+          name="slogan"
+          label="Slogan"
+          type="slogan"
+          value={formik.values.slogan}
+          onChange={formik.handleChange}
+          error={formik.touched.slogan && Boolean(formik.errors.slogan)}
+          helperText={formik.touched.slogan && formik.errors.slogan}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
+        />
+        <TextField
+          fullWidth
+          id="keyphrases"
+          name="keyphrases"
+          label="Keyphrases"
+          type="keyphrases"
+          value={formik.values.keyphrases}
+          onChange={formik.handleChange}
+          error={formik.touched.keyphrases && Boolean(formik.errors.keyphrases)}
+          helperText={formik.touched.keyphrases && formik.errors.keyphrases}
+          defaultValue="color"
+          className={classes.root}
+          InputProps={{
+            className: classes.input,
+          }}
+        />
         <br />
         <br />
         <label htmlFor="upload-photo">
@@ -294,7 +330,7 @@ const EditProfile = ({ editStatus, userId, classes }) => {
         <Button color="primary" variant="contained" fullWidth type="submit" disabled={uploading}>
           {!uploading ? <span style={{ color: 'white' }}>Submit</span>
             : (
-              <div className={progBar.root}>
+              <div className={uploadBar.root}>
                 <LinearProgress variant="determinate" value={progress} />
               </div>
             )}
@@ -304,4 +340,4 @@ const EditProfile = ({ editStatus, userId, classes }) => {
   );
 };
 
-export default withStyles(styles)(EditProfile);
+export default withStyles(styles)(EditTrainer);
