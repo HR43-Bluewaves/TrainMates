@@ -2,6 +2,9 @@ const router = require('express').Router();
 const db = require('./queries');
 
 router
+  .route('/trainers')
+  .get(db.getAllTrainers);
+router
   .route('/user')
   .get(db.getUser)
   .post(db.addUser);
@@ -13,10 +16,6 @@ router
   .route('/classes')
   .get(db.getAllClasses)
   .post(db.addClass);
-
-router
-  .route('/trainers')
-  .get(db.getAllTrainers);
 
 router
   .route('/trainer')
