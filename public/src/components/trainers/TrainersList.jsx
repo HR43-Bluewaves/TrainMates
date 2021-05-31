@@ -76,11 +76,13 @@ const TrainerList = ({ trainer, searchValue }) => {
                     {trainer.slogan ? trainer.slogan : 'Train Me, Mate'}
                   </b>
                 </div>
-                <div className={style.root}>
-                  <Box className="reviews" component="fieldset" mb={3} borderColor="transparent">
-                    <Typography component="legend"><strong>Overall Rating</strong></Typography>
-                    <Rating name="read-only" value={getAverageRating()} readOnly />
-                  </Box>
+                <div className={styles.ratingBox}>
+                  <div className={style.root}>
+                    <Box className="reviews" component="fieldset" mb={3} borderColor="transparent">
+                      <Typography component="legend"><strong>Overall Rating</strong></Typography>
+                      <Rating name="read-only" value={getAverageRating()} readOnly />
+                    </Box>
+                  </div>
                 </div>
                 <button
                   type="button"
@@ -96,7 +98,7 @@ const TrainerList = ({ trainer, searchValue }) => {
             </div>
           </div>
         </div>
-        ) : null}
+      ) : null}
     </motion.Col>
   );
 };

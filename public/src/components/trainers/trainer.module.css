@@ -224,6 +224,9 @@
   align-items: center;
   cursor: pointer;
 }
+.viewReview_contaier:hover {
+  transform: scale(1.1);
+}
 .starRatings {
   color: #f3f4ed;
 }
