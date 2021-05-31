@@ -26,6 +26,14 @@ const Chat = () => {
 
   return (
     <div className={styles.Chatcontainer}>
+      <style type="text/css">
+        {`
+          .temp {
+            color: white
+          }
+        `}
+      </style>
+      <h1 className="temp">More chat features coming soon!</h1>
       {user.type === 'trainer' ? <TrainerNavBar /> : <NavBar />}
       <Container className={styles.chatbox}>
         <Col xs={5} className={styles.contactList}>
