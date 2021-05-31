@@ -27,13 +27,16 @@ const TrainerProfileTrainerSide = () => {
     setModalType('');
   };
   const handleEdit = () => {
-    setModalType('edit');
+    setModalType('edit-trainer');
+  };
+  const addClass = () => {
+    setModalType('class');
   };
   if (user) {
     return (
       <Container fluid className={style.userInformationPage}>
-        <TrainerNavBar />
-        <Login modalClose={modalClose} modalType={modalType} userId={user.user_id} />
+        <TrainerNavBar addClass={addClass} />
+        <Login modalClose={modalClose} modalType={modalType} userId={user.trainer_id} />
         <Container>
           <motion.div
             initial={{ x: '200vw' }}
