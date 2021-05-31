@@ -82,6 +82,7 @@ const TrainerList = ({ trainer, searchValue }) => {
                     <Rating name="read-only" value={getAverageRating()} readOnly />
                   </Box>
                 </div>
+
                 <button
                   type="button"
                   className={styles.detailButton}
