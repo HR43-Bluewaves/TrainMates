@@ -97,7 +97,7 @@ const TrainerList = ({ trainer, searchValue }) => {
             </div>
           </div>
         </div>
-      ) : null}
+        ) : null}
     </motion.Col>
   );
 };
