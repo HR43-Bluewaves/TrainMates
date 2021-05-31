@@ -26,7 +26,7 @@ const TrainerClasses = () => {
           <div className={cssStyle.classScroll}>
             <div className={cssStyle.classCard_profile}>
               <div className={cssStyle.classPhotoContainer}>
-                <img className={cssStyle.classPhoto} src={course.photo_url ? course.photo_url : 'Casses Coming Soon'} alt="class" />
+                <img className={cssStyle.classPhoto} src={course.photo_url ? course.photo_url : 'Classes Coming Soon'} alt="class" />
               </div>
               <Row className={cssStyle.classInformation}>
                 <div className={cssStyle.classNameContainer}>
