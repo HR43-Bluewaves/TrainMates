@@ -18,11 +18,7 @@ import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 import NavBar from '../user-dashboard/Navbar';
 import style from './class.module.css';
-// static data Jenny cho
-// This is placeholder for now but we will need to also do a put request to create session
-// Will need access to redux user ID to add to the class
-// Will need access to the trainer ID
-// Future will need to figure out date format with postgres
+
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -32,9 +28,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: 250,
-    color: 'white',
   },
 }));
+
 const FullClass = () => {
   const session = useSelector((state) => state.sessionReducer.session);
   const user = useSelector((state) => state.userReducer.user);
@@ -57,7 +53,6 @@ const FullClass = () => {
     history.push('/home');
   };
 
-  // Do not touch the forms
   return (
     <Container fluid className={style.bookingBody}>
       <NavBar />
