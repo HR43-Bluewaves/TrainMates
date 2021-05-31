@@ -1,6 +1,7 @@
 .MuiAutocomplete-root {
   position: absolute;
-  margin: -3.5% 0 0 13%;
+  left: 11%;
+  top: 1%;
   z-index: 1;
   border: solid 1px black;
 }
@@ -28,7 +29,7 @@
   height: 100vh;
 }
 .trainer {
-  box-shadow: 10px 10px 10px -4px #C06014;
+  box-shadow: 10px 10px 10px -4px #c06014;
   background-color: #536162;
   overflow: visible;
   border-radius: 30px;
@@ -49,7 +50,7 @@
   background-color: #f3f4ed;
   overflow: hidden;
   border-radius: 30px;
-  border: 1px solid #C06014;
+  border: 1px solid #c06014;
   margin-left: 10px;
   margin-right: 10px;
   width: 240px;
@@ -82,14 +83,14 @@
 .trainerNameContainer {
   text-align: center;
   display: table;
-  background-color: #C06014;
+  background-color: #c06014;
   width: 106%;
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
 .trainerName {
-  display:table-cell;
+  display: table-cell;
   color: white;
 }
 
@@ -112,7 +113,7 @@
   text-align: center;
 }
 
-.trainer-list{
+.trainer-list {
   display: grid;
   grid-template-columns: 40vh 40vh 40vh 10vh;
   margin-left: 11vh;
@@ -130,14 +131,14 @@
   padding-right: 0px;
   background-color: black;
 }
-.html, body{
-  height:100%;
+.html,
+body {
+  height: 100%;
   background-color: black;
 }
 
-
 /* User Information */
-.userInformationContainer{
+.userInformationContainer {
   background-color: lightgray;
   flex-flow: column;
   flex: 1;
@@ -149,7 +150,7 @@
 
 .userContainer {
   max-width: 100vw;
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .userInformation {
@@ -176,7 +177,6 @@
   border-radius: 30px;
 }
 
-
 .classHeaderInformation {
   color: white;
   text-align: center;
@@ -199,7 +199,7 @@
 .classPhoto {
   height: 100%;
   width: 100%;
-  object-fit:initial;
+  object-fit: initial;
 }
 
 .classPhotoContainer {
@@ -210,14 +210,14 @@
 .classNameContainer {
   text-align: center;
   display: table;
-  background-color: #C06014;
+  background-color: #c06014;
   width: 100%;
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
 .className {
-  display:table-cell;
+  display: table-cell;
   color: white;
 }
 
@@ -238,7 +238,7 @@
   max-height: 15vh;
 }
 
-.classCardContainer{
+.classCardContainer {
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
@@ -249,11 +249,10 @@
   align-items: center;
 }
 
-.userIcons{
+.userIcons {
   margin-right: 5px;
 }
 
 .starRatings {
   margin-left: 3vh;
 }
-

@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
