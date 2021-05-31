@@ -11,8 +11,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 // import './trainer.css';
 import { motion } from 'framer-motion';
 import styles from './trainer.module.css';
@@ -77,13 +75,6 @@ const TrainerList = ({ trainer, searchValue }) => {
                   <b>
                     {trainer.slogan ? trainer.slogan : 'Train Me, Mate'}
                   </b>
-                  {trainer.keyphrases ? (
-                    <ButtonGroup aria-label="Basic example">
-                      <Button disabled variant="secondary">{trainer.keyphrases[0]}</Button>
-                      <Button disabled variant="secondary">{trainer.keyphrases[1]}</Button>
-                      <Button disabled variant="secondary">{trainer.keyphrases[2]}</Button>
-                    </ButtonGroup>
-                  ) : <ButtonGroup aria-label="Basic example"><Button disabled variant="secondary">Mater working on key phrases</Button></ButtonGroup>}
                 </div>
                 <div className={style.root}>
                   <Box className="reviews" component="fieldset" mb={3} borderColor="transparent">
@@ -91,6 +82,7 @@ const TrainerList = ({ trainer, searchValue }) => {
                     <Rating name="read-only" value={getAverageRating()} readOnly />
                   </Box>
                 </div>
+
                 <button
                   type="button"
                   className={styles.detailButton}
