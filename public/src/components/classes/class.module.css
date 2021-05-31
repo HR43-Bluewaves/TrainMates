@@ -134,7 +134,7 @@
   background-color: black;
   color: black;
 }
-.bookingForm{
+.bookingForm {
   background-color: #fff;
   border-radius: 1vh;
 }
@@ -147,9 +147,6 @@
 .descrip {
   padding: 2vw;
   margin: 0;
-}
-.headerText {
-  color: #c06014;
 }
 .classHeaderBooking {
   display: flex;

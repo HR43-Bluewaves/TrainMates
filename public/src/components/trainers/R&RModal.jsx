@@ -72,31 +72,37 @@ const RatingsAndReviewsModal = () => {
 
   const body = (
     <div style={modalStyle} className={style.paper}>
-      <form onSubmit={(event) => handleSubmit(event)}>
+      <form onSubmit={(event) => handleSubmit(event)} className={cssStyle.reviewbox}>
         <div className={style.root}>
           <div className="starRatings">
-            <b>Rating</b>
-            <Box component="fieldset" mb={3} borderColor="transparent">
-              <Rating
-                name="hover-feedback"
-                value={rating}
-                precision={1}
-                onChange={(event, newValue) => {
-                  setRating(newValue);
-                }}
-                onChangeActive={(event, newHover) => {
-                  setHover(newHover);
-                }}
-              />
-              {rating !== null && <Box ml={2}>{[hover !== -1 ? hover : rating]}</Box>}
-            </Box>
-            <b>Review</b>
-            <textarea onChange={(event) => handleChange(event)} value={comment} maxLength="500" name="body" rows="3" width="100" />
-            <p>{charsRemaining}</p>
+            <div className={cssStyle.starContainer}>
+              <b className={cssStyle.title}>Rating</b>
+              <Box component="fieldset" mb={3} borderColor="white">
+                <Rating
+                  name="hover-feedback"
+                  value={rating}
+                  precision={1}
+                  onChange={(event, newValue) => {
+                    setRating(newValue);
+                  }}
+                  onChangeActive={(event, newHover) => {
+                    setHover(newHover);
+                  }}
+                />
+                {rating !== null && <Box ml={2}>{[hover !== -1 ? hover : rating]}</Box>}
+              </Box>
+            </div>
+            <div className={cssStyle.starContainer}>
+              <b className={cssStyle.title}>Review</b>
+              <textarea onChange={(event) => handleChange(event)} value={comment} maxLength="500" name="body" rows="3" width="200" />
+              <p>{charsRemaining}</p>
+            </div>
           </div>
         </div>
-        <input className="submitButtonNd" type="submit" />
-        <input className="closeModalNd" type="button" value="Cancel" onClick={handleClose} />
+        <div>
+          <button className={cssStyle.detailButton} type="submit">Submit</button>
+          <button className={cssStyle.detailButton} type="button" value="Cancel" onClick={handleClose}>Cancel</button>
+        </div>
       </form>
     </div>
   );

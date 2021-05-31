@@ -201,6 +201,19 @@
   background-color: black;
 }
 
+.avatar {
+  width: 3rem;
+  height: 3rem;
+  background-color: white;
+  color: black;
+  font-weight: 800;
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1vh;
+}
+
 .detailButton {
   background-color: #c06014;
   width: 15vw;

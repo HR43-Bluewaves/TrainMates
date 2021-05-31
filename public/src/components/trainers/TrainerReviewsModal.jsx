@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-plusplus */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -12,6 +13,7 @@ import './trainer.css';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
 import styles from './makeStyles';
 import cssStyle from './trainer.module.css';
 
@@ -41,22 +43,17 @@ const TrainerReviews = () => {
   };
 
   const body = (
-    <div style={modalStyle} className={style.paper}>
-      <div>
-        {reviews.map((review) => (
-          <Row>
-            {review.trainer_id === profile.trainer_id ? (
-              <div>
-                <span>
-                  {review.rating}
-                </span>
-                <br />
-                {review.comment}
-              </div>
-            ) : null}
-          </Row>
-        ))}
-      </div>
+    <div style={modalStyle} className={style.paper1}>
+      {reviews.map((review) => (
+        <div className={cssStyle.reviewBody}>
+          {review.trainer_id === profile.trainer_id && review.comment !== '' ? (
+            <div className={cssStyle.textContainer1}>
+              <div className={cssStyle.avatar}>U</div>
+              <p className={cssStyle.commentbox}>{review.comment}</p>
+            </div>
+          ) : null}
+        </div>
+      ))}
     </div>
   );
 
