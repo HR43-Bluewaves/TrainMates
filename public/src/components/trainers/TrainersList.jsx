@@ -78,12 +78,12 @@ const TrainerList = ({ trainer, searchValue }) => {
                     {trainer.slogan ? trainer.slogan : 'Train Me, Mate'}
                   </b>
                   {trainer.keyphrases ? (
-                    <ButtonGroup aria-label="Basic example">
-                      <Button disabled variant="secondary">{trainer.keyphrases[0]}</Button>
-                      <Button disabled variant="secondary">{trainer.keyphrases[1]}</Button>
-                      <Button disabled variant="secondary">{trainer.keyphrases[2]}</Button>
+                    <ButtonGroup aria-label="keyphrases">
+                      {trainer.keyphrases.slice(0, 3).map((phrase) => (
+                        <Button disabled variant="outline-dark">{phrase}</Button>
+                      ))}
                     </ButtonGroup>
-                  ) : <ButtonGroup aria-label="Basic example"><Button disabled variant="secondary">Mater working on key phrases</Button></ButtonGroup>}
+                  ) : <ButtonGroup aria-label="keyphrases"><Button disabled variant="outline-dark">Mater working on interests!</Button></ButtonGroup>}
                 </div>
                 <div className={style.root}>
                   <Box className="reviews" component="fieldset" mb={3} borderColor="transparent">
