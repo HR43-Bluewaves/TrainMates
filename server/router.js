@@ -25,7 +25,8 @@ router
 
 router
   .route('/trainer/:id')
-  .get(db.getTrainerById);
+  .get(db.getTrainerById)
+  .put(db.editTrainer);
 
 router
   .route('/session')

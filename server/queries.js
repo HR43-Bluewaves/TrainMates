@@ -103,7 +103,7 @@ const queries = {
     const {
       username, password, email, first, last, city, state, zip, url,
     } = req.body;
-    console.log(url);
+
     db.query(`UPDATE users SET user_name = '${username}', password = '${password}', email = '${email}', first_name = '${first}', last_name = '${last}', city = '${city}', state = '${state}', zip = '${zip}', photo_url = '${url}' WHERE user_id = ${req.params.id}`)
       .then((result) => {
         res.status(200).send(result);
@@ -132,6 +132,31 @@ const queries = {
         res.status(200).send(result);
       })
       .catch((err) => {
+        res.status(400).send(err);
+      });
+  },
+  editTrainer: (req, res) => {
+    const {
+      username, password, email, first, last, city, state, zip, url, slogan,
+      keyphrases,
+    } = req.body;
+    let processedUsers = '{';
+    keyphrases.split(',').map((user, index) => {
+      if (index !== keyphrases.split(',').length - 1) {
+        const newWord = `"${user.trim().split("'").join("''")}",`;
+        processedUsers += newWord;
+      } else {
+        const newWord = `"${user.trim().split("'").join("''")}"`;
+        processedUsers += newWord;
+      }
+    });
+    processedUsers += '}';
+    db.query(`UPDATE trainers SET user_name = '${username}', password = '${password}', email = '${email}', first_name = '${first}', last_name = '${last}', city = '${city}', state = '${state}', zip = '${zip}', photo_url = '${url}', slogan = '${slogan}', keyphrases = '${processedUsers}' WHERE trainer_id = ${req.params.id}`)
+      .then((result) => {
+        res.status(200).send(result);
+      })
+      .catch((err) => {
+        console.log(err);
         res.status(400).send(err);
       });
   },

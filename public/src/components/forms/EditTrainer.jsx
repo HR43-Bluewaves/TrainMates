@@ -43,7 +43,7 @@ const validationSchema = yup.object({
     .required('Last name is required'),
 });
 
-const EditProfile = ({ editStatus, userId }) => {
+const EditTrainer = ({ editStatus, userId }) => {
   const classes = useStyles();
   const [imageAsFile, setImageAsFile] = useState('');
   const [imageAsUrl, setImageAsUrl] = useState('');
@@ -61,10 +61,12 @@ const EditProfile = ({ editStatus, userId }) => {
       city: userInfo.city || '',
       state: userInfo.state || '',
       zip: userInfo.zip || '',
+      slogan: userInfo.slogan || '',
+      keyphrases: userInfo.keyphrases || '',
     },
     validationSchema,
     onSubmit: (values) => {
-      axios.put(`/api/user/${userId}`, {
+      axios.put(`/api/trainer/${userId}`, {
         username: values.username,
         password: values.password,
         email: values.email,
@@ -73,9 +75,11 @@ const EditProfile = ({ editStatus, userId }) => {
         city: values.city,
         state: values.state,
         zip: values.zip || 0,
+        slogan: values.slogan,
+        keyphrases: values.keyphrases,
         url: imageAsUrl || userInfo.photo_url,
       }).then(async () => {
-        const { data } = await axios.get('/api/user', {
+        const { data } = await axios.get('/api/trainer', {
           params: {
             username: values.username,
             password: values.password,
@@ -217,6 +221,28 @@ const EditProfile = ({ editStatus, userId }) => {
           error={formik.touched.zip && Boolean(formik.errors.zip)}
           helperText={formik.touched.zip && formik.errors.zip}
         />
+        <TextField
+          fullWidth
+          id="slogan"
+          name="slogan"
+          label="Slogan"
+          type="slogan"
+          value={formik.values.slogan}
+          onChange={formik.handleChange}
+          error={formik.touched.slogan && Boolean(formik.errors.slogan)}
+          helperText={formik.touched.slogan && formik.errors.slogan}
+        />
+        <TextField
+          fullWidth
+          id="keyphrases"
+          name="keyphrases"
+          label="Keyphrases"
+          type="keyphrases"
+          value={formik.values.keyphrases}
+          onChange={formik.handleChange}
+          error={formik.touched.keyphrases && Boolean(formik.errors.keyphrases)}
+          helperText={formik.touched.keyphrases && formik.errors.keyphrases}
+        />
         <br />
         <br />
         <label htmlFor="upload-photo">
@@ -254,4 +280,4 @@ const EditProfile = ({ editStatus, userId }) => {
   );
 };
 
-export default EditProfile;
+export default EditTrainer;

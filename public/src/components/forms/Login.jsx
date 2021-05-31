@@ -15,6 +15,7 @@ import UserLogin from './userLogin';
 import LoginChoice from './LoginChoice';
 import SignUp from './SignUp';
 import EditProfile from './EditProfile';
+import EditTrainer from './EditTrainer';
 import AddClass from './AddClass';
 
 const theme = createMuiTheme({
@@ -57,6 +58,7 @@ const Login = ({ modalClose, modalType, userId }) => {
     setLoginType('');
   };
   const handleType = () => {
+    console.log(type);
     if (type === 'login') {
       return <UserLogin close={handleClose} userType={loginType} />;
     }
@@ -71,6 +73,9 @@ const Login = ({ modalClose, modalType, userId }) => {
     }
     if (type === 'class') {
       return <AddClass editStatus={editStatus} userId={userId} />;
+    }
+    if (type === 'edit-trainer') {
+      return <EditTrainer editStatus={editStatus} userId={userId} />;
     }
     return <div />;
   };
