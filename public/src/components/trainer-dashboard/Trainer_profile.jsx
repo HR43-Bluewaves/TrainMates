@@ -20,6 +20,7 @@ const TrainerProfileTrainerSide = () => {
   const [searchValue, setSearchValue] = useState('');
   const [modalType, setModalType] = useState('');
   const user = useSelector((state) => state.userReducer.user);
+  const session = useSelector((state) => state.sessionReducer.session);
   const handleChange = (event) => {
     setSearchValue(event.target.value);
   };
@@ -36,7 +37,12 @@ const TrainerProfileTrainerSide = () => {
     return (
       <Container fluid className={style.userInformationPage}>
         <TrainerNavBar addClass={addClass} />
-        <Login modalClose={modalClose} modalType={modalType} userId={user.trainer_id} />
+        <Login
+          modalClose={modalClose}
+          modalType={modalType}
+          userId={user.trainer_id}
+          classId={session ? session.class_id : ''}
+        />
         <Container>
           <motion.div
             initial={{ x: '200vw' }}
@@ -81,7 +87,7 @@ const TrainerProfileTrainerSide = () => {
                   <h1>Classes</h1>
                 </Row>
                 <Row className={style.scrollContainer}>
-                  <TrainerClasses />
+                  <TrainerClasses setModalType={setModalType} />
                 </Row>
               </Col>
             </Row>

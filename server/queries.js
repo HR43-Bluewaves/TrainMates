@@ -140,6 +140,7 @@ const queries = {
       username, password, email, first, last, city, state, zip, url, slogan,
       keyphrases,
     } = req.body;
+    console.log(keyphrases);
     let processedUsers = '{';
     keyphrases.split(',').map((user, index) => {
       if (index !== keyphrases.split(',').length - 1) {
@@ -187,12 +188,34 @@ const queries = {
         res.status(400).send(err);
       });
   },
+  getClassById: (req, res) => {
+    db.query(`SELECT * FROM classes WHERE class_id = ${req.params.id}`)
+      .then((result) => {
+        res.status(200).send(result.rows);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  },
   addClass: (req, res) => {
     const {
       name, description, id, url,
     } = req.body;
     console.log(req.body);
     db.query(`INSERT INTO classes (class_name, photo_url, description, teacher_id) VALUES ('${name}', '${url}', '${description}', ${id})`)
+      .then((result) => {
+        res.status(200).send(result);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).send(err);
+      });
+  },
+  editClass: (req, res) => {
+    const {
+      course, description, url,
+    } = req.body;
+    db.query(`UPDATE classes SET class_name = '${course}', photo_url = '${url}', description = '${description}' WHERE class_id = ${req.params.id}`)
       .then((result) => {
         res.status(200).send(result);
       })

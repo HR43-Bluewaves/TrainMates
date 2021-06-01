@@ -86,7 +86,7 @@ const EditTrainer = ({ editStatus, userId, classes }) => {
         state: values.state,
         zip: values.zip || 0,
         slogan: values.slogan,
-        keyphrases: values.keyphrases,
+        keyphrases: values.keyphrases.toString(),
         url: imageAsUrl || userInfo.photo_url,
       }).then(async () => {
         const { data } = await axios.get('/api/trainer', {

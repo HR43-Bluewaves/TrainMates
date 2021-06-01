@@ -16,7 +16,10 @@ router
   .route('/classes')
   .get(db.getAllClasses)
   .post(db.addClass);
-
+router
+  .route('/classes/:id')
+  .get(db.getClassById)
+  .put(db.editClass);
 router
   .route('/trainer')
   .get(db.getTrainer)

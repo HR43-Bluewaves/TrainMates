@@ -15,7 +15,6 @@ const TrainerHome = () => {
   const user = useSelector((state) => state.userReducer.user);
   const courses = useSelector((state) => state.classesReducer.classes);
   const TeacherUpcomingClasses = useSelector((state) => state.upcomingReducer.classes);
-  console.log('COURSES', courses);
 
   const addClass = () => {
     setModalType('class');
