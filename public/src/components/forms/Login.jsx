@@ -113,11 +113,12 @@ const Login = ({
     setLoginType('');
   };
   const handleType = () => {
+    console.log(type, loginType);
     if (type === 'login') {
       return <UserLogin close={handleClose} userType={loginType} />;
     }
     if (type === 'signup') {
-      return <SignUp type={loginType} />;
+      return <SignUp type="user" />;
     }
     if (type === 'trainer') {
       return <SignUp type="trainer" />;
