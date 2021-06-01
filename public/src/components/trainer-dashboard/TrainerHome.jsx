@@ -96,7 +96,7 @@ const TrainerHome = () => {
               >
                 <h1>SHOW YOUR SKILLS.</h1>
                 <h1>
-                  ADD MORE CLASS NOW
+                  ADD MORE CLASSES NOW
                   <ArrowRightIcon style={{ fontSize: 60, position: 'absolute', bottom: '28%' }} />
                 </h1>
               </motion.div>

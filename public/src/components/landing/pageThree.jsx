@@ -23,8 +23,8 @@ const PageThree = () => {
         <div className="row">
           <div className={`col-4 ${style.action_shot_title}`}>
             <div className={style.action_shot_tile_wrapper}>
-              <h1>ACTION</h1>
-              <h1>SHOTS</h1>
+              <h1>BE</h1>
+              <h1>BOLD</h1>
             </div>
           </div>
           <motion.div
