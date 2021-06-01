@@ -42,6 +42,7 @@ const validationSchema = yup.object({
 });
 
 const AddClass = ({ editStatus, userId, classes }) => {
+  const user = useSelector((state) => state.userReducer.user);
   const progBar = useStyles();
   const [imageAsFile, setImageAsFile] = useState('');
   const [imageAsUrl, setImageAsUrl] = useState('');
@@ -65,7 +66,10 @@ const AddClass = ({ editStatus, userId, classes }) => {
       }).then(async () => {
         const { data } = await axios.get('/api/classes');
         console.log('updated classes', data);
-        dispatch({ type: 'classes', classes: data });
+        const processedData = data.filter((course) => (
+          course.teacher_id === user.trainer_id
+        ));
+        dispatch({ type: 'classes', classes: processedData });
         editStatus(true);
       }).catch((err) => {
         console.log(err);
