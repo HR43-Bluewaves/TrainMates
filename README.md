@@ -3,7 +3,7 @@ TRAIN ME, MATE
 
 # Contributors
 [Nader Damouni](https://github.com/naderDamouni),
-[Byngi Huang](https://github.com/B1-sauce),
+[Bingyi Huang](https://github.com/B1-sauce),
 [Raul Martinez](https://github.com/raulm91),
 [Micheal Rosen](https://github.com/tichaeltosen),
 [Dennis Wang](https://github.com/denniswang10)
