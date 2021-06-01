@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable arrow-body-style */
@@ -6,14 +7,11 @@ import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
 import { motion } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import cssStyle from './trainer.module.css';
 
-const TrainerClasses = () => {
-  const history = useHistory();
+const TrainerClasses = ({ setModalType }) => {
   const dispatch = useDispatch();
   const classes = useSelector((state) => state.classesReducer.classes);
-  console.log('TRAINER CLASSES!!!!!!!!!!!!');
   return (
     <Row className={cssStyle.classesContainer}>
       {classes.map((course, index) => (
@@ -41,9 +39,7 @@ const TrainerClasses = () => {
                     className={cssStyle.detailButton}
                     onClick={() => {
                       dispatch({ type: 'session', session: course });
-                      // Where Michael will edit the class
-                      // history.push('/class-info');
-                      alert('Clicked');
+                      setModalType('edit-class');
                     }}
                   >
                     Edit

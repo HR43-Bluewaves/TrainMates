@@ -34,38 +34,42 @@ const styles = {
 
 const validationSchema = yup.object({
   class: yup
-    .string('Enter class name')
-    .required('Class name is required'),
+    .string('Enter class name'),
   description: yup
-    .string('Describe your class')
-    .required('Description is required'),
+    .string('Describe your class'),
 });
 
-const AddClass = ({ editStatus, userId, classes }) => {
+const EditClass = ({
+  editStatus, classes, classId,
+}) => {
   const progBar = useStyles();
+  const user = useSelector((state) => state.userReducer.user);
   const [imageAsFile, setImageAsFile] = useState('');
   const [imageAsUrl, setImageAsUrl] = useState('');
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(10);
+  const [currentClass, setCurrentClass] = useState({ class_name: '', description: '' });
   const dispatch = useDispatch();
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      class: '',
-      description: '',
-
+      class: currentClass.class_name,
+      description: currentClass.description,
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log('userid', userId);
-      axios.post('/api/classes', {
-        name: values.class,
+      console.log('submitted');
+      axios.put(`/api/classes/${classId}`, {
+        course: values.class,
         description: values.description,
-        url: imageAsUrl || null,
-        id: userId,
+        url: imageAsUrl || currentClass.photo_url,
       }).then(async () => {
         const { data } = await axios.get('/api/classes');
-        console.log('updated classes', data);
-        dispatch({ type: 'classes', classes: data });
+        console.log(data);
+        const processedData = data.filter((course) => (
+          course.teacher_id === user.trainer_id
+        ));
+        dispatch({ type: 'classes', classes: processedData });
         editStatus(true);
       }).catch((err) => {
         console.log(err);
@@ -111,6 +115,15 @@ const AddClass = ({ editStatus, userId, classes }) => {
     }
   }, [imageAsFile, imageAsUrl]);
 
+  useEffect(() => {
+    if (classId) {
+      axios.get(`/api/classes/${classId}`).then(({ data }) => {
+        setCurrentClass(data[0]);
+      })
+        .catch((err) => console.log(err));
+    }
+  }, [classId]);
+
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
@@ -118,7 +131,7 @@ const AddClass = ({ editStatus, userId, classes }) => {
           fullWidth
           id="class"
           name="class"
-          label="Class name"
+          label="Class"
           type="class"
           value={formik.values.class}
           onChange={formik.handleChange}
@@ -167,7 +180,7 @@ const AddClass = ({ editStatus, userId, classes }) => {
           >
             <AddIcon />
             {' '}
-            Upload Class Image
+            Change photo
           </Fab>
         </label>
         <Button color="primary" variant="contained" fullWidth type="submit" disabled={uploading}>
@@ -183,4 +196,4 @@ const AddClass = ({ editStatus, userId, classes }) => {
   );
 };
 
-export default withStyles(styles)(AddClass);
+export default withStyles(styles)(EditClass);
