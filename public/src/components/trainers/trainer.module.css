@@ -115,7 +115,6 @@
   height: 100%;
   /* object-fit: cover; */
   display: block;
-  margin: 0 auto;
 }
 .keywordBox {
   width: 95%;
@@ -144,8 +143,15 @@
 
 .classPhotoContainer {
   height: 200px;
-  width: 320px;
-  vertical-align: middle;
+  width: 300px;
+  /* vertical-align: middle; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  /* flex-wrap: nowrap; */
+  overflow: hidden;
 }
 .classInformation {
   width: 100%;
