@@ -76,7 +76,7 @@ const trainers = [
 ];
 
 const tableName = 'trainers';
-const creatTable = `
+const createtable = `
 DROP TABLE IF EXISTS ${tableName};
 CREATE TABLE IF NOT EXISTS ${tableName} (
   TRAINER_ID SERIAL,
@@ -99,7 +99,7 @@ const insertData = `
   INSERT INTO ${tableName} (TRAINER_ID, FIRST_NAME, LAST_NAME, GENDER, EMAIL, CITY, STATE, ZIP, PHOTO_URL, SLOGAN, KEYPHRASES, USER_NAME, PASSWORD) VALUES
 `;
 
-pool.query(creatTable)
+pool.query(createtable)
   .then(() => console.log(`Table '${tableName}' successfully created!`))
   .then(() => {
     trainers.map((trainer, trainerNum) => {

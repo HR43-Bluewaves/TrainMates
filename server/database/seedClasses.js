@@ -66,7 +66,7 @@ const classes = [
 ];
 
 const tableName = 'classes';
-const creatTable = `
+const createtable = `
 DROP TABLE IF EXISTS ${tableName};
 CREATE TABLE IF NOT EXISTS ${tableName} (
   CLASS_ID SERIAL,
@@ -81,7 +81,7 @@ const insertData = `
   INSERT INTO ${tableName} (CLASS_NAME, PHOTO_URL, DESCRIPTION, TEACHER_ID) VALUES
 `;
 
-pool.query(creatTable)
+pool.query(createtable)
   .then(() => console.log(`Table '${tableName}' successfully created!`))
   .then(() => {
     classes.map((aClass) => {
