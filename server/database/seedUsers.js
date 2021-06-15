@@ -2,7 +2,7 @@
 const pool = require('./index');
 
 const tableName = 'users';
-const creatTable = `
+const createtable = `
 DROP TABLE IF EXISTS ${tableName};
 CREATE TABLE IF NOT EXISTS ${tableName} (
   USER_ID SERIAL,
@@ -28,7 +28,7 @@ const insertData = `
    'OMG I love your bracelet', '{"Pink", "Flawless","Fetch"}', 'regina', 'regina');
 `;
 
-pool.query(creatTable)
+pool.query(createtable)
   .then(() => console.log(`Table '${tableName}' successfully created!`))
   .then(() => {
     pool.query(insertData).then(() => console.log('Get in loser, we\'re going shopping'));

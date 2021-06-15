@@ -2,7 +2,7 @@
 const pool = require('./index');
 
 const tableName = 'sessions';
-const creatTable = `
+const createtable = `
 DROP TABLE IF EXISTS ${tableName};
 CREATE TABLE IF NOT EXISTS ${tableName} (
   SESSION_ID SERIAL,
@@ -14,6 +14,6 @@ CREATE TABLE IF NOT EXISTS ${tableName} (
 );
 `;
 
-pool.query(creatTable)
+pool.query(createtable)
   .then(() => console.log(`Table '${tableName}' successfully created!`))
   .catch((err) => console.error('Error executing query', err.stack));
