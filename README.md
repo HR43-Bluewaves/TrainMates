@@ -14,6 +14,11 @@ TRAIN ME, MATE
 [installation](#installation)
 [usage](#mvp)
 
+# Useful links
+[Product demo](https://www.youtube.com/watch?v=LjONY97xeag&ab_channel=BingyiHuang)
+[Product slides](https://docs.google.com/presentation/d/1QTqumdDLUiuOTjzmuYIOSXg_7xGrFqjiGDzyqG2-tDw/edit?usp=sharing)
+
+
 # OVERVIEW
    CEO Helen and CMO Henry proposed an application called "Train Me, Mate", which comprises a recreational match making app between trainers and trainees. This
 
