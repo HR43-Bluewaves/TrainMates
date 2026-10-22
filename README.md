@@ -1,87 +1,130 @@
-# TITLE
-TRAIN ME, MATE
+# Train Me, Mate
 
-# Contributors
-[Nader Damouni](https://github.com/naderDamouni),
-[Bingyi Huang](https://github.com/B1-sauce),
-[Raul Martinez](https://github.com/raulm91),
-[Micheal Rosen](https://github.com/tichaeltosen),
-[Dennis Wang](https://github.com/denniswang10)
+Train Me, Mate is a legacy team-built prototype for discovering fitness trainers and classes. The app has a React client and an Express API backed by PostgreSQL, with Firebase Storage wired in for media.
 
- # TABLE OF CONTENTS
-[overview](#overview)
-[description](#description)
-[installation](#installation)
-[usage](#mvp)
+This repository reflects a short sprint project, not a production-ready service. Authentication, security, deployment, and automated testing are incomplete.
 
-# Useful links
-[Product demo](https://www.youtube.com/watch?v=LjONY97xeag&ab_channel=BingyiHuang)
-[Product slides](https://docs.google.com/presentation/d/1QTqumdDLUiuOTjzmuYIOSXg_7xGrFqjiGDzyqG2-tDw/edit?usp=sharing)
+## Features
 
+- Browse trainers and classes, and view trainer and class details.
+- View trainee profiles and trainer dashboards.
+- Book sessions and view upcoming sessions.
+- Use the chat, cart, and notifications pages.
+- Edit profiles and trainer classes; view trainer ratings and reviews.
 
-# OVERVIEW
-   CEO Helen and CMO Henry proposed an application called "Train Me, Mate", which comprises a recreational match making app between trainers and trainees. This
+The app is a prototype: some screens and flows may be incomplete or rely on seeded local data.
 
-   project was a brief 2-week sprint where our team implemented a product vision focused on its core functionality and stripped of any other auxillery features.
+## Tech stack
 
-   Focusing on the elimination of waste, we got rid of any work bringing no value to the end product. This helped us to quickly evaluate the potential product
+- React 17, React Router 5, Redux, and webpack 5
+- Express 4 and Node.js
+- PostgreSQL through `pg`
+- Firebase Storage and Analytics
 
-   acceptance by the market by gathering the valuable feedback from Helen and Henry. The minimal functional scope must be just sufficient to deploy the product and
+## Getting started
 
-   deliver it to the early users as soon as possible.
+### Prerequisites
 
-# DESCRIPTION
-  "Train Me, Mate" will be a dynamically rendered web application that will keep user experience easy to understand. The user interface will give the user a modern
+- Node.js and npm
+- PostgreSQL running locally on port `5432`
+- A Firebase project if you need the app's Firebase-backed media features
 
-  design with simple navigation to trainers and classes and account settings. The goal for this application is to create a user friendly platform where users can
+### Install and configure
 
-  virtually and physically interact with aesthetic personal trainers. We strive to focus on Simplicity, Service, and Affordability. Features implemented will be
+1. Install dependencies from the repository root:
 
-  constrained to the client experience which enables customers to search and browse for trainers, courses, book session, and message trainers and friends. The
+   ```sh
+   npm ci
+   ```
 
-  purpose of this application is to help our community stay healthy and motivated for their well being.
+2. Create the local PostgreSQL database. The example configuration uses `blueocean`:
 
-# MVP
-  1: Landing page
-    The landing page captures the first impression of all customers. As such, the landing page encompasses a simple, yet sleek design with a captivating company logo
+   ```sh
+   createdb blueocean
+   ```
 
-    and slogan, accompanied by a relevant background. The navigation bar will lead users to sign up or login. The sign up and login page will be a simple user form
+3. Copy the example config and edit `config/config.js` with your local PostgreSQL credentials:
 
-    to fill out the necessary information containing full name, email address, address, phone number, and validation.Future enhancements: If time allows, additional
+   ```sh
+   cp config/config-example.js config/config.js
+   ```
 
-    content will be displayed to hear the company's mission statement and achievements.
+   The app reads `user`, `database`, and `password` from this file. The database connection is currently fixed to `localhost:5432`. The Firebase client also reads `firebaseKey` from the same config file; add your Firebase project's API key if using Firebase features:
 
-  2: Home page
-    To keep user experience simple but efficient, the user home page will have a dashboard composed of upcoming classes, promotions, and recommended classes. At the
+   ```js
+   module.exports = {
+     user: 'postgres',
+     host: 'localhost',
+     database: 'blueocean',
+     password: 'yourpassword',
+     firebaseKey: 'your-firebase-api-key',
+   };
+   ```
 
-    top of the page there will be a navigation bar with a filtered search funtionality, a simple directory to trainers and classes, checkout icon, messaging icon,
+   `config/config.js` is ignored by Git and should not be committed.
 
-    notifications, and user information. The navigation bar will be displayed at the top of each page for easy accessebility.
+### Create demo tables and data (optional)
 
-  3: Trainer and Trainee Profiles
-    The trainer and trainee catalogue will be composed of simple panels that display the name. By selecting on the panels, it will direct the user to the full
+The scripts in `server/database/` create and seed the tables used by the API. Run the needed scripts from the repository root, for example:
 
-    information of the related profile and product.
+```sh
+node server/database/seedUsers.js
+node server/database/seedTrainers.js
+node server/database/seedClasses.js
+node server/database/createSession.js
+node server/database/createTrainerReviews.js
+node server/database/createTraineeReviews.js
+```
 
-    The full profile will contain the following information: name/class, geographical location, bio/slogan, expertise, ratings, and reviews. The profile will contain
+**Warning:** These scripts drop and recreate their respective tables, deleting existing data in those tables. They are demo-data scripts, not migrations; back up any data you need before running them.
 
-    a list of reviews for the individual trainers, trainees and courses along with relevant sorting features.
+### Run locally
 
-    If a trainer is signed and authenticated, they will have the ability to add a class.
+Start the client bundler and API in separate terminals from the repository root:
 
-  4: Booking sessions
-    The booking page is plain and simple to navigate. Upon selecting a desired course from anywhere on the application, you will be presented with a calendar to
+```sh
+npm run react-dev
+```
 
-    choose the date of your session, along with an optional choice of adding friends to your session. Upon pressing submit, you will be redirected to the home page
+```sh
+npm start
+```
 
-    with your new session applied to your upcoming sessions.
+The server listens on [http://localhost:3000](http://localhost:3000) and serves the client files from `public/dist`. Keep the webpack process running while developing so it can rebuild the client bundle.
 
-  5: Classes page
-    The Classes page is will consist of all the classes the application has to offer. Each class will be displayed on a panel with a picture that represents the
+## API overview
 
-    course, the name of the course, a brief description of the course, and a details button that will redirect you to the booking page. The booking page will also
+The Express API is mounted at `/api`. Its routes cover:
 
-    diplay the available trainers for the users desired course.
+| Resource | Routes |
+| --- | --- |
+| Trainers | `GET /trainers`, `GET` or `POST /trainer`, `GET` or `PUT /trainer/:id` |
+| Users | `GET` or `POST /user`, `PUT /user/:id` |
+| Classes | `GET` or `POST /classes`, `GET` or `PUT /classes/:id` |
+| Sessions | `POST /session`, `GET /session/:id`, `GET /session/train/:id` |
+| Trainer reviews | `GET` or `POST /trainer-profile`, `GET /trainer-reviews` |
 
-# Apps Functionality
-  Using React, the client sends HTTP Requests and retrieves HTTP Responses using Axios,
+## Project layout
+
+```text
+public/src/       React app, components, Redux store, and Firebase setup
+public/dist/      Static client files served by Express
+server/           Express app, API routes, and PostgreSQL queries
+server/database/  Local demo table and data scripts
+config/           Example configuration; local config is not tracked
+```
+
+## Development notes
+
+- `npm run react-dev` runs webpack in watch mode; there is no separate production build script.
+- `npm start` runs the API with nodemon.
+- `npm test` is a placeholder that exits with an error; no automated test suite is configured.
+
+## Project links
+
+- [Product demo](https://www.youtube.com/watch?v=LjONY97xeag&ab_channel=BingyiHuang)
+- [Product slides](https://docs.google.com/presentation/d/1QTqumdDLUiuOTjzmuYIOSXg_7xGrFqjiGDzyqG2-tDw/edit?usp=sharing)
+
+## Contributors
+
+[Nader Damouni](https://github.com/naderDamouni), [Bingyi Huang](https://github.com/B1-sauce), [Raul Martinez](https://github.com/raulm91), [Michael Rosen](https://github.com/tichaeltosen), [Dennis Wang](https://github.com/denniswang10)
