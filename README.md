@@ -63,9 +63,11 @@ The app is a prototype: some screens and flows may be incomplete or rely on seed
 
    `config/config.js` is ignored by Git and should not be committed.
 
-### Create demo tables and data (optional)
+### Initialize and seed the database
 
-The scripts in `server/database/` create and seed the tables used by the API. Run the needed scripts from the repository root, for example:
+The API fails on startup if it cannot connect to PostgreSQL, and its queries expect these tables: `users`, `trainers`, `classes`, `sessions`, `trainer_reviews`. Each script in `server/database/` drops and recreates its table, so run them once on a fresh database. There is no migration tool.
+
+Make sure PostgreSQL is running and `config/config.js` is set up, then run these from the repository root, one at a time, in this order:
 
 ```sh
 node server/database/seedUsers.js
@@ -76,7 +78,21 @@ node server/database/createTrainerReviews.js
 node server/database/createTraineeReviews.js
 ```
 
-**Warning:** These scripts drop and recreate their respective tables, deleting existing data in those tables. They are demo-data scripts, not migrations; back up any data you need before running them.
+| Script | Table | Seed data |
+| --- | --- | --- |
+| `seedUsers.js` | `users` | One trainee: `regina` / `regina` |
+| `seedTrainers.js` | `trainers` | Five trainers (`brandy`, `quintin`, `jordan`, `julian`, `jenny`), all with password `password` |
+| `seedClasses.js` | `classes` | Ten classes, two per trainer (matches the trainer IDs above) |
+| `createSession.js` | `sessions` | Empty; filled when sessions are booked in the app |
+| `createTrainerReviews.js` | `trainer_reviews` | Five sample reviews |
+| `createTraineeReviews.js` | `trainee_reviews` | Five sample reviews (not currently queried by the API) |
+
+Notes:
+
+- The scripts keep the database connection open and do not exit on their own. Wait for the final "added" log lines, then press `Ctrl+C` before running the next script.
+- Run `seedTrainers.js` before `seedClasses.js` so class `teacher_id` values point at existing trainers. If trainer IDs look scrambled afterwards, re-run the script on its own.
+- To start over, re-run the scripts. To wipe everything, run `dropdb blueocean && createdb blueocean` first.
+- Seed credentials are stored in plain text and are for local demos only.
 
 ### Run locally
 
